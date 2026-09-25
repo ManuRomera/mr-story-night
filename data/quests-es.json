@@ -1,102 +1,914 @@
 [
-  {
-    "id": "sample-winter-pass",
-    "title": "El paso del invierno",
-    "tagline": "Cruzar las montañas y volver antes de que la nieve cierre el camino.",
-    "theme": "fantasy",
-    "intro": "El granero del pueblo ardió a finales de otoño. El único grano que queda está al otro lado de las montañas, en el monasterio de Altacumbre. Una pequeña compañía tiene que ir a buscarlo y regresar antes de que la primera nevada selle el paso durante meses.",
-    "goal": "Traer el grano del monasterio de Altacumbre antes de que la nieve cierre el paso.",
-    "questions": [
-      "¿Qué destruyó el granero y a quién culpa el pueblo?",
-      "¿Por qué el monasterio no quiere entregar el grano sin más?",
-      "¿Qué se cuenta del paso que nadie se atreve a decir en voz alta?",
-      "¿Quién, en el pueblo, prefiere que la compañía fracase?"
-    ],
-    "difficulties": [
-      "La nieve llegará antes de lo previsto",
-      "Los monjes piden algo a cambio",
-      "Hay bandidos en el puente viejo",
-      "Alguien del pueblo sabotea la expedición",
-      "Solo una persona de la compañía conoce el camino",
-      "La carga es demasiado pesada para volver deprisa"
-    ],
-    "concepts": [
-      "Guía de montaña retirada",
-      "Hija del molinero",
-      "Soldado licenciado",
-      "Curandera del valle",
-      "Contrabandista arrepentido",
-      "Novicio fugado del monasterio",
-      "Mercader endeudado",
-      "Cazador solitario"
-    ],
-    "desires": [
-      "Salvar a mi familia del hambre",
-      "Demostrar que no soy un cobarde",
-      "Saldar una deuda con el pueblo",
-      "Recuperar el respeto que perdí",
-      "Ganarme la confianza de alguien",
-      "Averiguar qué fue de quien cruzó el paso y no volvió"
-    ],
-    "challenges": [
-      { "title": "Convencer al consejo", "text": "El pueblo tiene que prestar mulas y provisiones que no le sobran." },
-      { "title": "El puente viejo", "text": "Está vigilado, o podrido, o ambas cosas." },
-      { "title": "La tormenta", "text": "Refugiarse y perder días, o seguir a ciegas." },
-      { "title": "Negociar con el abad", "text": "El monasterio también tiene bocas que alimentar." },
-      { "title": "Una herida en la ruta", "text": "Alguien se lastima y retrasa a todos." },
-      { "title": "El regreso cargados", "text": "Más lentos, más cansados y con el tiempo en contra." },
-      { "title": "Los bandidos", "text": "Quieren el grano, o quieren a alguien de la compañía." },
-      { "title": "La última noche", "text": "A un día del pueblo, algo lo cambia todo." }
-    ]
-  },
-  {
-    "id": "sample-meridian-station",
-    "title": "Estación Meridiana",
-    "tagline": "Mantener viva una estación orbital hasta que llegue el relevo.",
-    "theme": "sci-fi",
-    "intro": "La Estación Meridiana orbita un gigante gaseoso a meses de cualquier puerto. La nave de relevo acaba de anunciar un retraso de cuarenta días, y los sistemas de la estación no están preparados para aguantar tanto. La tripulación tiene que resistir.",
-    "goal": "Mantener con vida a la tripulación de la Estación Meridiana hasta que llegue el relevo.",
-    "questions": [
-      "¿Qué investiga la estación que tanto le importa a la empresa?",
-      "¿Por qué se retrasa el relevo?",
-      "¿Qué parte de la estación nadie visita?",
-      "¿Quién a bordo tiene órdenes que el resto desconoce?"
-    ],
-    "difficulties": [
-      "El reciclador de aire falla cada pocos días",
-      "La empresa antepone los datos a la tripulación",
-      "Una tormenta del planeta corta las comunicaciones",
-      "Las raciones no cuadran",
-      "Hay alguien a bordo que no figura en la lista",
-      "El piloto automático tiene su propio plan"
-    ],
-    "concepts": [
-      "Ingeniera jefa agotada",
-      "Médico con la licencia caducada",
-      "Científica que no quiere irse",
-      "Supervisor de la empresa",
-      "Técnico de mantenimiento recién llegado",
-      "Piloto sin nave",
-      "Operadora de comunicaciones",
-      "Polizón"
-    ],
-    "desires": [
-      "Volver a casa con los míos",
-      "Salvar la investigación de mi vida",
-      "Que la empresa pague por esto",
-      "Ser, por fin, quien toma las decisiones",
-      "Proteger a una persona concreta a bordo",
-      "Que nadie descubra lo que hice"
-    ],
-    "challenges": [
-      { "title": "Racionar", "text": "Decidir quién recibe qué cuando no alcanza para todos." },
-      { "title": "Reparar el reciclador", "text": "Un trabajo lento y peligroso fuera del casco." },
-      { "title": "Recuperar el contacto", "text": "Hay que alinear la antena en plena tormenta." },
-      { "title": "El módulo sellado", "text": "Hay algo, o alguien, dentro." },
-      { "title": "Motín", "text": "Parte de la tripulación quiere abandonar la estación." },
-      { "title": "Órdenes de la empresa", "text": "Llega un mensaje que lo cambia todo." },
-      { "title": "La órbita decae", "text": "La estación empieza a caer hacia el planeta." },
-      { "title": "Llega el relevo", "text": "Pero no hay sitio para todos." }
-    ]
-  }
+ {
+  "id": "sample-winter-pass",
+  "title": "El paso del invierno",
+  "tagline": "Cruzar las montañas y volver antes de que la nieve cierre el camino.",
+  "theme": "fantasy",
+  "intro": "El granero del pueblo ardió a finales de otoño. El único grano que queda está al otro lado de las montañas, en el monasterio de Altacumbre. Una pequeña compañía tiene que ir a buscarlo y regresar antes de que la primera nevada selle el paso durante meses.",
+  "goal": "Traer el grano del monasterio de Altacumbre antes de que la nieve cierre el paso.",
+  "questions": [
+   "¿Qué destruyó el granero y a quién culpa el pueblo?",
+   "¿Por qué el monasterio no quiere entregar el grano sin más?",
+   "¿Qué se cuenta del paso que nadie se atreve a decir en voz alta?",
+   "¿Quién, en el pueblo, prefiere que la compañía fracase?",
+   "¿Qué promesa hizo la compañía al pueblo antes de partir?"
+  ],
+  "difficulties": [
+   "La nieve llegará antes de lo previsto",
+   "Los monjes piden algo a cambio",
+   "Hay bandidos en el puente viejo",
+   "Alguien del pueblo sabotea la expedición",
+   "Solo una persona de la compañía conoce el camino",
+   "La carga es demasiado pesada para volver deprisa"
+  ],
+  "concepts": [
+   "Guía de montaña retirada",
+   "Hija del molinero",
+   "Soldado licenciado",
+   "Curandera del valle",
+   "Contrabandista arrepentido",
+   "Novicio fugado del monasterio",
+   "Mercader endeudado",
+   "Cazador solitario"
+  ],
+  "desires": [
+   "Salvar a mi familia del hambre",
+   "Demostrar que no soy un cobarde",
+   "Saldar una deuda con el pueblo",
+   "Recuperar el respeto que perdí",
+   "Ganarme la confianza de alguien",
+   "Averiguar qué fue de quien cruzó el paso y no volvió"
+  ],
+  "challenges": [
+   {
+    "title": "Convencer al consejo",
+    "text": "El pueblo tiene que prestar mulas y provisiones que no le sobran."
+   },
+   {
+    "title": "El puente viejo",
+    "text": "Está vigilado, o podrido, o ambas cosas."
+   },
+   {
+    "title": "La tormenta",
+    "text": "Refugiarse y perder días, o seguir a ciegas."
+   },
+   {
+    "title": "Negociar con el abad",
+    "text": "El monasterio también tiene bocas que alimentar."
+   },
+   {
+    "title": "Una herida en la ruta",
+    "text": "Alguien se lastima y retrasa a todos."
+   },
+   {
+    "title": "El regreso cargados",
+    "text": "Más lentos, más cansados y con el tiempo en contra."
+   },
+   {
+    "title": "Los bandidos",
+    "text": "Quieren el grano, o quieren a alguien de la compañía."
+   },
+   {
+    "title": "La última noche",
+    "text": "A un día del pueblo, algo lo cambia todo."
+   }
+  ],
+  "genre": "fantasy"
+ },
+ {
+  "id": "sample-meridian-station",
+  "title": "Estación Meridiana",
+  "tagline": "Mantener viva una estación orbital hasta que llegue el relevo.",
+  "theme": "sci-fi",
+  "intro": "La Estación Meridiana orbita un gigante gaseoso a meses de cualquier puerto. La nave de relevo acaba de anunciar un retraso de cuarenta días, y los sistemas de la estación no están preparados para aguantar tanto. La tripulación tiene que resistir.",
+  "goal": "Mantener con vida a la tripulación de la Estación Meridiana hasta que llegue el relevo.",
+  "questions": [
+   "¿Qué investiga la estación que tanto le importa a la empresa?",
+   "¿Por qué se retrasa el relevo?",
+   "¿Qué parte de la estación nadie visita?",
+   "¿Quién a bordo tiene órdenes que el resto desconoce?",
+   "¿Qué se jura la tripulación cuando se anuncia el retraso?"
+  ],
+  "difficulties": [
+   "El reciclador de aire falla cada pocos días",
+   "La empresa antepone los datos a la tripulación",
+   "Una tormenta del planeta corta las comunicaciones",
+   "Las raciones no cuadran",
+   "Hay alguien a bordo que no figura en la lista",
+   "El piloto automático tiene su propio plan"
+  ],
+  "concepts": [
+   "Ingeniera jefa agotada",
+   "Médico con la licencia caducada",
+   "Científica que no quiere irse",
+   "Supervisor de la empresa",
+   "Técnico de mantenimiento recién llegado",
+   "Piloto sin nave",
+   "Operadora de comunicaciones",
+   "Polizón"
+  ],
+  "desires": [
+   "Volver a casa con los míos",
+   "Salvar la investigación de mi vida",
+   "Que la empresa pague por esto",
+   "Ser, por fin, quien toma las decisiones",
+   "Proteger a una persona concreta a bordo",
+   "Que nadie descubra lo que hice"
+  ],
+  "challenges": [
+   {
+    "title": "Racionar",
+    "text": "Decidir quién recibe qué cuando no alcanza para todos."
+   },
+   {
+    "title": "Reparar el reciclador",
+    "text": "Un trabajo lento y peligroso fuera del casco."
+   },
+   {
+    "title": "Recuperar el contacto",
+    "text": "Hay que alinear la antena en plena tormenta."
+   },
+   {
+    "title": "El módulo sellado",
+    "text": "Hay algo, o alguien, dentro."
+   },
+   {
+    "title": "Motín",
+    "text": "Parte de la tripulación quiere abandonar la estación."
+   },
+   {
+    "title": "Órdenes de la empresa",
+    "text": "Llega un mensaje que lo cambia todo."
+   },
+   {
+    "title": "La órbita decae",
+    "text": "La estación empieza a caer hacia el planeta."
+   },
+   {
+    "title": "Llega el relevo",
+    "text": "Pero no hay sitio para todos."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "almendro",
+  "title": "La casa de la calle Almendro",
+  "theme": "horror",
+  "genre": "horror",
+  "tagline": "Una familia, una casa barata y algo que ya vivía allí.",
+  "intro": "La casa estaba a la mitad de precio y nadie preguntó por qué. Tres semanas después de la mudanza, la hija pequeña ha dejado de dormir, el perro no quiere subir las escaleras y en el sótano aparecen dibujos que nadie ha hecho. La familia y quienes la rodean tienen que averiguar qué hay en la casa y sacarlo, o salir de ella, antes de la noche en que se cumplen cuarenta años de lo que pasó.",
+  "goal": "Salvar a la familia de lo que habita la casa de la calle Almendro.",
+  "questions": [
+   "¿Qué ocurrió en la casa hace cuarenta años?",
+   "¿Por qué la familia no puede, simplemente, marcharse?",
+   "¿Qué es lo primero que la casa les quitó?",
+   "¿Quién del vecindario sabe más de lo que dice?",
+   "¿Qué forma tiene aquello cuando por fin se deja ver?"
+  ],
+  "difficulties": [
+   "La hija pequeña es su objetivo",
+   "Nadie de fuera cree lo que está pasando",
+   "El dinero de la hipoteca no permite irse",
+   "La cosa imita voces conocidas",
+   "Uno de los padres empieza a defender la casa",
+   "El aniversario es dentro de tres noches"
+  ],
+  "concepts": [
+   "Madre recién separada",
+   "Padre que trabaja de noche",
+   "Hija adolescente que graba todo",
+   "Abuelo que vivió en el barrio de niño",
+   "Vecina anciana de la casa de enfrente",
+   "Cura de la parroquia",
+   "Técnico de alarmas",
+   "Amiga médium de la madre"
+  ],
+  "desires": [
+   "Que mi hija vuelva a dormir tranquila",
+   "Demostrar que no estoy imaginando cosas",
+   "No perder la casa por la que tanto luché",
+   "Terminar lo que no terminé hace cuarenta años",
+   "Que mi familia se mantenga unida",
+   "Grabar la prueba que nadie pueda negar"
+  ],
+  "challenges": [
+   {
+    "title": "La primera noche juntos",
+    "text": "Todos deciden dormir en el salón. No todos se despertarán allí."
+   },
+   {
+    "title": "Los dibujos del sótano",
+    "text": "Alguien tiene que bajar a entender qué cuentan."
+   },
+   {
+    "title": "La vecina",
+    "text": "Sabe lo que pasó, pero hacerla hablar tiene un precio."
+   },
+   {
+    "title": "La niña sonámbula",
+    "text": "Camina hacia un sitio de la casa que no está en los planos."
+   },
+   {
+    "title": "La bendición",
+    "text": "El cura acepta venir; la casa no lo acepta a él."
+   },
+   {
+    "title": "El aniversario",
+    "text": "A medianoche se repite lo de hace cuarenta años."
+   },
+   {
+    "title": "La otra familia",
+    "text": "En las paredes aparecen los nombres de los antiguos dueños."
+   },
+   {
+    "title": "Salir por la puerta",
+    "text": "Parece fácil hasta que se intenta."
+   }
+  ]
+ },
+ {
+  "id": "lago-negro",
+  "title": "Campamento Lago Negro, 1986",
+  "theme": "horror",
+  "genre": "horror",
+  "tagline": "Último fin de semana del verano. Alguien no quiere que se vayan.",
+  "intro": "El campamento cierra el lunes. Los monitores se han quedado para recogerlo todo y despedirse a lo grande. Pero la radio no funciona, la barca ha desaparecido y uno de ellos no ha vuelto del bosque. Hay una historia que se cuenta cada año junto a la hoguera, y esta noche empieza a hacerse realidad.",
+  "goal": "Sobrevivir hasta que llegue el autobús del lunes por la mañana.",
+  "questions": [
+   "¿Qué historia se cuenta junto a la hoguera cada verano?",
+   "¿Qué hicieron algunos de ellos el verano pasado que nadie sabe?",
+   "¿Por qué no pueden salir andando hasta la carretera?",
+   "¿Quién del pueblo tenía motivos para odiar el campamento?",
+   "¿Qué lleva puesto la figura del bosque?"
+  ],
+  "difficulties": [
+   "La radio está saboteada",
+   "El bosque es enorme y todo parece igual",
+   "Hay una tormenta de verano",
+   "Nadie les creería si llamaran",
+   "Alguien del grupo está ayudándolo",
+   "El dueño del campamento oculta algo"
+  ],
+  "concepts": [
+   "Monitora responsable que lo organiza todo",
+   "Deportista del grupo",
+   "Chica rara que lee libros de terror",
+   "Cocinero del campamento",
+   "Novato que vino por primera vez",
+   "Hijo del dueño",
+   "Socorrista que siempre llega tarde",
+   "Chico del pueblo que suministra cerveza"
+  ],
+  "desires": [
+   "Que nadie más salga herido",
+   "Que no se sepa lo del verano pasado",
+   "Salvar a quien me gusta",
+   "Demostrar que no soy un cobarde",
+   "Que mi padre no pierda el campamento",
+   "Saber por fin si la historia era verdad"
+  ],
+  "challenges": [
+   {
+    "title": "La desaparición",
+    "text": "Uno de ellos no ha vuelto y hay que ir a buscarlo."
+   },
+   {
+    "title": "La cabaña del guarda",
+    "text": "Hay un teléfono. También hay otra cosa."
+   },
+   {
+    "title": "El lago",
+    "text": "La otra orilla es la carretera. La barca no está."
+   },
+   {
+    "title": "La luz se va",
+    "text": "El generador está en el cobertizo más alejado."
+   },
+   {
+    "title": "La confesión",
+    "text": "Uno de ellos sabe por qué está pasando esto."
+   },
+   {
+    "title": "Separarse",
+    "text": "Nunca es buena idea, y ahora es la única."
+   },
+   {
+    "title": "La trampa",
+    "text": "Hay que atraerlo a algún sitio."
+   },
+   {
+    "title": "El amanecer",
+    "text": "Solo queda aguantar hasta que suene el claxon del autobús."
+   }
+  ]
+ },
+ {
+  "id": "villaruz",
+  "title": "El pozo de Villaruz, 1923",
+  "theme": "cosmic",
+  "genre": "cosmic",
+  "tagline": "Una mina asturiana alcanza una profundidad que no debería existir.",
+  "intro": "Los mineros de Villaruz dieron con una galería de piedra lisa que baja en espiral más allá de lo que alcanzan las sondas. Desde entonces, el pueblo sueña lo mismo, el ingeniero jefe se ha encerrado en su casa y las mareas del Cantábrico llegan tarde. La fiesta de la Virgen del Carmen es dentro de cuatro días, y el pozo parece estar esperándola.",
+  "goal": "Sellar el pozo de Villaruz antes de la noche de la fiesta.",
+  "questions": [
+   "¿Qué encontraron los mineros al final de la galería lisa?",
+   "¿Qué sueña todo el pueblo desde entonces?",
+   "¿Quién en Villaruz lleva generaciones esperando esto?",
+   "¿Por qué la compañía minera se niega a cerrar la mina?",
+   "¿Qué ha dejado de funcionar en el mundo cercano al pozo?"
+  ],
+  "difficulties": [
+   "La compañía minera tiene a la Guardia Civil de su lado",
+   "Cada vez que bajan pierden un recuerdo",
+   "El ingeniero jefe se niega a hablar",
+   "Los dinamiteros del pueblo han desaparecido",
+   "El tiempo va más despacio dentro de la mina",
+   "Algunos vecinos quieren que el pozo se abra"
+  ],
+  "concepts": [
+   "Ingeniero de minas llegado de Madrid",
+   "Catedrática de geología",
+   "Médico del pueblo",
+   "Picador veterano",
+   "Viuda del capataz",
+   "Cura de la parroquia",
+   "Periodista de El Noroeste",
+   "Hija del ingeniero jefe"
+  ],
+  "desires": [
+   "Entender lo que hay ahí abajo",
+   "Proteger a los mineros",
+   "Que mi familia no se entere de mi parte en esto",
+   "Destruirlo aunque me cueste la vida",
+   "Publicar el descubrimiento del siglo",
+   "Que el pueblo siga existiendo"
+  ],
+  "challenges": [
+   {
+    "title": "La casa del ingeniero",
+    "text": "Lleva semanas sin salir y tiene los planos."
+   },
+   {
+    "title": "La galería lisa",
+    "text": "Hay que bajar a ver qué hay, al menos una vez."
+   },
+   {
+    "title": "La dinamita",
+    "text": "Está en el polvorín de la compañía, bajo vigilancia."
+   },
+   {
+    "title": "El sueño",
+    "text": "Todos sueñan lo mismo esta noche, y en el sueño se puede hacer algo."
+   },
+   {
+    "title": "La procesión",
+    "text": "El pueblo camina hacia la mina con velas."
+   },
+   {
+    "title": "La biblioteca del casino",
+    "text": "Un libro antiguo del marqués describe la espiral."
+   },
+   {
+    "title": "La marea",
+    "text": "El mar se ha retirado y el fondo tiene la misma espiral."
+   },
+   {
+    "title": "Sellarlo",
+    "text": "Alguien tiene que quedarse para encender la mecha."
+   }
+  ]
+ },
+ {
+  "id": "esperanza",
+  "title": "La expedición del Esperanza, 1931",
+  "theme": "cosmic",
+  "genre": "cosmic",
+  "tagline": "Una expedición antártica encuentra una ciudad bajo el hielo.",
+  "intro": "El buque Esperanza lleva tres meses anclado en la bahía de hielo mientras la expedición perfora el glaciar. Ayer, la sonda atravesó el hielo y cayó en el vacío. Las cámaras bajadas por el agujero muestran calles, escaleras y arcos que ninguna mano humana podría haber tallado. El invierno austral está a punto de cerrar el mar.",
+  "goal": "Volver a casa antes de que el hielo cierre la bahía, sin traer nada con vosotros.",
+  "questions": [
+   "¿Quién financia la expedición y qué espera encontrar?",
+   "¿Qué se ve en las fotografías tomadas bajo el hielo?",
+   "¿Por qué hay un campamento abandonado más antiguo que el vuestro?",
+   "¿Qué le pasó al primer hombre que bajó?",
+   "¿Qué le ha ocurrido a los perros?"
+  ],
+  "difficulties": [
+   "El patrocinador exige traer una muestra",
+   "La radio solo capta una melodía",
+   "El capitán quiere zarpar ya, con o sin todos",
+   "Algo ha subido por el agujero",
+   "Las brújulas señalan hacia la ciudad",
+   "Uno de los científicos no quiere volver"
+  ],
+  "concepts": [
+   "Jefe de la expedición",
+   "Geóloga de Cambridge",
+   "Fotógrafo de la National Geographic",
+   "Médico del barco",
+   "Piloto de hidroavión",
+   "Marinero gallego",
+   "Biólogo obsesionado con los fósiles",
+   "Operador de radio"
+  ],
+  "desires": [
+   "Que mi nombre quede en la historia",
+   "Volver a ver a mi familia",
+   "Destruir las pruebas",
+   "Comprender quiénes construyeron la ciudad",
+   "Proteger a la tripulación",
+   "Pagar las deudas con el patrocinador"
+  ],
+  "challenges": [
+   {
+    "title": "El descenso",
+    "text": "Alguien tiene que bajar por la cuerda."
+   },
+   {
+    "title": "La muestra",
+    "text": "El patrocinador la quiere, la ciudad no la suelta."
+   },
+   {
+    "title": "El campamento viejo",
+    "text": "Los diarios del campamento anterior terminan de golpe."
+   },
+   {
+    "title": "La tormenta",
+    "text": "Tres días sin salir de las tiendas."
+   },
+   {
+    "title": "Lo que subió",
+    "text": "Algo ha salido del agujero y está entre ellos."
+   },
+   {
+    "title": "El vuelo",
+    "text": "El hidroavión puede ver la ciudad entera desde arriba."
+   },
+   {
+    "title": "El capitán",
+    "text": "Hay que convencerlo de esperar, o de irse."
+   },
+   {
+    "title": "La bahía se cierra",
+    "text": "Última oportunidad para zarpar."
+   }
+  ]
+ },
+ {
+  "id": "valcarcel",
+  "title": "La herencia de los Valcárcel",
+  "theme": "gothic",
+  "genre": "gothic",
+  "tagline": "Una familia, una casa en ruinas y una maldición que cobra cada generación.",
+  "intro": "Don Honorio Valcárcel ha muerto y su testamento reúne a toda la familia en el pazo durante nueve noches de luto. Se dice que ningún primogénito Valcárcel ha cumplido los treinta años desde que un antepasado encerró a su esposa en el ala este. El heredero cumple treinta dentro de nueve días.",
+  "goal": "Romper la maldición de los Valcárcel antes de que el heredero cumpla treinta años.",
+  "questions": [
+   "¿Qué hizo realmente el antepasado a su esposa?",
+   "¿Qué exige el testamento de don Honorio?",
+   "¿Quién de la familia se beneficia de que la maldición se cumpla?",
+   "¿Qué se oye en el ala este por las noches?",
+   "¿Qué secreto guarda el servicio?"
+  ],
+  "difficulties": [
+   "La familia se odia entre sí",
+   "El notario lee una cláusula nueva cada noche",
+   "La casa se cae a pedazos",
+   "Nadie puede salir del pazo durante el luto",
+   "El heredero no quiere que lo salven",
+   "La esposa encerrada quiere algo a cambio"
+  ],
+  "concepts": [
+   "Heredero que cumple treinta",
+   "Hermana mayor que debió heredar",
+   "Viuda joven de don Honorio",
+   "Ama de llaves",
+   "Médico de la familia",
+   "Prometida del heredero",
+   "Primo arruinado",
+   "Capellán del pazo"
+  ],
+  "desires": [
+   "Que el heredero viva",
+   "Quedarme con el pazo",
+   "Saber quién era mi verdadero padre",
+   "Que la verdad salga a la luz",
+   "Casarme libre de la maldición",
+   "Que la difunta descanse por fin"
+  ],
+  "challenges": [
+   {
+    "title": "La lectura del testamento",
+    "text": "Cada cláusula enfrenta a la familia."
+   },
+   {
+    "title": "El ala este",
+    "text": "Hace ochenta años que nadie abre esa puerta."
+   },
+   {
+    "title": "La cena de luto",
+    "text": "Toda la comarca vendrá a observar a la familia."
+   },
+   {
+    "title": "La cripta",
+    "text": "Hay un nicho sin nombre y está vacío."
+   },
+   {
+    "title": "El retrato",
+    "text": "La esposa encerrada fue pintada con algo en la mano."
+   },
+   {
+    "title": "El heredero enferma",
+    "text": "Tose sangre la séptima noche, como todos los anteriores."
+   },
+   {
+    "title": "La confesión del servicio",
+    "text": "Sus abuelas ayudaron a encerrarla."
+   },
+   {
+    "title": "La novena noche",
+    "text": "La maldición viene a cobrar."
+   }
+  ]
+ },
+ {
+  "id": "san-ciriaco",
+  "title": "La romería de San Ciriaco",
+  "theme": "folk",
+  "genre": "folk",
+  "tagline": "Un pueblo, una fiesta y una forastera que no debería estar allí.",
+  "intro": "Cada siete años, el pueblo de Valdeoscuro sube a la ermita de San Ciriaco la última noche de agosto. Este año hay forasteros: una maestra, un etnógrafo, la nieta de una vecina que murió en primavera. Los vecinos son amables. Demasiado. Y alguien ha colgado una cinta roja en la puerta de la casa de la nieta.",
+  "goal": "Sacar a la nieta del valle antes de que termine la romería.",
+  "questions": [
+   "¿Qué se hace en la ermita cada siete años?",
+   "¿Por qué la cosecha de este año ha sido tan buena?",
+   "¿Qué pasó con los forasteros de hace siete años?",
+   "¿Quién en el pueblo no está de acuerdo con la costumbre?",
+   "¿Qué pide exactamente San Ciriaco?"
+  ],
+  "difficulties": [
+   "Las carreteras se cortan durante la fiesta",
+   "El guardia civil es del pueblo",
+   "La nieta no quiere irse",
+   "Los vecinos se turnan para vigilar",
+   "Nadie tiene cobertura",
+   "La costumbre, de algún modo, funciona"
+  ],
+  "concepts": [
+   "Nieta que ha heredado la casa",
+   "Maestra del pueblo",
+   "Etnógrafo que graba las canciones",
+   "Tabernera",
+   "Pastor del monte",
+   "Sacristán arrepentido",
+   "Guardia civil recién destinado",
+   "Alcaldesa"
+  ],
+  "desires": [
+   "Salir de aquí con vida",
+   "Que la costumbre se acabe",
+   "Terminar mi investigación",
+   "Que el pueblo no muera",
+   "Proteger a la nieta",
+   "Saber qué le pasó a mi hermano hace siete años"
+  ],
+  "challenges": [
+   {
+    "title": "La cena de bienvenida",
+    "text": "El pueblo entero observa a los forasteros."
+   },
+   {
+    "title": "La cinta roja",
+    "text": "Hay que averiguar qué significa y a quién señala."
+   },
+   {
+    "title": "La carretera",
+    "text": "El único coche que funciona es del alcalde."
+   },
+   {
+    "title": "El archivo parroquial",
+    "text": "Los libros de defunciones de cada siete años."
+   },
+   {
+    "title": "La noche de la hoguera",
+    "text": "Todo el pueblo baila y nadie puede faltar."
+   },
+   {
+    "title": "El monte",
+    "text": "El camino a la ermita es el único que sale del valle."
+   },
+   {
+    "title": "La costumbre",
+    "text": "Alguien tiene que ocupar su lugar."
+   },
+   {
+    "title": "La romería",
+    "text": "Al amanecer, la procesión sube."
+   }
+  ]
+ },
+ {
+  "id": "lluvia-47",
+  "title": "Lluvia sobre Barcelona, 1947",
+  "theme": "noir",
+  "genre": "noir",
+  "tagline": "Un testigo, una ciudad comprada y cinco días hasta el juicio.",
+  "intro": "Emilio Soler, contable del estraperlista más poderoso del puerto, ha decidido declarar. El juicio es el lunes. Hasta entonces, alguien tiene que mantenerlo vivo en una ciudad donde la policía, la prensa y la mitad de los bares cobran del mismo hombre. Llueve desde hace tres días y no parece que vaya a parar.",
+  "goal": "Mantener a Emilio Soler con vida hasta que declare el lunes.",
+  "questions": [
+   "¿Qué sabe exactamente Emilio Soler?",
+   "¿Por qué ha decidido hablar ahora?",
+   "¿Quién es el hombre del puerto y a quién tiene comprado?",
+   "¿Qué relación tiene cada uno de vosotros con él?",
+   "¿Quién ha pagado para que el juicio salga mal?"
+  ],
+  "difficulties": [
+   "La policía está comprada",
+   "Soler bebe y habla demasiado",
+   "Hay precio por su cabeza",
+   "El juez tiene deudas",
+   "La prensa busca carnaza",
+   "Alguien del grupo trabaja para el otro lado"
+  ],
+  "concepts": [
+   "Detective privado",
+   "Cantante del Jamboree",
+   "Inspector de la Brigada Social",
+   "Abogada del testigo",
+   "Periodista de La Vanguardia",
+   "Taxista",
+   "Hermana de Soler",
+   "Falsificador"
+  ],
+  "desires": [
+   "Cobrar lo que me prometieron",
+   "Ver caer al hombre del puerto",
+   "Recuperar mi placa",
+   "Que mi nombre no salga en el juicio",
+   "Escribir la exclusiva",
+   "Proteger a mi familia de lo que Soler pueda contar"
+  ],
+  "challenges": [
+   {
+    "title": "El piso franco",
+    "text": "Hay que encontrar un lugar seguro. No hay ninguno."
+   },
+   {
+    "title": "La redada",
+    "text": "La policía viene a buscarlo esta noche."
+   },
+   {
+    "title": "El chantaje",
+    "text": "Alguien tiene fotos de uno de vosotros."
+   },
+   {
+    "title": "El Liceo",
+    "text": "Soler se empeña en ir a la ópera, y el hombre del puerto también estará."
+   },
+   {
+    "title": "El traslado",
+    "text": "Hay que cruzar la ciudad de noche."
+   },
+   {
+    "title": "La traición",
+    "text": "Alguien ha dicho dónde está."
+   },
+   {
+    "title": "La prensa",
+    "text": "Un periodista está a punto de publicarlo todo."
+   },
+   {
+    "title": "El juzgado",
+    "text": "Llegar a la sala es lo más difícil."
+   }
+  ]
+ },
+ {
+  "id": "santa-muerte",
+  "title": "La diligencia de Santa Muerte",
+  "theme": "western",
+  "genre": "western",
+  "tagline": "Un viaje de cinco días por un desierto donde los muertos no se quedan quietos.",
+  "intro": "La diligencia sale de Tres Cruces hacia Santa Muerte con seis pasajeros y un ataúd sellado que nadie quiere abrir. Hay quien paga muy bien por que el ataúd llegue, y quien paga mejor por que no. Por el camino hay apaches, bandidos, un pueblo fantasma y la tumba de un hombre que juró volver.",
+  "goal": "Llevar el ataúd sellado hasta Santa Muerte sin abrirlo.",
+  "questions": [
+   "¿Quién hay dentro del ataúd?",
+   "¿Quién paga por que llegue y quién por que no?",
+   "¿Qué juró el hombre de la tumba antes de morir?",
+   "¿Qué se cuenta del pueblo fantasma de Redención?",
+   "¿Qué os une a cada uno con Santa Muerte?"
+  ],
+  "difficulties": [
+   "El ataúd susurra por las noches",
+   "Una banda sigue la diligencia",
+   "Los caballos se niegan a pasar por ciertos sitios",
+   "El agua escasea",
+   "Uno de los pasajeros mintió sobre quién es",
+   "El cochero conoce el camino demasiado bien"
+  ],
+  "concepts": [
+   "Cochero de la diligencia",
+   "Predicador",
+   "Pistolera con precio",
+   "Viuda que lleva el ataúd",
+   "Doctor alcohólico",
+   "Agente del ferrocarril",
+   "Rastreador apache",
+   "Tahúr"
+  ],
+  "desires": [
+   "Cobrar el encargo",
+   "Que el muerto se quede muerto",
+   "Llegar a Santa Muerte y empezar de nuevo",
+   "Vengar a mi hermano",
+   "Redimirme",
+   "Saber qué hay dentro del ataúd"
+  ],
+  "challenges": [
+   {
+    "title": "La primera noche",
+    "text": "El ataúd no está donde lo dejaron."
+   },
+   {
+    "title": "La banda",
+    "text": "Seis jinetes al horizonte."
+   },
+   {
+    "title": "Redención",
+    "text": "El pueblo fantasma es el único con agua."
+   },
+   {
+    "title": "El río",
+    "text": "Crecido y con el puente caído."
+   },
+   {
+    "title": "El pasajero",
+    "text": "Uno de ellos no es quien dice."
+   },
+   {
+    "title": "La tumba",
+    "text": "El camino pasa junto a la tumba del que juró volver."
+   },
+   {
+    "title": "El desierto",
+    "text": "Un día entero sin sombra."
+   },
+   {
+    "title": "Santa Muerte",
+    "text": "Al llegar, el pueblo entero los espera."
+   }
+  ]
+ },
+ {
+  "id": "liceo",
+  "title": "El golpe del Liceo",
+  "theme": "noir",
+  "genre": "heist",
+  "tagline": "Una gala, una joya y un equipo que ya se traicionó una vez.",
+  "intro": "Hace cinco años, el equipo se separó después de un golpe que salió mal y alguien se quedó con todo. Ahora, un cliente anónimo los reúne para robar la Lágrima de Sevilla durante la gala de reapertura del Liceo. El pago es suficiente para retirarse. La confianza, no.",
+  "goal": "Robar la Lágrima de Sevilla durante la gala y salir todos juntos.",
+  "questions": [
+   "¿Qué salió mal hace cinco años y a quién culpan?",
+   "¿Quién es el cliente anónimo?",
+   "¿Por qué la Lágrima vale más de lo que parece?",
+   "¿Qué seguridad tiene el Liceo esa noche?",
+   "¿Qué hará cada uno con su parte?"
+  ],
+  "difficulties": [
+   "La joya estará en el cuello de la anfitriona",
+   "Hay una inspectora que les sigue la pista",
+   "El plan original era de alguien que ya no está",
+   "El cliente tiene su propia agenda",
+   "Alguien del equipo tiene cuentas pendientes con otro",
+   "La gala se retransmite por televisión"
+  ],
+  "concepts": [
+   "Cerebro del plan",
+   "Cerrajera",
+   "Conductor",
+   "Estafadora de alta sociedad",
+   "Técnico de sistemas",
+   "Cantante de ópera",
+   "Músculo",
+   "Infiltrado en el catering"
+  ],
+  "desires": [
+   "Retirarme para siempre",
+   "Saber quién nos traicionó",
+   "Recuperar el respeto del equipo",
+   "Pagar una deuda con quien no perdona",
+   "Humillar a la anfitriona",
+   "Que nadie salga herido esta vez"
+  ],
+  "challenges": [
+   {
+    "title": "Reunir al equipo",
+    "text": "No todos quieren volver."
+   },
+   {
+    "title": "El reconocimiento",
+    "text": "Hay que ver el Liceo por dentro antes de la gala."
+   },
+   {
+    "title": "La inspectora",
+    "text": "Sabe que algo va a pasar."
+   },
+   {
+    "title": "La entrada",
+    "text": "El primer minuto decide la noche."
+   },
+   {
+    "title": "El cambio",
+    "text": "La joya auténtica por la falsa, a la vista de todos."
+   },
+   {
+    "title": "El imprevisto",
+    "text": "Algo del plan original ya no existe."
+   },
+   {
+    "title": "La huida",
+    "text": "Las Ramblas están llenas de gente y de policía."
+   },
+   {
+    "title": "El reparto",
+    "text": "El cliente cambia las condiciones."
+   }
+  ]
+ },
+ {
+  "id": "semillas",
+  "title": "Semillas",
+  "theme": "postapoc",
+  "genre": "postapoc",
+  "tagline": "Llevar la última cosecha viva a través de un país seco.",
+  "intro": "El asentamiento de La Vega sobrevive gracias a las semillas del viejo banco de germoplasma. Pero el pozo se ha secado y el único lugar con agua para plantar está a doscientos kilómetros, cruzando tierra de la milicia. Un grupo tiene que llevar las semillas hasta allí antes de que termine la temporada de siembra.",
+  "goal": "Llevar las semillas hasta el valle del río antes de que acabe la temporada de siembra.",
+  "questions": [
+   "¿Qué pasó con el mundo de antes, según los que lo recuerdan?",
+   "¿Quién controla la tierra entre La Vega y el río?",
+   "¿Por qué las semillas no pueden plantarse en cualquier sitio?",
+   "¿Qué se sabe del asentamiento del valle?",
+   "¿Qué dejan atrás los que se van?"
+  ],
+  "difficulties": [
+   "El camión consume más de lo que tienen",
+   "La milicia cobra peaje en carne",
+   "Hay una tormenta de polvo cada pocos días",
+   "Las semillas necesitan frío",
+   "Alguien quiere venderlas",
+   "El valle puede no existir"
+  ],
+  "concepts": [
+   "Mecánica del camión",
+   "Guardiana de las semillas",
+   "Explorador",
+   "Médico sin medicinas",
+   "Anciana que recuerda el mundo de antes",
+   "Desertor de la milicia",
+   "Niño que nació después",
+   "Comerciante de rutas"
+  ],
+  "desires": [
+   "Que La Vega sobreviva",
+   "Plantar un campo entero",
+   "Ver el río",
+   "Que me perdonen por haber sido de la milicia",
+   "Encontrar a los míos en el valle",
+   "Ser útil por una vez"
+  ],
+  "challenges": [
+   {
+    "title": "El camión",
+    "text": "No arranca y la única pieza está en la ciudad muerta."
+   },
+   {
+    "title": "El peaje",
+    "text": "La milicia controla el puente."
+   },
+   {
+    "title": "La tormenta",
+    "text": "Tres días a cubierto sin saber si las semillas aguantarán."
+   },
+   {
+    "title": "El mercado",
+    "text": "Hay que conseguir combustible con lo único que tienen."
+   },
+   {
+    "title": "La zona muerta",
+    "text": "El atajo acorta el viaje y la vida."
+   },
+   {
+    "title": "La traición",
+    "text": "Alguien ha negociado con la milicia."
+   },
+   {
+    "title": "El valle",
+    "text": "Hay gente allí, y no esperaban a nadie."
+   },
+   {
+    "title": "La siembra",
+    "text": "Plantar antes de que acabe la temporada."
+   }
+  ]
+ }
 ]

@@ -1,44 +1,56 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildView } from "../scripts/view.js";
+import { buildTableView, buildCharacterView, buildLobbyView, turnFor } from "../scripts/view.js";
 import { simulate } from "./fixtures.js";
 
 for (const lang of ["es", "en"]) {
   const dict = JSON.parse(readFileSync(new URL(`../lang/${lang}.json`, import.meta.url)));
   const missing = new Set();
   const t = (key, data) => { if (!(key in dict)) missing.add(key); let s = dict[key] ?? key; for (const [k, v] of Object.entries(data ?? {})) s = s.replaceAll(`{${k}}`, v); return s; };
-  const { snaps, quests } = simulate(lang);
+  const { snaps, quests, actors } = simulate(lang);
 
-  test(`[${lang}] cada momento de la partida genera una vista sin claves de traducción ausentes`, () => {
+  test(`[${lang}] todas las vistas de todas las fases, sin traducciones ausentes`, () => {
     for (const [name, state] of Object.entries(snaps)) {
-      for (const tab of ["play", "chronicle", "quests", "safety", "archive"]) {
-        for (const user of [{ id: "gm", isGM: true }, { id: "lucia", isGM: false }]) {
-          const view = buildView({ state, user, t, tab, quests, archive: [snaps.complete], safety: { lines: ["x"], veils: [], paused: false }, local: { archiveId: tab === "archive" ? snaps.complete.id : null } });
+      for (const user of [{ id: "gm", isGM: true }, { id: "lucia", isGM: false }, { id: "irene", isGM: false }]) {
+        for (const tab of ["play", "company", "chronicle", "safety"]) {
+          const view = buildTableView({ state, actors, user, t, tab, safety: { lines: ["x"], veils: [], paused: false } });
           assert.ok(view.header, `${name}/${tab}`);
         }
+        for (const id of Object.keys(actors)) buildCharacterView({ state, actorId: id, actor: actors[id], actors, user, t });
       }
     }
-    const lobby = buildView({ state: null, user: { id: "gm", isGM: true }, t, quests, users: [{ id: "gm", name: "Manu" }], local: { seats: [{ userId: "gm", name: "Manu" }] } });
-    assert.ok(lobby.lobby);
+    for (const tab of ["new", "quests", "archive"]) buildLobbyView({ quests, users: [{ id: "gm", name: "Manu" }], t, user: { id: "gm", isGM: true }, local: { tab, seats: [{ userId: "gm", name: "Manu" }], editQuest: tab === "quests" ? quests[0] : null }, fellowships: [{ id: "f", name: "X", phase: "complete", result: { success: true } }] });
+    buildTableView({ state: null, actors: {}, user: { id: "gm", isGM: true }, t });
     assert.deepEqual([...missing], []);
   });
 }
 
-test("la vista de piedras no muestra a un jugador los formularios de otros", () => {
-  const { snaps, quests } = simulate("es");
+test("cada jugador ve qué le toca", () => {
+  const { snaps, actors } = simulate("es");
+  const t = (k, d) => `${k}${d ? JSON.stringify(d) : ""}`;
+  assert.match(turnFor(snaps.characters, actors, { userId: "irene" }, t).text, /MR.Turn.Characters/);
+  assert.match(turnFor(snaps.characters, actors, { userId: "lucia" }, t).text, /WaitingReady.*Pablo/);
+  assert.match(turnFor(snaps.choose, actors, { userId: "lucia" }, t).text, /YouPick/);
+  assert.match(turnFor(snaps.scene, actors, { userId: "lucia" }, t).text, /YourScene/);
+  assert.match(turnFor(snaps.scene, actors, { userId: "pablo" }, t).text, /MR.Turn.Scene/);
+  assert.equal(turnFor(snaps.stones, actors, { userId: "irene" }, t).mine, true);
+  assert.equal(turnFor(snaps.stones, actors, { userId: "lucia" }, t).mine, false);
+});
+
+test("la ficha personal ofrece piedras secretas solo a su dueño y solo al protagonista", () => {
+  const { snaps, actors } = simulate("es");
   const t = k => k;
-  const lucia = buildView({ state: snaps.stones, user: { id: "lucia", isGM: false }, t, quests });
-  assert.equal(lucia.challenge.forms.length, 0, "Lucía ya echó sus piedras");
-  const irene = buildView({ state: snaps.stones, user: { id: "irene", isGM: false }, t, quests });
-  assert.equal(irene.challenge.forms.length, 1);
-  const host = buildView({ state: snaps.stones, user: { id: "gm", isGM: true }, t, quests });
-  assert.equal(host.challenge.forms.length, 1, "el anfitrión solo ve su asiento salvo que active 'en nombre de otros'");
+  const irene = buildCharacterView({ state: snaps.stones, actorId: "main3", actor: actors.main3, actors, user: { id: "irene", isGM: false }, t });
+  assert.equal(irene.stones.forms.length, 1);
+  const lucia = buildCharacterView({ state: snaps.stones, actorId: "main3", actor: actors.main3, actors, user: { id: "lucia", isGM: false }, t });
+  assert.equal(lucia.stones, undefined);
+  const minor = buildCharacterView({ state: snaps.stones, actorId: "minor3", actor: actors.minor3, actors, user: { id: "irene", isGM: false }, t });
+  assert.equal(minor.stones, undefined);
+  assert.equal(irene.wantTarget, "Tristán Valcárcel");
 });
 
 test("el tercer desafío arrastra los resultados anteriores al cuenco", () => {
   const { snaps } = simulate("es");
-  const c = snaps.finalStones.challenges.at(-1);
-  // Base 1+1, más una roja (desafío I fallido) y una blanca (desafío II superado), más 4 blancas de los jugadores.
-  assert.deepEqual(c.pile, { white: 1 + 1 + 4, red: 1 + 1 });
+  assert.deepEqual(snaps.finalStones.challenges.at(-1).pile, { white: 1 + 1 + 4, red: 1 + 1 });
 });

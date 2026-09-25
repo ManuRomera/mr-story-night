@@ -55,9 +55,13 @@ export const results = state => state.challenges.filter(c => c.outcome).map(c =>
 
 /* ---------- Construcción ---------- */
 
-function makeCharacter(ctx, seatId, role, extra = {}) {
-  return { id: ctx.id(), seatId, role, concept: "", name: "", pronouns: "", desire: "", want: "", img: "", status: "active", fate: null, fateNote: "", lostIn: null, promoted: false, hasWant: role === "main", ...extra };
+/** En la partida solo viven los datos de reglas; nombre, concepto, deseo… están en el Actor de cada jugador. */
+function makeCharacter(id, seatId, role, extra = {}) {
+  if (!id) fail("MR.Error.NoCharacter");
+  return { id, seatId, role, status: "active", fate: null, fateNote: "", lostIn: null, promoted: false, hasWant: role === "main", ...extra };
 }
+const describe = (ctx, id) => ({ name: "", concept: "", ...(ctx.describe?.(id) ?? {}) });
+const nameOf = (ctx, id) => { const d = describe(ctx, id); return d.name || d.concept || "?"; };
 
 function makeChallenge(index) {
   return { index, stage: "choose", pickerSeatId: null, title: "", why: "", leadCharId: null, timescale: "", scenes: [], sceneIndex: 0, pile: null, submitted: [], draw: [], outcome: null, loss: null };
@@ -72,7 +76,7 @@ function sanitizeQuest(quest) {
   if (!quest || typeof quest !== "object" || !String(quest.title ?? "").trim()) fail("MR.Error.NoQuest");
   return {
     id: text(quest.id), title: text(quest.title).trim(), tagline: text(quest.tagline), intro: text(quest.intro), goal: text(quest.goal),
-    theme: text(quest.theme || "neutral"), questions: list(quest.questions), difficulties: list(quest.difficulties),
+    theme: text(quest.theme || "neutral"), genre: text(quest.genre || quest.theme || "neutral"), questions: list(quest.questions), difficulties: list(quest.difficulties),
     concepts: list(quest.concepts), desires: list(quest.desires),
     challenges: list(quest.challenges).map(c => typeof c === "string" ? { title: c, text: "" } : { title: text(c.title), text: text(c.text) }).filter(c => c.title)
   };
@@ -81,17 +85,18 @@ function sanitizeQuest(quest) {
 /* ---------- Operaciones ---------- */
 
 const OPS = {
-  start(state, { quest, seats }, ctx) {
+  start(state, { quest, seats, characters, title }, ctx) {
     if (state && state.phase !== "complete" && !ctx.isGM) fail("MR.Error.HostOnly");
     const cleanQuest = sanitizeQuest(quest);
     if (!Array.isArray(seats) || seats.length < MIN_SEATS) fail("MR.Error.FewSeats");
     if (seats.length > MAX_SEATS) fail("MR.Error.ManySeats");
     const cleanSeats = seats.map(seat => ({ id: ctx.id(), userId: seat.userId ?? null, name: text(seat.name).trim() || "?", ready: false }));
+    if (!Array.isArray(characters) || characters.length !== cleanSeats.length * 2) fail("MR.Error.NoCharacter");
     const next = {
-      schema: SCHEMA, id: ctx.id(), createdAt: ctx.now, updatedAt: ctx.now, phase: "setup", result: null,
+      schema: SCHEMA, id: ctx.id(), title: text(title || cleanQuest.title), createdAt: ctx.now, updatedAt: ctx.now, phase: "setup", result: null,
       quest: cleanQuest, seats: cleanSeats,
       setup: { goal: cleanQuest.goal, answers: cleanQuest.questions.map(() => ""), difficulties: ["", ""] },
-      characters: cleanSeats.flatMap(seat => [makeCharacter(ctx, seat.id, "main"), makeCharacter(ctx, seat.id, "minor")]),
+      characters: characters.map(c => makeCharacter(c.id, cleanSeats[c.seat]?.id ?? fail("MR.Error.NoSeat"), c.role === "minor" ? "minor" : "main")),
       challenges: [], epilogues: {}, log: []
     };
     log(next, ctx, "start", { quest: cleanQuest.title });
@@ -110,17 +115,6 @@ const OPS = {
       const index = Number(field);
       if (key === "answers" && Number.isInteger(index) && index >= 0 && index < state.setup.answers.length) { state.setup.answers[index] = v; return state; }
       if (key === "difficulties" && (index === 0 || index === 1)) { state.setup.difficulties[index] = v; return state; }
-    }
-    if (root === "characters" && ["concept", "name", "pronouns", "desire", "want", "img"].includes(field)) {
-      const character = charById(state, key) ?? fail("MR.Error.NoCharacter");
-      if (!canActFor(state, character.seatId, ctx)) fail("MR.Error.NotYourSeat");
-      if (field === "want" && !character.hasWant) fail("MR.Error.NoWant");
-      character[field] = v; return state;
-    }
-    if (root === "seats" && field === "name") {
-      const seat = seatById(state, key) ?? fail("MR.Error.NoSeat");
-      if (!canActFor(state, seat.id, ctx)) fail("MR.Error.NotYourSeat");
-      seat.name = v.trim() || seat.name; return state;
     }
     if (root === "challenge" && ["title", "why", "timescale", "leadCharId"].includes(key) && parts.length === 2) {
       const challenge = requireStage(state, "choose");
@@ -158,7 +152,8 @@ const OPS = {
     if (!canActFor(state, seatId, ctx)) fail("MR.Error.NotYourSeat");
     if (ready) {
       const main = activeMain(state, seatId);
-      if (!main?.name.trim() || !main.concept.trim()) fail("MR.Error.NeedMain");
+      const d = main ? describe(ctx, main.id) : {};
+      if (!d.name?.trim() || !d.concept?.trim()) fail("MR.Error.NeedMain");
     }
     seat.ready = Boolean(ready);
     return state;
@@ -168,13 +163,9 @@ const OPS = {
     requirePhase(state, "characters");
     const pending = state.seats.filter(seat => !seat.ready);
     if (pending.length && !(force && ctx.isGM)) fail("MR.Error.NotAllReady");
-    for (const seat of state.seats) {
-      const main = activeMain(state, seat.id);
-      if (!main?.name.trim()) fail("MR.Error.NeedMain");
-    }
     state.phase = "challenge";
     state.challenges.push(makeChallenge(0));
-    log(state, ctx, "company", { names: state.seats.map(seat => activeMain(state, seat.id).name) });
+    log(state, ctx, "company", { names: state.seats.map(seat => nameOf(ctx, activeMain(state, seat.id)?.id)) });
     return state;
   },
 
@@ -199,7 +190,7 @@ const OPS = {
     challenge.scenes = order.map(seatId => ({ seatId, who: "", where: "", situation: "", summary: "", consequences: [], done: false }));
     challenge.sceneIndex = 0;
     challenge.stage = "scenes";
-    log(state, ctx, "challenge", { n: challenge.index + 1, title: challenge.title, lead: lead.name });
+    log(state, ctx, "challenge", { n: challenge.index + 1, title: challenge.title, lead: nameOf(ctx, lead.id) });
     return state;
   },
 
@@ -272,11 +263,11 @@ const OPS = {
     if (!FATES.includes(fate)) fail("MR.Error.BadFate");
     loseCharacter(state, character, fate, text(note), challenge.index);
     challenge.loss = { charId, fate, note: text(note) };
-    log(state, ctx, "loss", { name: character.name || character.concept, fate, note: text(note) });
+    log(state, ctx, "loss", { name: nameOf(ctx, character.id), fate, note: text(note) });
     return state;
   },
 
-  replaceMain(state, { seatId, mode, charId, name, concept }, ctx) {
+  replaceMain(state, { seatId, mode, charId, name }, ctx) {
     if (!["challenge", "epilogue"].includes(state?.phase)) fail("MR.Error.WrongPhase");
     if (!canActFor(state, seatId, ctx)) fail("MR.Error.NotYourSeat");
     if (activeMain(state, seatId)) fail("MR.Error.SeatHasMain");
@@ -284,13 +275,12 @@ const OPS = {
       const minor = charById(state, charId);
       if (!minor || minor.role !== "minor" || minor.status !== "active") fail("MR.Error.NoCharacter");
       minor.seatId = seatId; minor.role = "main"; minor.promoted = true;
-      log(state, ctx, "adopt", { name: minor.name || minor.concept, seat: seatById(state, seatId).name });
+      log(state, ctx, "adopt", { name: nameOf(ctx, minor.id), seat: seatById(state, seatId).name });
       return state;
     }
-    const clean = text(name).trim();
-    if (!clean) fail("MR.Error.NeedName");
-    state.characters.push(makeCharacter(ctx, seatId, "main", { name: clean, concept: text(concept), hasWant: false, promoted: true }));
-    log(state, ctx, "newcomer", { name: clean, seat: seatById(state, seatId).name });
+    if (charById(state, charId)) fail("MR.Error.NoCharacter");
+    state.characters.push(makeCharacter(charId, seatId, "main", { hasWant: false, promoted: true }));
+    log(state, ctx, "newcomer", { name: text(name).trim() || nameOf(ctx, charId), seat: seatById(state, seatId).name });
     return state;
   },
 
