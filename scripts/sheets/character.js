@@ -16,7 +16,7 @@ export class CharacterSheet extends TableWindow(HandlebarsApplicationMixin(found
     window: { resizable: true },
     form: { submitOnChange: true },
     actions: {
-      portrait: CharacterSheet.#onPortrait, roll: CharacterSheet.#onRoll, rollAll: CharacterSheet.#onRollAll, openTable: CharacterSheet.#onOpenTable,
+      portrait: CharacterSheet.#onPortrait, roll: CharacterSheet.#onRoll, rollAll: CharacterSheet.#onRollAll, openTable: CharacterSheet.#onOpenTable, openSheet: CharacterSheet.#onOpenSheet,
       ready: CharacterSheet.#onReady, stoneDraft: CharacterSheet.#onStoneDraft, submitStones: CharacterSheet.#onSubmitStones
     }
   };
@@ -99,6 +99,7 @@ export class CharacterSheet extends TableWindow(HandlebarsApplicationMixin(found
     new Picker({ type: "image", current: this.document.img, callback: path => this.document.update({ img: path, "prototypeToken.texture.src": path }) }).render(true);
   }
   static #onOpenTable() { this.fellowship?.sheet?.render(true); }
+  static #onOpenSheet(event, target) { game.actors.get(target.dataset.actorId)?.sheet?.render(true); }
   static async #onReady(event, target) { await Store.dispatch("setReady", { seatId: target.dataset.seatId, ready: target.dataset.ready === "true" }, this.document.system.fellowship); }
   static #onStoneDraft(event, target) {
     const { seatId, key, value } = target.dataset;

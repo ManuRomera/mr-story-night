@@ -51,6 +51,12 @@ export const availablePickers = state => {
   const free = state.seats.filter(seat => !previous.has(seat.id));
   return (free.length ? free : state.seats).map(seat => seat.id);
 };
+/** Reglas: cada jugador crea un personaje principal y uno secundario, con nombre y concepto. */
+export const seatComplete = (state, seatId, describeFn) => [activeMain(state, seatId), activeMinor(state, seatId)].every(c => {
+  if (!c) return true;
+  const d = describeFn(c.id) ?? {};
+  return Boolean(d.name?.trim() && d.concept?.trim());
+});
 export const results = state => state.challenges.filter(c => c.outcome).map(c => c.outcome.success);
 
 /* ---------- Construcción ---------- */
@@ -64,7 +70,7 @@ const describe = (ctx, id) => ({ name: "", concept: "", ...(ctx.describe?.(id) ?
 const nameOf = (ctx, id) => { const d = describe(ctx, id); return d.name || d.concept || "?"; };
 
 function makeChallenge(index) {
-  return { index, stage: "choose", pickerSeatId: null, title: "", why: "", leadCharId: null, timescale: "", scenes: [], sceneIndex: 0, pile: null, submitted: [], draw: [], outcome: null, loss: null };
+  return { index, stage: "choose", pickerSeatId: null, title: "", why: "", leadCharId: null, timescale: "", scenes: [], sceneIndex: 0, pile: null, submitted: [], choices: {}, draw: [], outcome: null, loss: null };
 }
 
 function log(state, ctx, kind, data = {}) {
@@ -121,6 +127,8 @@ const OPS = {
       if (!challenge.pickerSeatId) fail("MR.Error.NeedPicker");
       if (!canActFor(state, challenge.pickerSeatId, ctx)) fail("MR.Error.PickerDecides");
       if (key === "leadCharId" && v && !isActiveMain(state, v)) fail("MR.Error.LeadMustBeMain");
+      // Reglas: quien elige el reto escoge al primer jugador, pero no a su propio personaje.
+      if (key === "leadCharId" && v && charById(state, v).seatId === challenge.pickerSeatId) fail("MR.Error.LeadNotOwn");
       challenge[key] = key === "leadCharId" ? (v || null) : v; return state;
     }
     if (root === "scene" && ["who", "where", "situation", "summary"].includes(key) && parts.length === 2) {
@@ -150,11 +158,7 @@ const OPS = {
     requirePhase(state, "characters");
     const seat = seatById(state, seatId) ?? fail("MR.Error.NoSeat");
     if (!canActFor(state, seatId, ctx)) fail("MR.Error.NotYourSeat");
-    if (ready) {
-      const main = activeMain(state, seatId);
-      const d = main ? describe(ctx, main.id) : {};
-      if (!d.name?.trim() || !d.concept?.trim()) fail("MR.Error.NeedMain");
-    }
+    if (ready && !seatComplete(state, seatId, id => describe(ctx, id))) fail("MR.Error.NeedMain");
     seat.ready = Boolean(ready);
     return state;
   },
@@ -174,6 +178,7 @@ const OPS = {
     if (!seatById(state, seatId)) fail("MR.Error.NoSeat");
     if (!availablePickers(state).includes(seatId)) fail("MR.Error.AlreadyPicked");
     challenge.pickerSeatId = seatId;
+    if (charById(state, challenge.leadCharId)?.seatId === seatId) challenge.leadCharId = null;
     return state;
   },
 
@@ -185,6 +190,7 @@ const OPS = {
     if (!challenge.timescale.trim()) fail("MR.Error.NeedTimescale");
     const lead = charById(state, challenge.leadCharId);
     if (!lead || !isActiveMain(state, lead.id)) fail("MR.Error.LeadMustBeMain");
+    if (lead.seatId === challenge.pickerSeatId) fail("MR.Error.LeadNotOwn");
     const start = state.seats.findIndex(seat => seat.id === lead.seatId);
     const order = state.seats.map((_, i) => state.seats[(start + i) % state.seats.length].id);
     challenge.scenes = order.map(seatId => ({ seatId, who: "", where: "", situation: "", summary: "", consequences: [], done: false }));
@@ -238,6 +244,8 @@ const OPS = {
     challenge.pile.red += reds;
     challenge.pile[verdict] += 1;
     challenge.submitted.push(seatId);
+    // Se eligen en secreto y se muestran a la vez: la vista solo las enseña cuando están todas.
+    challenge.choices = { ...(challenge.choices ?? {}), [seatId]: { discontent: reds, verdict } };
     return state;
   },
 

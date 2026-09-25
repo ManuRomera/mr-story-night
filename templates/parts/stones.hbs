@@ -19,6 +19,13 @@
       <button type="button" class="mr-primary mr-block" data-action="submitStones" data-seat-id="{{seatId}}" {{#unless canSubmit}}disabled{{/unless}}><i class="fa-solid fa-hand-holding"></i>{{localize "MR.Stones.Submit"}}</button>
     </article>
     {{else}}
+    {{#if reveal}}
+    <div class="mr-reveal">
+      <h3 class="mr-h3"><i class="fa-solid fa-eye"></i>{{localize "MR.Stones.RevealTitle"}}</h3>
+      <p class="mr-help">{{localize "MR.Stones.RevealHelp"}}</p>
+      <ul>{{#each reveal}}<li><strong>{{charName}}</strong> <small>{{seat}}</small><span class="mr-reveal__stones">{{#each reds}}<i class="mr-stone mr-stone--red mr-stone--sm"></i>{{/each}}<em>{{discontent}}</em> · <i class="mr-stone mr-stone--{{verdict}} mr-stone--sm"></i><em>{{verdictLabel}}</em></span></li>{{/each}}</ul>
+    </div>
+    {{/if}}
     {{#unless allIn}}<p class="mr-waiting"><i class="fa-solid fa-hourglass-half"></i>{{localize "MR.Stones.Waiting"}}</p>{{/unless}}
     {{/each}}
     {{#unless compact}}

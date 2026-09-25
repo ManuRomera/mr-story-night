@@ -36,7 +36,7 @@
 .mr-app .window-content > form, .mr-app .window-content > .mr-sheet { height: 100%; }
 .mr-sheet { display: flex; flex-direction: column; height: 100%; container-type: inline-size; background: var(--mr-glow), var(--mr-bg); }
 .mr-sheet > * { flex: none; }
-.mr-sheet > .mr-layout, .mr-sheet > .mr-lobby, .mr-sheet > .mr-main, .mr-sheet > .mr-char__body, .mr-sheet > .mr-empty-state { flex: 1 1 auto; min-height: 0; }
+.mr-sheet > .mr-layout, .mr-sheet > .mr-lobby, .mr-sheet > .mr-main, .mr-sheet > .mr-char__body, .mr-sheet > .mr-empty-state, .mr-sheet > .mr-lobby__guide { flex: 1 1 auto; min-height: 0; }
 
 .mr-bar { display: flex; gap: 18px; align-items: center; justify-content: space-between; padding: 12px 18px 10px; background: linear-gradient(90deg, var(--mr-bg) 35%, color-mix(in srgb, var(--mr-bg) 55%, transparent)), var(--mr-art) right 40% / cover; border-bottom: 1px solid var(--mr-line); }
 .mr-bar__title { min-width: 0; }
@@ -427,6 +427,24 @@ button.mr-sidebar-button { margin: 0 0 8px; width: 100%; }
 }
 
 /* ================= Impresión de créditos ================= */
+/* Ayuda de fase y tutorial */
+.mr-phase-card { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 14px; padding: 10px 12px 10px 14px; border-left: 3px solid var(--mr-accent); border-radius: var(--mr-radius-sm); background: var(--mr-raise); font-size: .92em; }
+.mr-phase-card__body { flex: 1 1 auto; min-width: 0; }
+.mr-phase-card p { margin: 0 0 3px; max-width: 80ch; }
+.mr-phase-card__why { color: var(--mr-muted); }
+.mr-phase-card__actions { display: flex; gap: 8px; align-items: center; flex: none; white-space: nowrap; font-size: .92em; }
+.mr-first-time { display: block; margin: 0 0 12px; }
+.mr-lobby__guide { overflow: auto; padding: 14px 18px 20px; }
+.mr-guide-doc__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.mr-guide-doc__section { padding: 12px 16px; border: 1px solid var(--mr-line); border-radius: var(--mr-radius); background: var(--mr-raise); scroll-margin-top: 8px; }
+.mr-guide-doc__section.is-current { border-color: color-mix(in srgb, var(--mr-accent) 55%, transparent); }
+.mr-guide-doc__section h3 { display: flex; align-items: center; gap: 9px; margin: 0 0 6px; }
+.mr-guide-doc__why { margin: 0 0 6px; color: var(--mr-muted); max-width: 80ch; }
+.mr-guide-doc__section ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; max-width: 80ch; }
 .mr-print { background: #fff; color: #1a1612; font-family: var(--mr-sans); padding: 32px; --mr-ink: #1a1612; --mr-muted: #5b5247; --mr-faint: #7a7064; --mr-raise: #f6f2ea; --mr-line: #ddd4c4; --mr-accent: #9a5d12; --mr-good: #2f6d2a; --mr-bad: #a2352a; }
 .mr-print .mr-noprint { display: none !important; }
 .mr-print .mr-stone { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+.mr-reveal ul { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 6px; }
+.mr-reveal li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 6px 10px; border-radius: var(--mr-radius-sm); background: var(--mr-raise); }
+.mr-reveal small { color: var(--mr-muted); }
+.mr-reveal__stones { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; color: var(--mr-muted); }

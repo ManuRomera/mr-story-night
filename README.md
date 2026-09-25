@@ -3,7 +3,7 @@
 ![Una mesa de historias rodeada de mundos por explorar](assets/art/story-room-cover.webp)
 
 <p align="center">
-  <strong>Una misión. Una compañía. Tres desafíos. Una historia que recordar.</strong><br>
+  <strong>Una misión. Una compañía. Tres retos. Una historia que recordar.</strong><br>
   Sistema sin director para jugar a <em>Follow</em> en Foundry VTT.
 </p>
 
@@ -18,33 +18,35 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.4.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.5.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 
 Como en otros sistemas de mesa compartida (el club de *Brindlewood Bay*, por ejemplo), hay **una hoja común y una ficha por jugador**:
 
-- **La compañía** (Actor compartido): la misión, el paso en que está la partida, los desafíos, las escenas, el cuenco de piedras, la crónica y la comodidad en mesa. Todo el grupo la ve y la usa.
+- **La compañía** (Actor compartido): la misión, el paso en que está la partida, los retos, las escenas, el cuenco de piedras, la crónica y la comodidad en mesa. Todo el grupo la ve y la usa.
 - **Tu personaje** (Actor tuyo): nombre, concepto, pronombres, qué significa para ti el éxito, lo que necesitas del protagonista de tu izquierda, un detalle y notas. Lo editas directamente, como cualquier ficha de Foundry. Cada asiento tiene un protagonista y un secundario.
 - **El vestíbulo**: para empezar partidas, gestionar misiones y ver las compañías anteriores.
 
-Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear la escena 2», «Faltan piedras de: Irene»… Como no hay director, cada persona sabe en todo momento qué hacer. Los momentos clave (desafío elegido, cada escena, resultado de las piedras, pérdidas) se publican también como **tarjetas en el chat**.
+Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear la escena 2», «Faltan piedras de: Irene»… Como no hay director, cada persona sabe en todo momento qué hacer. Los momentos clave (reto elegido, cada escena, resultado de las piedras, pérdidas) se publican también como **tarjetas en el chat**.
 
 ## Cómo se juega en Foundry
 
+¿Primera vez? Abrid la pestaña **Cómo se juega** del vestíbulo o de la hoja común: resume cada fase, qué hacéis en ella y para qué sirve. Además, al principio de cada fase aparece una tarjeta breve con **Ahora** y **Para qué** (se puede ocultar).
+
 1. **Vestíbulo** (botón en el directorio de Actores): elegís la misión, filtrando por género o al azar, y quién se sienta a la mesa, en orden. Al empezar se crea una carpeta con la hoja de la compañía y dos fichas por asiento, cada una propiedad de su jugador.
-2. **La misión**: en la hoja común, el grupo ajusta el objetivo, responde las preguntas y fija dos dificultades (con dado de inspiración).
-3. **La compañía**: a cada jugador se le abre su ficha. La rellena, con dados para cada campo o con «Completar lo que falta al azar», y marca «Estoy listo».
-4. **Tres desafíos**:
-   - quien elige escoge el desafío (de la misión o al azar), el protagonista que lo encabeza y la escala de tiempo;
-   - una escena por persona, con dados para dónde, quién y qué pasa, y para las consecuencias;
-   - cada cual echa sus piedras en secreto, desde su ficha o desde la hoja común;
-   - se sacan dos. Si hay pérdida, el grupo decide quién sale de la historia, el secundario asciende, y quien se queda sin personajes adopta uno o presenta a alguien nuevo.
+2. **La misión**: leéis la introducción, la personalizáis respondiendo a las preguntas y elegís dos dificultades.
+3. **La compañía**: cada jugador crea su personaje principal (nombre, concepto, *Lo que quiero de la misión* y *Lo que quiero de ti* hacia el de su izquierda) y su secundario (nombre y concepto), y marca «Estoy listo».
+4. **Tres retos**, cada uno con los mismos pasos:
+   - quien no haya elegido antes escoge el reto y explica por qué es difícil; decide qué personaje principal lo abre (no puede ser el suyo) y el grupo fija el ritmo;
+   - una escena por persona, empezando por ese jugador y hacia la izquierda: quién está, dónde y qué pasa. Cualquiera puede añadir consecuencias;
+   - cada cual elige sus piedras en secreto; cuando están todas se muestran a la vez, se explican las rojas y se sacan dos;
+   - si hay pérdida, el grupo decide quién sale de la historia; el secundario asciende, y quien se queda sin personajes adopta uno o presenta a alguien nuevo.
 5. **Epílogo** en cada ficha y **créditos** imprimibles. La compañía queda en el directorio como archivo.
 
 ## Contenido incluido
 
-**12 misiones originales** (en castellano y en inglés), cada una con introducción, objetivo, cinco preguntas, seis dificultades, ocho conceptos, seis deseos y ocho desafíos:
+**12 misiones originales** (en castellano y en inglés), cada una con introducción, objetivo, cinco preguntas, seis dificultades, ocho conceptos, seis deseos y ocho retos:
 
 | Misión | Género |
 |---|---|
@@ -61,7 +63,7 @@ Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear 
 | El golpe del Liceo | Golpe |
 | Semillas | Postapocalipsis |
 
-**Generadores**: unas 1.300 entradas por idioma en 10 géneros, con nombres y apellidos, conceptos, deseos, deseos hacia la izquierda con el nombre del vecino, detalles, lugares, situaciones, desafíos, dificultades, consecuencias y arranques de epílogo. Cada misión combina sus propias listas con las de su género, y un personaje generado tiene más de cien mil combinaciones posibles.
+**Generadores**: unas 1.300 entradas por idioma en 10 géneros, con nombres y apellidos, conceptos, deseos, deseos hacia la izquierda con el nombre del vecino, detalles, lugares, situaciones, retos, dificultades, consecuencias y arranques de epílogo. Cada misión combina sus propias listas con las de su género, y un personaje generado tiene más de cien mil combinaciones posibles.
 
 Cada género tiene además su propia estética: fantasía, ciencia ficción, terror, horror cósmico, gótico, folk, noir, western, postapocalipsis o cyberpunk.
 
@@ -69,7 +71,7 @@ Cada género tiene además su propia estética: fantasía, ciencia ficción, ter
 
 La tabla vive en `scripts/engine.js` (`OUTCOMES`) y se puede ajustar si tu edición difiere:
 
-| 1ª piedra | 2ª piedra | Resultado |
+| 1ª piedra (la compañía) | 2ª piedra (el reto) | Resultado |
 |---|---|---|
 | Blanca | Blanca | Éxito |
 | Roja | Blanca | Éxito, pero se pierde un personaje |

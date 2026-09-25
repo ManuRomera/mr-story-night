@@ -15,7 +15,7 @@
   <div class="mr-char__body">
     {{#if ready}}
     <div class="mr-callout">
-      <div><strong>{{localize "MR.Character.ReadyTitle"}}</strong><p>{{localize "MR.Character.ReadyHelp"}}</p></div>
+      <div><strong>{{localize "MR.Character.ReadyTitle"}}</strong><p>{{localize "MR.Character.ReadyHelp"}}</p>{{#if ready.minor}}<p><button type="button" class="mr-link" data-action="openSheet" data-actor-id="{{ready.minor.id}}">{{localize "MR.Character.OpenMinor" name=ready.minor.displayName}}</button></p>{{/if}}</div>
       {{#if ready.ready}}<button type="button" data-action="ready" data-seat-id="{{ready.seatId}}" data-ready="false">{{localize "MR.Characters.NotReady"}}</button>
       {{else}}<button type="button" class="mr-primary" data-action="ready" data-seat-id="{{ready.seatId}}" data-ready="true" {{#unless ready.complete}}disabled data-tooltip="{{localize 'MR.Error.NeedMain'}}"{{/unless}}><i class="fa-solid fa-check"></i>{{localize "MR.Characters.MarkReady"}}</button>{{/if}}
     </div>

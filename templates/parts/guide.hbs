@@ -1,0 +1,15 @@
+<section class="mr-phase mr-guide-doc">
+  <header class="mr-phase__head">
+    <h2 class="mr-h1">{{localize "MR.Guide.Heading"}}</h2>
+    <p class="mr-lead">{{localize "MR.Guide.Lead"}}</p>
+  </header>
+  <ol class="mr-guide-doc__list">
+    {{#each sections}}
+    <li id="mr-guide-{{key}}" class="mr-guide-doc__section {{#if current}}is-current{{/if}}">
+      <h3 class="mr-h2">{{#if n}}<span class="mr-num">{{n}}</span>{{/if}}{{title}}{{#if current}} <span class="mr-badge">{{localize "MR.Guide.Now"}}</span>{{/if}}</h3>
+      <p class="mr-guide-doc__why"><strong>{{localize "MR.Guide.Why"}}:</strong> {{why}}</p>
+      <ul>{{#each steps}}<li>{{this}}</li>{{/each}}</ul>
+    </li>
+    {{/each}}
+  </ol>
+</section>

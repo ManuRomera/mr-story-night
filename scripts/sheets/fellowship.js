@@ -1,7 +1,7 @@
 import { SYSTEM_ID, TEMPLATES } from "../constants.js";
 import { Store } from "../store.js";
 import { buildTableView } from "../view.js";
-import { generate } from "../generators.js";
+import { generate, generateScene } from "../generators.js";
 import { getTables } from "../quests.js";
 import { currentChallenge, activeMain } from "../engine.js";
 import { download, slug } from "../utils.js";
@@ -17,12 +17,12 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
     window: { resizable: true, icon: "fa-solid fa-people-group" },
     form: { submitOnChange: false, closeOnSubmit: false, handler: async () => {} },
     actions: {
-      tab: FellowshipSheet.#onTab, undo: FellowshipSheet.#onUndo, op: FellowshipSheet.#onOp, set: FellowshipSheet.#onSet, local: FellowshipSheet.#onLocal,
+      mrTab: FellowshipSheet.#onTab, undo: FellowshipSheet.#onUndo, op: FellowshipSheet.#onOp, set: FellowshipSheet.#onSet, local: FellowshipSheet.#onLocal,
       openSheet: FellowshipSheet.#onOpenSheet, roll: FellowshipSheet.#onRoll, pickDifficulty: FellowshipSheet.#onPickDifficulty, pickChallenge: FellowshipSheet.#onPickChallenge,
       adopt: FellowshipSheet.#onAdopt, newcomer: FellowshipSheet.#onNewcomer, addConsequence: FellowshipSheet.#onAddConsequence,
       stoneDraft: FellowshipSheet.#onStoneDraft, submitStones: FellowshipSheet.#onSubmitStones, resolveLoss: FellowshipSheet.#onResolveLoss,
       finish: FellowshipSheet.#onFinish, print: FellowshipSheet.#onPrint, exportStory: FellowshipSheet.#onExport, activate: FellowshipSheet.#onActivate,
-      signal: FellowshipSheet.#onSignal, addLimit: FellowshipSheet.#onAddLimit, removeLimit: FellowshipSheet.#onRemoveLimit, lobby: FellowshipSheet.#onLobby
+      toggleGuide: FellowshipSheet.#onToggleGuide, signal: FellowshipSheet.#onSignal, addLimit: FellowshipSheet.#onAddLimit, removeLimit: FellowshipSheet.#onRemoveLimit, lobby: FellowshipSheet.#onLobby
     }
   };
   static PARTS = { sheet: { template: `${TEMPLATES}/fellowship.hbs`, scrollable: [".mr-main", ".mr-side", ".mr-layout"] } };
@@ -38,7 +38,7 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
     const state = this.state;
     const view = buildTableView({
       state, actors: Store.actorsFor(state), user: { id: game.user.id, isGM: game.user.isGM }, t, tab: this.tab,
-      local: { ...this.local, canUndo: Store.canUndo(this.document.id) }, safety: Store.safety, title: this.document.name
+      local: { ...this.local, canUndo: Store.canUndo(this.document.id), hideGuide: !game.settings.get(SYSTEM_ID, "phaseGuide") }, safety: Store.safety, title: this.document.name
     });
     view.isActive = Store.activeId === this.document.id;
     return { ...context, ...view };
@@ -61,7 +61,16 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
   /** Nombres de los protagonistas activos, para los generadores. */
   #names() { return (this.state?.seats ?? []).map(s => activeMain(this.state, s.id)).filter(Boolean).map(m => Store.describe(m.id).name).filter(Boolean); }
 
-  static #onTab(event, target) { this.tab = target.dataset.tab; this.render(); }
+  static async #onTab(event, target) {
+    this.tab = target.dataset.tab;
+    await this.render();
+    // Desde la tarjeta de fase: saltar a su sección del tutorial.
+    if (target.dataset.anchor) this.element.querySelector(`#mr-guide-${target.dataset.anchor}`)?.scrollIntoView({ block: "start" });
+  }
+  static async #onToggleGuide() {
+    await game.settings.set(SYSTEM_ID, "phaseGuide", !game.settings.get(SYSTEM_ID, "phaseGuide"));
+    this.render();
+  }
   static async #onUndo() { await Store.undo(this.document.id); }
   static async #onOp(event, target) { await this.dispatch(target.dataset.op, target.dataset.args ? JSON.parse(target.dataset.args) : {}); }
   static async #onSet(event, target) { await this.dispatch("setField", { path: target.dataset.field, value: target.dataset.value }); }
@@ -74,8 +83,9 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
     const kind = target.dataset.kind, field = target.dataset.field;
     const tables = getTables(), quest = this.state.quest;
     if (kind === "scene") {
-      for (const [f, k] of [["scene.where", "place"], ["scene.who", "who"], ["scene.situation", "situation"]]) await this.dispatch("setField", { path: f, value: generate(tables, quest, k, Math.random, { names: this.#names() }) });
-      return;
+      const s = generateScene(tables, quest, Math.random, { names: this.#names() });
+      const value = [[s.where, s.who].filter(Boolean).join(" — "), s.situation].filter(Boolean).join(".\n");
+      return this.dispatch("setField", { path: "scene.situation", value });
     }
     if (kind === "challenge") {
       const c = generate(tables, quest, "challenge", Math.random, { avoid: this.state.challenges.map(x => x.title) });

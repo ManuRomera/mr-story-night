@@ -38,10 +38,12 @@
   <div class="mr-step-block mr-grid-2">
     <div>
       <h3 class="mr-h3"><span class="mr-num">3</span>{{localize "MR.Challenge.Lead"}}</h3>
-      <div class="mr-chips">{{#each leads}}<button type="button" class="mr-chip mr-chip--person {{#if selected}}is-selected{{/if}}" data-action="set" data-field="challenge.leadCharId" data-value="{{id}}" {{#unless ../canEdit}}disabled{{/unless}}><strong>{{name}}</strong><small>{{concept}}</small></button>{{/each}}</div>
+      <p class="mr-help">{{localize "MR.Challenge.LeadHelp"}}</p>
+      <div class="mr-chips">{{#each leads}}<button type="button" class="mr-chip mr-chip--person {{#if selected}}is-selected{{/if}}" data-action="set" data-field="challenge.leadCharId" data-value="{{id}}" {{#if (or own (not ../canEdit))}}disabled{{/if}} {{#if own}}data-tooltip="{{localize 'MR.Error.LeadNotOwn'}}"{{/if}}><strong>{{name}}</strong><small>{{concept}}</small></button>{{/each}}</div>
     </div>
     <div>
       <h3 class="mr-h3"><span class="mr-num">4</span>{{localize "MR.Challenge.Timescale"}}</h3>
+      <p class="mr-help">{{localize "MR.Challenge.TimescaleHelp"}}</p>
       <div class="mr-chips">
         {{#each timescales}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="set" data-field="challenge.timescale" data-value="{{key}}" {{#unless ../canEdit}}disabled{{/unless}}>{{label}}</button>{{/each}}
         <input type="text" class="mr-chip-input" data-field="challenge.timescale" value="{{customTimescale}}" placeholder="{{localize 'MR.Challenge.OtherTimescale'}}" {{#unless canEdit}}disabled{{/unless}}>
@@ -62,13 +64,9 @@
       <span class="mr-eyebrow">{{localize "MR.Scene.Of" n=scene.n total=scene.of}}</span>
       <h3 class="mr-h2">{{localize "MR.Scene.Establishes" name=scene.establisher}}{{#if scene.establisherChar}} <small>· {{scene.establisherChar}}</small>{{/if}}</h3>
       {{#if scene.isMine}}<span class="mr-badge">{{localize "MR.Scene.YourTurn"}}</span>{{/if}}
-      {{#if scene.canEdit}}<button type="button" class="mr-die mr-die--label" data-action="roll" data-kind="scene"><i class="fa-solid fa-dice"></i>{{localize "MR.Roll.Scene"}}</button>{{/if}}
     </header>
-    <div class="mr-grid-2">
-      <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Scene.Where"}}</label>{{#if scene.canEdit}}<button type="button" class="mr-die" data-action="roll" data-kind="place" data-field="scene.where" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><input type="text" data-field="scene.where" value="{{scene.where}}" {{#unless scene.canEdit}}disabled{{/unless}}></div>
-      <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Scene.Who"}}</label>{{#if scene.canEdit}}<button type="button" class="mr-die" data-action="roll" data-kind="who" data-field="scene.who" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><input type="text" data-field="scene.who" value="{{scene.who}}" {{#unless scene.canEdit}}disabled{{/unless}}></div>
-      <div class="mr-field mr-span-2"><div class="mr-field__label"><label>{{localize "MR.Scene.Situation"}}</label>{{#if scene.canEdit}}<button type="button" class="mr-die" data-action="roll" data-kind="situation" data-field="scene.situation" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><textarea rows="2" data-field="scene.situation" {{#unless scene.canEdit}}disabled{{/unless}}>{{scene.situation}}</textarea></div>
-    </div>
+    {{#if (or scene.where scene.who)}}<p class="mr-meta">{{#if scene.where}}<span><i class="fa-solid fa-location-dot"></i>{{scene.where}}</span>{{/if}}{{#if scene.who}}<span><i class="fa-solid fa-user-group"></i>{{scene.who}}</span>{{/if}}</p>{{/if}}
+    <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Scene.Situation"}}</label>{{#if scene.canEdit}}<button type="button" class="mr-die mr-die--label" data-action="roll" data-kind="scene"><i class="fa-solid fa-dice"></i>{{localize "MR.Roll.Scene"}}</button>{{/if}}</div><textarea rows="3" data-field="scene.situation" {{#unless scene.canEdit}}disabled{{/unless}}>{{scene.situation}}</textarea></div>
     <div class="mr-consequences">
       <h4 class="mr-label"><i class="fa-solid fa-bolt"></i>{{localize "MR.Scene.Consequences"}}</h4>
       <ul>{{#each scene.consequences}}<li><span>{{text}}</span><button type="button" class="mr-icon" data-action="op" data-op="removeConsequence" data-args='{"id":"{{id}}"}' aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button></li>{{/each}}</ul>
@@ -76,7 +74,6 @@
     </div>
     <div class="mr-field"><label>{{localize "MR.Scene.Summary"}}</label><input type="text" data-field="scene.summary" value="{{scene.summary}}" {{#unless scene.canEdit}}disabled{{/unless}}></div>
   </article>
-  <details class="mr-guide"><summary><i class="fa-solid fa-circle-info"></i>{{localize "MR.Scene.GuideTitle"}}</summary><ul><li>{{localize "MR.Scene.Guide1"}}</li><li>{{localize "MR.Scene.Guide2"}}</li><li>{{localize "MR.Scene.Guide3"}}</li><li>{{localize "MR.Scene.Guide4"}}</li></ul></details>
   <footer class="mr-phase__foot">
     <button type="button" class="mr-primary" data-action="op" data-op="endScene">{{#if isLastScene}}<i class="fa-solid fa-circle-half-stroke"></i>{{localize "MR.Scene.EndLast"}}{{else}}{{localize "MR.Scene.End"}}<i class="fa-solid fa-arrow-right"></i>{{/if}}</button>
   </footer>

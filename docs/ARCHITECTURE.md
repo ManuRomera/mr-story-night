@@ -30,7 +30,8 @@ Un personaje cuenta como «sin nombre» mientras conserve el nombre provisional 
 ## Principios
 
 - **Las reglas viven en el motor.** La interfaz lo intenta y el motor responde con una clave de error traducible. Los permisos (quién elige el desafío, quién plantea la escena, quién echa qué piedras) se aplican igual vengan de donde vengan.
-- **Piedras secretas.** El motor solo guarda el total de cada color y qué asientos han echado ya sus piedras.
+- **Piedras secretas hasta que están todas.** Como en el libro, cada cual elige en secreto y se muestran a la vez: el motor guarda la elección de cada asiento (`choices`) y la vista solo la enseña cuando han elegido todos.
+- **Ayuda por fase.** `guideKey(state)` indica la sección del tutorial que toca ahora; los textos viven en `lang/*.json` (`MR.Guide.*`) y el número de pasos de cada sección, en `GUIDE` de `view.js`.
 - **Redibujado seguro.** Si alguien está escribiendo, la ventana espera a que salga del campo y después recupera el foco.
 - **Deshacer.** El anfitrión puede deshacer pasos estructurales (no la escritura de textos) durante la sesión.
 

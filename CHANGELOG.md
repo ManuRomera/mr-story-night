@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.0 — 2026-09-25
+
+- **Tutorial «Cómo se juega»** en el vestíbulo y en la hoja común: cada fase con qué hacéis, para qué sirve y los pasos.
+- **Tarjeta de fase**: al principio de cada fase, «Ahora» y «Para qué», con enlace a su sección del tutorial. Se puede ocultar (ajuste de cliente).
+- **Reglas revisadas con el libro**:
+  - quien elige el reto no puede escoger a su propio personaje para abrirlo;
+  - las piedras se eligen en secreto pero se muestran a la vez cuando están todas, para explicar las rojas;
+  - cada jugador crea también su secundario (nombre y concepto) antes de estar listo.
+- **Escenas más simples**: un solo campo «¿Quién está, dónde y qué está pasando?».
+- **Términos de la edición en castellano**: reto, personaje principal y secundario, *Lo que quiero de la misión*, *Lo que quiero de ti*, consecuencias y ritmo. Las piedras sacadas indican qué significa cada una (la compañía, el reto).
+- La ficha principal enlaza con la del secundario.
+- Corregido: las pestañas del vestíbulo y de la hoja común fallaban porque usaban la acción `tab`, reservada por Foundry.
+
 ## 0.4.0 — 2026-09-25
 
 - **Hoja común y fichas propias.** La partida vive en un Actor «Compañía» que ve todo el grupo; cada jugador tiene su ficha de personaje (Actor propio, edición directa). Se crean en una carpeta al empezar.

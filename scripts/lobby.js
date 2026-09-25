@@ -16,7 +16,7 @@ export class Lobby extends TableWindow(HandlebarsApplicationMixin(ApplicationV2)
     window: { title: "MR.Lobby.Window", icon: "fa-solid fa-door-open", resizable: true },
     position: { width: 960, height: 700 },
     actions: {
-      tab: Lobby.#onTab, genre: Lobby.#onGenre, selectQuest: Lobby.#onSelectQuest, randomQuest: Lobby.#onRandomQuest,
+      mrTab: Lobby.#onTab, genre: Lobby.#onGenre, selectQuest: Lobby.#onSelectQuest, randomQuest: Lobby.#onRandomQuest,
       addSeat: Lobby.#onAddSeat, addGuest: Lobby.#onAddGuest, removeSeat: Lobby.#onRemoveSeat, moveSeat: Lobby.#onMoveSeat, start: Lobby.#onStart,
       newQuest: Lobby.#onNewQuest, editQuest: Lobby.#onEditQuest, cancelEdit: Lobby.#onCancelEdit, duplicateQuest: Lobby.#onDuplicateQuest,
       deleteQuest: Lobby.#onDeleteQuest, exportQuest: Lobby.#onExportQuest, saveQuest: Lobby.#onSaveQuest, openFellowship: Lobby.#onOpenFellowship, activate: Lobby.#onActivate

@@ -5,13 +5,41 @@
  *  - el vestíbulo con misiones y archivo (buildLobbyView).
  * Los datos descriptivos de los personajes llegan en `actors` (id → {name, img, concept, …}).
  */
-import { CHALLENGE_COUNT, FATES, TIMESCALES, activeMain, activeMinor, availablePickers, canActFor, charById, currentChallenge, leftSeat, seatById } from "./engine.js";
+import { CHALLENGE_COUNT, FATES, TIMESCALES, activeMain, activeMinor, availablePickers, canActFor, charById, currentChallenge, leftSeat, seatById, seatComplete } from "./engine.js";
 import { GENRES, genreOf } from "./generators.js";
 
 export const THEMES = ["neutral", "fantasy", "sci-fi", "horror", "cosmic", "gothic", "folk", "noir", "western", "postapoc", "cyberpunk"];
 const ROMAN = ["I", "II", "III", "IV", "V"];
 const initials = name => String(name || "?").trim().split(/\s+/).slice(0, 2).map(w => w[0]?.toUpperCase() ?? "").join("") || "?";
-const TAB_ICONS = { play: "fa-solid fa-dice-d6", company: "fa-solid fa-people-group", chronicle: "fa-solid fa-scroll", safety: "fa-solid fa-shield-heart" };
+const TAB_ICONS = { play: "fa-solid fa-dice-d6", company: "fa-solid fa-people-group", chronicle: "fa-solid fa-scroll", safety: "fa-solid fa-shield-heart", guide: "fa-solid fa-book-open" };
+
+/* ------------------------------------------------------------------ */
+/* Tutorial                                                            */
+/* ------------------------------------------------------------------ */
+
+/** Secciones del tutorial y cuántos pasos tiene cada una en lang/*.json (MR.Guide.<key>.StepN). */
+const GUIDE = { basics: 6, setup: 5, characters: 5, choose: 5, scenes: 5, stones: 5, outcome: 4, epilogue: 3 };
+
+/** Sección del tutorial que corresponde al momento actual de la partida. */
+export function guideKey(state) {
+  if (!state || state.phase === "complete") return null;
+  if (state.phase === "challenge") return currentChallenge(state).stage;
+  return state.phase;
+}
+
+export function guideView(t, current = null) {
+  return {
+    sections: Object.entries(GUIDE).map(([key, steps], i) => ({
+      key, n: i, title: t(`MR.Guide.${key}.Title`), why: t(`MR.Guide.${key}.Why`), current: key === current,
+      steps: Array.from({ length: steps }, (_, j) => t(`MR.Guide.${key}.Step${j + 1}`))
+    }))
+  };
+}
+
+/** Tarjeta breve al principio de cada fase: qué hacéis ahora y para qué sirve. */
+function phaseCard(key, t) {
+  return key ? { key, title: t(`MR.Guide.${key}.Title`), now: t(`MR.Guide.${key}.Now`), why: t(`MR.Guide.${key}.Why`) } : null;
+}
 
 /* ------------------------------------------------------------------ */
 /* Personajes                                                          */
@@ -41,14 +69,19 @@ export function buildTableView({ state, actors = {}, user, t, tab = "play", loca
   const complete = state?.phase === "complete";
   const view = {
     tab, isGM: user.isGM, complete, theme: state?.quest?.theme || "neutral",
-    tabs: ["play", "company", "chronicle", "safety"].map(key => ({ key, label: t(`MR.Tab.${key}`), active: key === tab, icon: TAB_ICONS[key] })),
+    tabs: ["play", "company", "chronicle", "safety", "guide"].map(key => ({ key, label: t(`MR.Tab.${key}`), active: key === tab, icon: TAB_ICONS[key] })),
     header: header(state, t, title), canUndo: user.isGM && local.canUndo, turn: state ? turnFor(state, actors, ctx, t) : null
   };
-  if (!state) return { ...view, empty: true };
+  if (tab === "guide") view.guide = guideView(t, guideKey(state));
+  if (!state) return { ...view, empty: tab !== "guide" };
   view.members = members(state, actors, ctx, t);
   if (tab === "play") {
     if (complete) view.credits = credits(state, actors, t);
-    else view[state.phase] = PHASES[state.phase](state, actors, ctx, t, local);
+    else {
+      view[state.phase] = PHASES[state.phase](state, actors, ctx, t, local);
+      view.phaseCard = local.hideGuide ? null : phaseCard(guideKey(state), t);
+      view.guideHidden = Boolean(local.hideGuide);
+    }
   }
   if (tab === "company") view.company = { ring: ring(state, actors, t), members: view.members, answers: state.quest.questions.map((q, i) => ({ q, a: state.setup.answers[i] })).filter(x => x.a), difficulties: state.setup.difficulties.filter(Boolean), intro: state.quest.intro };
   if (tab === "chronicle") view.chronicle = chronicle(state, t);
@@ -154,7 +187,7 @@ const PHASES = {
     const rows = state.seats.map(seat => {
       const main = card(state, activeMain(state, seat.id), actors, t, ctx);
       const minor = card(state, activeMinor(state, seat.id), actors, t, ctx);
-      return { seat, main, minor, isMine: seat.userId === ctx.userId, canEdit: canActFor(state, seat.id, ctx), ready: seat.ready, complete: Boolean(main?.name?.trim() && main?.concept?.trim()) };
+      return { seat, main, minor, isMine: seat.userId === ctx.userId, canEdit: canActFor(state, seat.id, ctx), ready: seat.ready, complete: seatComplete(state, seat.id, id => describe(actors, id)) };
     });
     const readyCount = state.seats.filter(s => s.ready).length;
     return { rows, readyCount, total: state.seats.length, allReady: readyCount === state.seats.length, canForce: ctx.isGM && readyCount < state.seats.length };
@@ -176,7 +209,7 @@ const PHASES = {
         pickers: state.seats.map(seat => ({ id: seat.id, name: seat.name, available: allowed.has(seat.id), selected: seat.id === c.pickerSeatId })),
         canEdit, hasPicker: Boolean(picker),
         suggestions: state.quest.challenges.map(s => ({ ...s, selected: s.title === c.title })),
-        leads: state.seats.map(seat => activeMain(state, seat.id)).filter(Boolean).map(m => ({ id: m.id, name: nameOf(m.id), concept: describe(actors, m.id).concept, selected: m.id === c.leadCharId })),
+        leads: state.seats.map(seat => activeMain(state, seat.id)).filter(Boolean).map(m => ({ id: m.id, name: nameOf(m.id), concept: describe(actors, m.id).concept, selected: m.id === c.leadCharId, own: m.seatId === c.pickerSeatId })),
         timescales: TIMESCALES.map(key => ({ key, label: t(`MR.Timescale.${key}`), selected: c.timescale === key })),
         customTimescale: TIMESCALES.includes(c.timescale) ? "" : c.timescale,
         canStart: canEdit && Boolean(c.title.trim() && c.timescale.trim() && c.leadCharId)
@@ -244,6 +277,12 @@ export function stonesView(state, actors, ctx, t, local, c = currentChallenge(st
       };
     }),
     allIn: c.submitted.length === state.seats.length,
+    // Reglas: se eligen en secreto y se muestran a la vez; quien echa rojas explica por qué.
+    reveal: c.submitted.length === state.seats.length ? state.seats.filter(seat => c.choices?.[seat.id]).map(seat => {
+      const choice = c.choices[seat.id];
+      const main = activeMain(state, seat.id);
+      return { seat: seat.name, charName: main ? (describe(actors, main.id).name || seat.name) : seat.name, reds: Array(choice.discontent).fill(0), discontent: t(`MR.Stones.Discontent${choice.discontent}`), verdict: choice.verdict, verdictLabel: t(`MR.Stones.Verdict.${choice.verdict}`) };
+    }) : null,
     canForce: ctx.isGM && c.submitted.length < state.seats.length,
     showActForAll: ctx.isGM && state.seats.some(seat => seat.userId && seat.userId !== ctx.userId && !c.submitted.includes(seat.id)),
     actForAll: Boolean(local.actForAll)
@@ -314,7 +353,7 @@ export function buildCharacterView({ state, actorId, actor, actors = {}, user, t
   };
   const isMySeat = canActFor(state, c.seatId, ctx);
   const ch = currentChallenge(state);
-  if (state.phase === "characters" && isMySeat) view.ready = { seatId: c.seatId, ready: seat.ready, complete: Boolean(actor.name?.trim() && actor.concept?.trim()) && c.role === "main" };
+  if (state.phase === "characters" && isMySeat) view.ready = { seatId: c.seatId, ready: seat.ready, complete: c.role === "main" && seatComplete(state, c.seatId, id => all[id]), minor: c.role === "main" ? card(state, activeMinor(state, c.seatId), all, t, ctx) : null };
   if (state.phase === "challenge" && ch?.stage === "stones" && isMySeat && c.role === "main" && !ch.submitted.includes(c.seatId)) {
     view.stones = stonesView(state, all, ctx, t, { ...local, onlySeat: c.seatId }, ch);
   }
@@ -333,7 +372,7 @@ export function buildLobbyView({ quests, users, local = {}, t, user, fellowships
   const genreFilter = local.genre ?? "";
   const view = {
     tab, isGM: user.isGM,
-    tabs: ["new", "quests", "archive"].map(key => ({ key, label: t(`MR.Lobby.Tab.${key}`), active: key === tab })),
+    tabs: ["new", "quests", "archive", "guide"].map(key => ({ key, label: t(`MR.Lobby.Tab.${key}`), active: key === tab })),
     genres: [{ key: "", label: t("MR.Genre.all"), selected: !genreFilter }, ...GENRES.filter(g => quests.some(q => genreOf(q) === g)).map(g => ({ key: g, label: t(`MR.Genre.${g}`), selected: genreFilter === g }))]
   };
   if (tab === "new") Object.assign(view, {
@@ -356,6 +395,7 @@ export function buildLobbyView({ quests, users, local = {}, t, user, fellowships
       } : null
     });
   }
+  if (tab === "guide") view.guide = guideView(t);
   if (tab === "archive") view.fellowships = fellowships.map(f => ({ ...f, active: f.id === activeId, date: f.updatedAt ? new Date(f.updatedAt).toLocaleDateString() : "", phaseLabel: t(`MR.Phase.${f.phase ?? "setup"}`), resultLabel: f.result ? t(f.result.success ? "MR.Credits.Success" : "MR.Credits.Failure") : "" }));
   return view;
 }

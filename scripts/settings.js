@@ -7,6 +7,7 @@ export function registerSettings({ onActive, onSafety, onLibrary }) {
   world("quests", { type: Object, default: [], onChange: onLibrary });
   game.settings.register(SYSTEM_ID, "chatCards", { name: "MR.Settings.ChatCards", hint: "MR.Settings.ChatCardsHint", scope: "world", config: true, type: Boolean, default: true });
   const client = (key, data) => game.settings.register(SYSTEM_ID, key, { scope: "client", config: true, onChange: applyPreferences, ...data });
+  client("phaseGuide", { name: "MR.Settings.PhaseGuide", hint: "MR.Settings.PhaseGuideHint", type: Boolean, default: true });
   client("autoOpen", { name: "MR.Settings.AutoOpen", hint: "MR.Settings.AutoOpenHint", type: Boolean, default: true });
   client("textScale", { name: "MR.Settings.TextScale", type: Number, range: { min: 0.85, max: 1.4, step: 0.05 }, default: 1 });
   client("highContrast", { name: "MR.Settings.HighContrast", type: Boolean, default: false });

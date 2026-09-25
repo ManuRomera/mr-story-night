@@ -85,6 +85,8 @@ test("no se puede estar listo sin nombre y concepto en la ficha", () => {
   t.run("setupDone");
   t.throws("setReady", { seatId: t.state.seats[0].id, ready: true }, "a", "MR.Error.NeedMain");
   t.actors.m0 = { name: "Aldara", concept: "Guía" };
+  t.throws("setReady", { seatId: t.state.seats[0].id, ready: true }, "a", "MR.Error.NeedMain");
+  t.actors.n0 = { name: "Bruno", concept: "Mulero" };
   t.run("setReady", { seatId: t.state.seats[0].id, ready: true }, "a");
   t.throws("setReady", { seatId: t.state.seats[1].id, ready: true }, "a", "MR.Error.NotYourSeat");
   t.throws("charactersDone", {}, "a", "MR.Error.NotAllReady");
@@ -97,7 +99,7 @@ test("las piedras suman según descontento y veredicto, y son de cada asiento", 
   t.run("setPicker", { seatId: seat.id });
   t.run("setField", { path: "challenge.title", value: "X" });
   t.run("setField", { path: "challenge.timescale", value: "hours" });
-  t.run("setField", { path: "challenge.leadCharId", value: activeMain(t.state, seat.id).id });
+  t.run("setField", { path: "challenge.leadCharId", value: activeMain(t.state, t.state.seats[1].id).id });
   t.run("startScenes");
   for (let i = 0; i < 3; i++) t.run("endScene");
   t.throws("submitStones", { seatId: seat.id, discontent: 3, verdict: "white" }, "ana", "MR.Error.BadStones");
@@ -127,10 +129,25 @@ test("las escenas empiezan por quien lleva al protagonista y solo quien elige re
 
 test("nadie repite como elector hasta que todos han elegido", () => {
   const t = table(); setupToChallenges(t);
-  playChallenge(t, 0, 0, Array(3).fill({ discontent: 0, verdict: "white" }), [0, 0]);
+  playChallenge(t, 0, 1, Array(3).fill({ discontent: 0, verdict: "white" }), [0, 0]);
   t.run("nextChallenge");
   assert.ok(!availablePickers(t.state).includes(t.state.seats[0].id));
   t.throws("setPicker", { seatId: t.state.seats[0].id }, "ana", "MR.Error.AlreadyPicked");
+});
+
+test("reglas del reto: ritmo obligatorio, no abrirlo con tu personaje y piedras visibles al final", () => {
+  const t = table(); setupToChallenges(t);
+  const [a, b, c] = t.state.seats;
+  t.run("setPicker", { seatId: a.id }, "ana");
+  t.run("setField", { path: "challenge.title", value: "X" }, "ana");
+  t.throws("setField", { path: "challenge.leadCharId", value: activeMain(t.state, a.id).id }, "ana", "MR.Error.LeadNotOwn");
+  t.run("setField", { path: "challenge.leadCharId", value: activeMain(t.state, b.id).id }, "ana");
+  t.throws("startScenes", {}, "ana", "MR.Error.NeedTimescale");
+  t.run("setField", { path: "challenge.timescale", value: "days" }, "ana");
+  t.run("startScenes", {}, "ana");
+  for (let i = 0; i < 3; i++) t.run("endScene");
+  t.run("submitStones", { seatId: c.id, discontent: 1, verdict: "red" }, "carlos");
+  assert.deepEqual(currentChallenge(t.state).choices[c.id], { discontent: 1, verdict: "red" });
 });
 
 test("el deseo apunta al asiento de la izquierda", () => {

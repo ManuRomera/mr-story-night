@@ -20,9 +20,10 @@
   {{#if turn}}<p class="mr-turn {{#if turn.mine}}is-mine{{/if}}" role="status"><i class="{{turn.icon}}"></i><span>{{turn.text}}</span></p>{{/if}}
 
   <nav class="mr-tabs" aria-label="{{localize 'MR.Tab.Label'}}">
-    {{#each tabs}}<button type="button" class="mr-tab {{#if active}}is-active{{/if}}" data-action="tab" data-tab="{{key}}" {{#if active}}aria-current="page"{{/if}}><i class="{{icon}}"></i><span>{{label}}</span></button>{{/each}}
+    {{#each tabs}}<button type="button" class="mr-tab {{#if active}}is-active{{/if}}" data-action="mrTab" data-tab="{{key}}" {{#if active}}aria-current="page"{{/if}}><i class="{{icon}}"></i><span>{{label}}</span></button>{{/each}}
     <span class="mr-tabs__spacer"></span>
     {{#unless isActive}}{{#if isGM}}{{#unless complete}}<button type="button" class="mr-tab" data-action="activate"><i class="fa-solid fa-star"></i><span>{{localize "MR.Action.Activate"}}</span></button>{{/unless}}{{/if}}{{/unless}}
+    {{#if guideHidden}}<button type="button" class="mr-tab" data-action="toggleGuide"><i class="fa-solid fa-circle-question"></i><span>{{localize "MR.Guide.Show"}}</span></button>{{/if}}
     {{#if canUndo}}<button type="button" class="mr-tab" data-action="undo" data-tooltip="{{localize 'MR.Action.UndoHint'}}"><i class="fa-solid fa-rotate-left"></i><span>{{localize "MR.Action.Undo"}}</span></button>{{/if}}
     <button type="button" class="mr-tab mr-tab--icon" data-action="lobby" data-tooltip="{{localize 'MR.Lobby.Window'}}" aria-label="{{localize 'MR.Lobby.Window'}}"><i class="fa-solid fa-door-open"></i></button>
   </nav>
@@ -36,6 +37,7 @@
   {{else}}
   <div class="mr-layout {{#if showSide}}has-side{{/if}}">
     <main class="mr-main">
+      {{#if phaseCard}}{{> "systems/mr-story-night/templates/parts/phase-card.hbs" phaseCard}}{{/if}}
       {{#if setup}}{{> "systems/mr-story-night/templates/parts/setup.hbs" setup}}{{/if}}
       {{#if characters}}{{> "systems/mr-story-night/templates/parts/characters.hbs" characters}}{{/if}}
       {{#if challenge}}{{> "systems/mr-story-night/templates/parts/challenge.hbs" challenge}}{{/if}}
@@ -43,6 +45,7 @@
       {{#if credits}}{{> "systems/mr-story-night/templates/parts/credits.hbs" credits}}{{/if}}
       {{#if company}}{{> "systems/mr-story-night/templates/parts/company.hbs" company}}{{/if}}
       {{#if chronicle}}{{> "systems/mr-story-night/templates/parts/chronicle.hbs" chronicle}}{{/if}}
+      {{#if guide}}{{> "systems/mr-story-night/templates/parts/guide.hbs" guide}}{{/if}}
       {{#if safety}}{{> "systems/mr-story-night/templates/parts/safety.hbs" safety}}{{/if}}
     </main>
     {{#if showSide}}<aside class="mr-side" aria-label="{{localize 'MR.Company.Title'}}">{{> "systems/mr-story-night/templates/parts/members.hbs" members=members}}</aside>{{/if}}

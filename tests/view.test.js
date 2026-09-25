@@ -13,14 +13,14 @@ for (const lang of ["es", "en"]) {
   test(`[${lang}] todas las vistas de todas las fases, sin traducciones ausentes`, () => {
     for (const [name, state] of Object.entries(snaps)) {
       for (const user of [{ id: "gm", isGM: true }, { id: "lucia", isGM: false }, { id: "irene", isGM: false }]) {
-        for (const tab of ["play", "company", "chronicle", "safety"]) {
+        for (const tab of ["play", "company", "chronicle", "safety", "guide"]) {
           const view = buildTableView({ state, actors, user, t, tab, safety: { lines: ["x"], veils: [], paused: false } });
           assert.ok(view.header, `${name}/${tab}`);
         }
         for (const id of Object.keys(actors)) buildCharacterView({ state, actorId: id, actor: actors[id], actors, user, t });
       }
     }
-    for (const tab of ["new", "quests", "archive"]) buildLobbyView({ quests, users: [{ id: "gm", name: "Manu" }], t, user: { id: "gm", isGM: true }, local: { tab, seats: [{ userId: "gm", name: "Manu" }], editQuest: tab === "quests" ? quests[0] : null }, fellowships: [{ id: "f", name: "X", phase: "complete", result: { success: true } }] });
+    for (const tab of ["new", "quests", "archive", "guide"]) buildLobbyView({ quests, users: [{ id: "gm", name: "Manu" }], t, user: { id: "gm", isGM: true }, local: { tab, seats: [{ userId: "gm", name: "Manu" }], editQuest: tab === "quests" ? quests[0] : null }, fellowships: [{ id: "f", name: "X", phase: "complete", result: { success: true } }] });
     buildTableView({ state: null, actors: {}, user: { id: "gm", isGM: true }, t });
     assert.deepEqual([...missing], []);
   });
@@ -53,4 +53,13 @@ test("la ficha personal ofrece piedras secretas solo a su dueño y solo al prota
 test("el tercer desafío arrastra los resultados anteriores al cuenco", () => {
   const { snaps } = simulate("es");
   assert.deepEqual(snaps.finalStones.challenges.at(-1).pile, { white: 1 + 1 + 4, red: 1 + 1 });
+});
+
+test("las piedras solo se muestran cuando todos han elegido, y cada fase tiene su ayuda", () => {
+  const { snaps, actors } = simulate("es");
+  const t = key => key;
+  const view = state => buildTableView({ state, actors, user: { id: "gm", isGM: true }, t, tab: "play" });
+  assert.equal(view(snaps.stones).challenge.reveal, null);
+  assert.equal(view(snaps.finalStones).challenge.reveal.length, 4);
+  for (const name of ["setup", "characters", "choose", "scene", "stones", "outcome", "epilogue"]) assert.ok(view(snaps[name]).phaseCard?.now, name);
 });
