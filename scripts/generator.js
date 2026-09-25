@@ -4,7 +4,7 @@ import { DEFAULT_STORY } from "./constants.js";
 
 export class StoryGenerator {
   static async generate(options = {}) {
-    const content = await loadData("story-content");
+    const content = await loadData(game?.i18n?.lang === "es" ? "story-content-es" : "story-content");
     const seed = options.seed || `${Date.now()}-${Math.random()}`;
     const random = seededRandom(seed);
     const genre = options.genre === "surprise" || !options.genre ? pick(Object.keys(content.genres), random) : options.genre;
@@ -21,18 +21,21 @@ export class StoryGenerator {
   }
 
   static async inspiration(story, type = "complications") {
-    const content = await loadData("story-content");
+    const content = await loadData(game?.i18n?.lang === "es" ? "story-content-es" : "story-content");
     const bank = content.genres[story.genre] ?? content.genres.contemporary;
-    const values = bank[type] ?? content[type] ?? bank.complications;
+    const custom = game.settings?.get?.("mr-story-night", "customContent") ?? {};
+    const values = type === "complications" && custom.complications?.length ? [...bank.complications, ...custom.complications] : bank[type] ?? content[type] ?? bank.complications;
     const random = seededRandom(`${story.seed}:${type}:${story.history.length}:${story.updatedAt}`);
     return pick(values, random);
   }
 
   static async makeScene(story) {
-    const content = await loadData("story-content");
+    const content = await loadData(game?.i18n?.lang === "es" ? "story-content-es" : "story-content");
     const bank = content.genres[story.genre] ?? content.genres.contemporary;
     const index = story.scenes.length;
+    const custom = game.settings?.get?.("mr-story-night", "customContent") ?? {};
+    const sceneQuestions = custom.prompts?.length ? [...content.sceneQuestions, ...custom.prompts] : content.sceneQuestions;
     const random = seededRandom(`${story.seed}:scene:${index}`);
-    return { id: uid(), title: `${game.i18n.localize("MR.Scene.Label")} ${index + 1}`, location: pick(bank.locations, random), participants: [], goal: pick(content.sceneGoals, random), tension: Math.min(5, story.tension), question: pick(content.sceneQuestions, random), threat: story.threat, complications: [pick(bank.complications, random)], notes: "", result: "", state: "prepared", createdAt: Date.now() };
+    return { id: uid(), title: `${game.i18n.localize("MR.Scene.Label")} ${index + 1}`, location: pick(bank.locations, random), participants: [], goal: pick(content.sceneGoals, random), tension: Math.min(5, story.tension), question: pick(sceneQuestions, random), threat: story.threat, complications: [pick(bank.complications, random)], notes: "", result: "", state: "prepared", createdAt: Date.now() };
   }
 }

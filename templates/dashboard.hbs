@@ -27,8 +27,12 @@
   <nav class="mr-quickbar" aria-label="{{localize 'MR.Navigation'}}">
     {{#if isGM}}<button data-action="new-story"><i class="fas fa-plus"></i><span>{{localize "MR.NewStory.Short"}}</span></button>{{/if}}
     <button data-action="new-character"><i class="fas fa-users"></i><span>{{localize "MR.Character.Plural"}}</span></button>
+    <button data-action="relationships"><i class="fas fa-share-nodes"></i><span>{{localize "MR.Relationships.Title"}}</span></button>
     <button data-action="new-scene"><i class="fas fa-clapperboard"></i><span>{{localize "MR.Scene.Label"}}</span></button>
     <button data-action="inspiration"><i class="fas fa-lightbulb"></i><span>{{localize "MR.Action.Inspiration"}}</span></button>
+    <button data-action="archive"><i class="fas fa-box-archive"></i><span>{{localize "MR.Archive.Title"}}</span></button>
+    <button data-action="safety"><i class="fas fa-shield-heart"></i><span>{{localize "MR.Safety.Title"}}</span></button>
+    <button data-action="audio"><i class="fas fa-volume-high"></i><span>{{localize "MR.Audio.Title"}}</span></button>
     <button data-action="undo"><i class="fas fa-rotate-left"></i><span>{{localize "MR.Action.Undo"}}</span></button>
     <button data-action="end"><i class="fas fa-flag-checkered"></i><span>{{localize "MR.End.Title"}}</span></button>
     <button data-action="settings"><i class="fas fa-sliders"></i><span>{{localize "MR.Settings.Title"}}</span></button>

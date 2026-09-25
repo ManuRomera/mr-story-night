@@ -1,6 +1,6 @@
 # MR · Story Night para Foundry VTT
 
-> **WIP / Work in Progress.** El sistema ya permite crear y conducir historias, pero continúa en desarrollo activo. Las funciones, textos narrativos y compatibilidad pueden cambiar entre versiones.
+> **Versión 0.2.0.** Sistema jugable de principio a fin. La compatibilidad v13 está probada en Foundry 13.351; v14 conserva soporte implementado y validación estática, pendiente únicamente de ejecutarse en una instalación v14 disponible.
 
 **Zero Prep. One Night. Any Story.** Un sistema narrativo original para reunir al grupo, crear una premisa en minutos y jugar una historia autoconclusiva sin preparación previa.
 
@@ -27,14 +27,19 @@ Foundry descargará el sistema desde la última release y avisará cuando haya a
 - Exportación e importación mediante API.
 - Interfaz en castellano e inglés.
 - 16 temas visuales, diseño responsive y ajustes de accesibilidad.
+- Tablero gráfico de relaciones con posiciones persistentes.
+- Archivo de historias, Story Packs y editor de contenido ampliable.
+- Herramientas anónimas de comodidad en mesa y pausa compartida.
+- Ambientes sonoros generativos originales y créditos finales exportables.
+- Arte de portada original integrado.
 
 ## Compatibilidad
 
 | Versión del sistema | Foundry VTT mínimo | Foundry VTT verificado |
 |---|---|---|
-| 0.1.0 WIP | v13 | Pendiente de prueba real |
+| 0.2.0 | v13 | v13.351 |
 
-El código incluye una capa de compatibilidad para las diferencias conocidas entre v13 y v14. Esta primera publicación ha pasado validaciones automatizadas, pero todavía no se certifica mediante una regresión completa dentro de instalaciones reales de ambas versiones. Consulta [la lista de pruebas](docs/TESTING.md).
+El flujo completo se ha probado en Foundry v13.351: detección, creación de mundo, carga, asistente en castellano, generación, tablero y herramientas avanzadas. La máquina de desarrollo no dispone de una instalación v14; no se declara una prueba real de esa versión hasta poder ejecutarla. Consulta [la lista de pruebas](docs/TESTING.md).
 
 ## Desarrollo y validación
 

@@ -5,6 +5,7 @@ import { CharacterSheet } from "./sheets/character-sheet.js";
 import { StoryDashboard } from "./apps/dashboard.js";
 import { NewStoryWizard } from "./apps/new-story.js";
 import { api } from "./api.js";
+import { StoryTools } from "./apps/story-tools.js";
 
 Hooks.once("init", () => {
   console.info("MR · Story Night | Initializing"); registerSettings();
@@ -13,14 +14,16 @@ Hooks.once("init", () => {
   Handlebars.registerHelper("array", (...args) => args.slice(0, -1));
   Handlebars.registerHelper("includes", (value, list) => Array.isArray(list) && list.includes(value));
   Handlebars.registerHelper("multiply", (a, b) => Number(a) * Number(b));
+  Handlebars.registerHelper("midpoint", (a, b) => (Number(a) + Number(b)) / 2);
+  Handlebars.registerHelper("join", (value, separator) => Array.isArray(value) ? value.join(separator) : "");
   Actors.unregisterSheet?.("core", ActorSheet, { types: ["character"] });
   Actors.registerSheet?.(SYSTEM_ID, CharacterSheet, { types: ["character"], makeDefault: true, label: "MR.Character.Sheet" });
   game[SYSTEM_ID] = api;
 });
 
 Hooks.once("ready", async () => {
-  applyPreferences(); await StoryStore.init();
-  game.socket?.on(`system.${SYSTEM_ID}`, message => { if (message.type === "story" && !game.user.isGM) StoryStore.receive(message.story); });
+  applyPreferences(); await StoryStore.init(); document.documentElement.classList.toggle("mr-safety-paused",Boolean(game.settings.get(SYSTEM_ID,"safetyState")?.paused));
+  game.socket?.on(`system.${SYSTEM_ID}`, async message => { if (message.type === "story" && !game.user.isGM) StoryStore.receive(message.story); if(message.type==="safety-request"&&game.user.isGM){const state=foundry.utils.deepClone(game.settings.get(SYSTEM_ID,"safetyState"));state.signals.push(message.signal);state.signals=state.signals.slice(-20);if(message.signal.type==="pause")state.paused=true;await game.settings.set(SYSTEM_ID,"safetyState",state);game.socket.emit(`system.${SYSTEM_ID}`,{type:"safety",state});} if(message.type==="safety"){document.documentElement.classList.toggle("mr-safety-paused",message.state.paused);ui.notifications?.warn?.(game.i18n.localize(`MR.Safety.Signal.${message.state.signals.at(-1)?.type}`));} });
   if (game.user.isGM && !StoryStore.story) new NewStoryWizard().render(true);
 });
 

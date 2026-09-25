@@ -2,10 +2,12 @@ import { StoryGenerator } from "./generator.js";
 import { StoryStore } from "./store.js";
 import { NewStoryWizard } from "./apps/new-story.js";
 import { StoryDashboard } from "./apps/dashboard.js";
+import { StoryTools } from "./apps/story-tools.js";
 export const api = Object.freeze({
   get story() { return StoryStore.story; },
   openDashboard: () => new StoryDashboard().render(true),
   newStory: () => new NewStoryWizard().render(true),
+  openTools: section => new StoryTools({ section }).render(true),
   generate: options => StoryGenerator.generate(options),
   inspiration: type => StoryGenerator.inspiration(StoryStore.story, type),
   updateStory: changes => StoryStore.patch(changes),

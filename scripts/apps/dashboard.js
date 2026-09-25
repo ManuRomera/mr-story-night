@@ -4,6 +4,7 @@ import { StoryStore } from "../store.js";
 import { StoryGenerator } from "../generator.js";
 import { localize, escapeHTML } from "../utils.js";
 import { NewStoryWizard } from "./new-story.js";
+import { StoryTools } from "./story-tools.js";
 
 export class StoryDashboard extends BaseApp {
   static DEFAULT_OPTIONS = { id: "mr-story-dashboard", tag: "section", window: { title: "MR · Story Night", resizable: true }, position: { width: 1180, height: 760 }, classes: ["mr-app", "mr-dashboard"] };
@@ -24,11 +25,14 @@ export class StoryDashboard extends BaseApp {
     if (action === "tension") return StoryStore.patch({ tension: Math.min(5, StoryStore.story.tension + 1) }, { type: "tension", label: localize("MR.Action.Tension") });
     if (action === "inspiration") { const value = await StoryGenerator.inspiration(StoryStore.story); return ChatMessage.create({ content: `<article class="mr-chat-card"><h3>${escapeHTML(localize("MR.Action.Inspiration"))}</h3><p>${escapeHTML(value)}</p></article>` }); }
     if (action === "undo") return StoryStore.undo();
+    if (["relationships","archive","content","safety","audio","finale"].includes(action)) return new StoryTools({ section: action }).render(true);
     if (action === "end") return this._endStory();
     if (action === "settings") return game.settings.sheet.render(true);
   }
   async _endStory() {
     if (!await Compat.confirm({ title: localize("MR.End.Title"), content: `<p>${escapeHTML(localize("MR.End.Confirm"))}</p>` })) return;
     await StoryStore.patch({ state: "complete" }, { type: "end", label: localize("MR.End.Title") });
+    await StoryStore.archiveCurrent();
+    new StoryTools({ section: "finale" }).render(true);
   }
 }

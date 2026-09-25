@@ -1,12 +1,13 @@
 {
   "id": "mr-story-night",
   "title": "MR · Story Night",
-  "description": "WIP / Work in Progress. Sistema narrativo de preparación cero para crear y jugar historias autoconclusivas en Foundry VTT v13 y v14. Código y contenido creados con asistencia de IA.",
-  "version": "0.1.0",
-  "compatibility": { "minimum": "13", "verified": "13", "maximum": "14" },
+  "description": "Sistema narrativo de preparación cero para crear y jugar historias autoconclusivas en Foundry VTT v13 y v14. Código, contenido y arte creados con asistencia de IA.",
+  "version": "0.2.0",
+  "compatibility": { "minimum": "13", "verified": "13.351", "maximum": "14" },
   "authors": [{ "name": "Manu Romera / Asistente OpenAI" }],
   "esmodules": ["scripts/main.js"],
   "styles": ["styles/mr-story-night.css"],
+  "background": "systems/mr-story-night/assets/art/story-room-cover.png",
   "languages": [
     { "lang": "es", "name": "Español", "path": "lang/es.json" },
     { "lang": "en", "name": "English", "path": "lang/en.json" }
@@ -17,14 +18,13 @@
   },
   "packs": [],
   "initiative": "1d6",
-  "gridDistance": 1,
-  "gridUnits": "space",
+  "grid": { "distance": 1, "units": "space" },
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
   "url": "https://github.com/ManuRomera/mr-story-night",
   "bugs": "https://github.com/ManuRomera/mr-story-night/issues/new/choose",
   "manifest": "https://raw.githubusercontent.com/ManuRomera/mr-story-night/main/system.json",
-  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.1.0/mr-story-night.zip",
+  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.2.0/mr-story-night.zip",
   "license": "LICENSE",
   "readme": "README.md"
 }
