@@ -1,10 +1,8 @@
 <section class="mr-phase">
   <header class="mr-phase__head">
-    <span class="mr-eyebrow">{{localize "MR.Step.epilogue"}}</span>
-    <h2 class="mr-h1">{{#if success}}{{localize "MR.Epilogue.TitleWon"}}{{else}}{{localize "MR.Epilogue.TitleLost"}}{{/if}}</h2>
+        <h2 class="mr-h1">{{#if success}}{{localize "MR.Epilogue.TitleWon"}}{{else}}{{localize "MR.Epilogue.TitleLost"}}{{/if}}</h2>
     <p class="mr-lead">{{localize "MR.Epilogue.Help"}}</p>
   </header>
-  {{#each replacements}}<div class="mr-callout"><strong>{{localize "MR.Replace.Title" seat=seat}}</strong><p>{{localize "MR.Epilogue.NoMain"}}</p></div>{{/each}}
   <div class="mr-epilogue-grid">
     {{#each cards}}
     <article class="mr-epilogue-card {{#if isMine}}is-mine{{/if}}">

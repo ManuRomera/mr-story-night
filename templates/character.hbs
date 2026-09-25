@@ -1,0 +1,39 @@
+<div class="mr-sheet mr-char {{#if lost}}is-lost{{/if}}" data-mr-theme="{{theme}}">
+  <header class="mr-char__head">
+    <button type="button" class="mr-portrait" data-action="portrait" {{#unless editable}}disabled{{/unless}} aria-label="{{localize 'MR.Character.Portrait'}}">{{#if hasPortrait}}<img src="{{actor.img}}" alt="">{{else}}<i class="fa-solid fa-user"></i>{{/if}}</button>
+    <div class="mr-char__id">
+      <span class="mr-eyebrow">{{roleLabel}}{{#if seatName}} · {{seatName}}{{/if}}{{#if promoted}} · {{localize "MR.Character.Promoted"}}{{/if}}</span>
+      <div class="mr-with-die mr-char__name"><input type="text" name="name" value="{{actor.displayName}}" placeholder="{{actor.placeholder}}" aria-label="{{localize 'MR.Character.Name'}}" {{#unless editable}}disabled{{/unless}}>{{#if editable}}<button type="button" class="mr-die" data-action="roll" data-kind="name" data-tooltip="{{localize 'MR.Roll.Name'}}" aria-label="{{localize 'MR.Roll.Name'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div>
+      <div class="mr-with-die"><input type="text" name="system.concept" value="{{actor.concept}}" placeholder="{{localize 'MR.Character.Concept'}}" aria-label="{{localize 'MR.Character.Concept'}}" {{#unless editable}}disabled{{/unless}}>{{#if editable}}<button type="button" class="mr-die" data-action="roll" data-kind="concept" data-tooltip="{{localize 'MR.Roll.Concept'}}" aria-label="{{localize 'MR.Roll.Concept'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div>
+      <div class="mr-with-die mr-char__pronouns"><input type="text" name="system.pronouns" value="{{actor.pronouns}}" placeholder="{{localize 'MR.Character.Pronouns'}}" aria-label="{{localize 'MR.Character.Pronouns'}}" {{#unless editable}}disabled{{/unless}}>{{#if editable}}<button type="button" class="mr-die" data-action="roll" data-kind="pronouns" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div>
+    </div>
+  </header>
+
+  {{#if lost}}<p class="mr-banner mr-banner--lost"><i class="fa-solid fa-user-slash"></i><span><strong>{{fateLabel}}</strong>{{#if fateNote}} — {{fateNote}}{{/if}}</span></p>{{/if}}
+  {{#if turn}}<p class="mr-turn {{#if turn.mine}}is-mine{{/if}}" role="status"><i class="{{turn.icon}}"></i><span>{{turn.text}}</span><button type="button" class="mr-link" data-action="openTable">{{localize "MR.App.Open"}}</button></p>{{/if}}
+
+  <div class="mr-char__body">
+    {{#if ready}}
+    <div class="mr-callout">
+      <div><strong>{{localize "MR.Character.ReadyTitle"}}</strong><p>{{localize "MR.Character.ReadyHelp"}}</p></div>
+      {{#if ready.ready}}<button type="button" data-action="ready" data-seat-id="{{ready.seatId}}" data-ready="false">{{localize "MR.Characters.NotReady"}}</button>
+      {{else}}<button type="button" class="mr-primary" data-action="ready" data-seat-id="{{ready.seatId}}" data-ready="true" {{#unless ready.complete}}disabled data-tooltip="{{localize 'MR.Error.NeedMain'}}"{{/unless}}><i class="fa-solid fa-check"></i>{{localize "MR.Characters.MarkReady"}}</button>{{/if}}
+    </div>
+    {{/if}}
+    {{#if stones}}<section class="mr-char__stones">{{> "systems/mr-story-night/templates/parts/stones.hbs" stones compact=true}}</section>{{/if}}
+    {{#if epilogue}}
+    <div class="mr-field mr-field--hero"><label>{{localize "MR.Character.Epilogue"}}</label><textarea rows="4" data-field="epilogues.{{epilogue.seatId}}" placeholder="{{localize 'MR.Epilogue.Placeholder'}}">{{epilogue.text}}</textarea></div>
+    {{/if}}
+
+    {{#if isMain}}
+    <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Character.Desire"}}</label>{{#if editable}}<button type="button" class="mr-die" data-action="roll" data-kind="desire" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><textarea rows="2" name="system.desire" {{#unless editable}}disabled{{/unless}}>{{actor.desire}}</textarea><small>{{localize "MR.Character.DesireHelp"}}</small></div>
+    {{#if hasWant}}
+    <div class="mr-field mr-want"><div class="mr-field__label"><label><i class="fa-solid fa-arrow-left-long"></i> {{#if wantTarget}}{{localize "MR.Character.Want" name=wantTarget}}{{else}}{{localize "MR.Character.WantGeneric"}}{{/if}}</label>{{#if editable}}<button type="button" class="mr-die" data-action="roll" data-kind="want" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><textarea rows="2" name="system.want" {{#unless editable}}disabled{{/unless}}>{{actor.want}}</textarea><small>{{localize "MR.Character.WantHelp"}}</small></div>
+    {{/if}}
+    {{/if}}
+    <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Character.Detail"}}</label>{{#if editable}}<button type="button" class="mr-die" data-action="roll" data-kind="detail" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><input type="text" name="system.detail" value="{{actor.detail}}" {{#unless editable}}disabled{{/unless}}></div>
+    <div class="mr-field"><label>{{localize "MR.Character.Notes"}}</label><textarea rows="4" name="system.notes" {{#unless editable}}disabled{{/unless}}>{{actor.notes}}</textarea></div>
+    {{#if editable}}<button type="button" class="mr-block" data-action="rollAll" data-tooltip="{{localize 'MR.Roll.AllHint'}}"><i class="fa-solid fa-dice"></i>{{localize "MR.Roll.All"}}</button>{{/if}}
+    {{#unless hasStory}}<p class="mr-note">{{localize "MR.Character.Free"}}</p>{{/unless}}
+  </div>
+</div>

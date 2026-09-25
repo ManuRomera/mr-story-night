@@ -1,28 +1,57 @@
 {
   "id": "mr-story-night",
   "title": "MR · Story Night — Follow",
-  "description": "Mesa sin director para jugar a Follow (Ben Robbins) en Foundry VTT: misión, compañía, tres desafíos, bolsa de piedras y epílogo. Implementación no oficial para uso privado; requiere tu propio ejemplar del juego.",
-  "version": "0.3.0",
-  "compatibility": { "minimum": "13", "verified": "13" },
-  "authors": [{ "name": "Manu Romera" }],
-  "esmodules": ["scripts/main.js"],
-  "styles": ["styles/mr-story-night.css"],
+  "description": "Juego sin director para jugar a Follow (Ben Robbins) en Foundry VTT: hoja común de la compañía, ficha propia por jugador, bolsa de piedras secreta y generadores de inspiración. Implementación no oficial para uso privado; requiere tu propio ejemplar del juego.",
+  "version": "0.4.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Manu Romera"
+    }
+  ],
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/mr-story-night.css"
+  ],
   "languages": [
-    { "lang": "es", "name": "Español", "path": "lang/es.json" },
-    { "lang": "en", "name": "English", "path": "lang/en.json" }
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "lang/es.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
   ],
   "documentTypes": {
-    "Actor": { "character": { "htmlFields": ["notes"] } }
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "notes"
+        ]
+      },
+      "fellowship": {}
+    }
   },
   "socket": true,
   "background": "systems/mr-story-night/assets/art/story-room-cover.webp",
-  "grid": { "distance": 1, "units": "" },
+  "grid": {
+    "distance": 1,
+    "units": ""
+  },
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
   "url": "https://github.com/ManuRomera/mr-story-night",
   "bugs": "https://github.com/ManuRomera/mr-story-night/issues/new/choose",
   "manifest": "https://raw.githubusercontent.com/ManuRomera/mr-story-night/main/system.json",
-  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.3.0/mr-story-night.zip",
+  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.4.0/mr-story-night.zip",
   "license": "LICENSE",
   "readme": "README.md"
 }

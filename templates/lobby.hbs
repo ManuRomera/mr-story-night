@@ -1,0 +1,124 @@
+<div class="mr-sheet mr-lobby-sheet">
+  <nav class="mr-tabs">
+    {{#each tabs}}<button type="button" class="mr-tab {{#if active}}is-active{{/if}}" data-action="tab" data-tab="{{key}}">{{label}}</button>{{/each}}
+  </nav>
+
+  {{#if (eq tab "new")}}
+  <div class="mr-lobby">
+    <div class="mr-lobby__scroll">
+      <div class="mr-chips mr-genre-filter">{{#each genres}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="genre" data-genre="{{key}}">{{label}}</button>{{/each}}<button type="button" class="mr-chip" data-action="randomQuest"><i class="fa-solid fa-dice"></i>{{localize "MR.Lobby.Random"}}</button></div>
+      <div class="mr-quest-grid">
+        {{#each quests}}
+        <button type="button" class="mr-quest-card {{#if selected}}is-selected{{/if}}" data-action="selectQuest" data-id="{{id}}" data-mr-theme="{{theme}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}">
+          <small>{{genreLabel}}</small>
+          <strong>{{title}}</strong>
+          <span>{{tagline}}</span>
+        </button>
+        {{/each}}
+      </div>
+    </div>
+    <aside class="mr-lobby__side">
+      {{#if selected}}
+      <article class="mr-quest-preview" data-mr-theme="{{selected.theme}}">
+        <span class="mr-eyebrow">{{localize "MR.Quest.Goal"}}</span>
+        <p class="mr-lead">{{selected.goal}}</p>
+        <p class="mr-help">{{selected.intro}}</p>
+      </article>
+      {{else}}<p class="mr-note">{{localize "MR.Lobby.NeedQuest"}}</p>{{/if}}
+      <div class="mr-field"><label for="mr-story-title">{{localize "MR.Lobby.StoryTitle"}}</label><input id="mr-story-title" type="text" name="storyTitle" value="{{title}}" placeholder="{{selected.title}}"></div>
+      <h3 class="mr-h3">{{localize "MR.Lobby.Seats"}}</h3>
+      <p class="mr-help">{{localize "MR.Lobby.SeatsHelp"}}</p>
+      <ol class="mr-seat-list">
+        {{#each seats}}
+        <li class="mr-seat-row">
+          <span class="mr-seat-row__n">{{n}}</span>
+          <span class="mr-seat-row__name"><strong>{{name}}</strong>{{#if left}}<small>{{localize "MR.Lobby.LeftIs" name=left}}</small>{{/if}}</span>
+          <button type="button" class="mr-icon" data-action="moveSeat" data-index="{{i}}" data-dir="-1" {{#if first}}disabled{{/if}} aria-label="{{localize 'MR.Lobby.Up'}}"><i class="fa-solid fa-arrow-up"></i></button>
+          <button type="button" class="mr-icon" data-action="moveSeat" data-index="{{i}}" data-dir="1" {{#if last}}disabled{{/if}} aria-label="{{localize 'MR.Lobby.Down'}}"><i class="fa-solid fa-arrow-down"></i></button>
+          <button type="button" class="mr-icon" data-action="removeSeat" data-index="{{i}}" aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button>
+        </li>
+        {{else}}<li class="mr-empty">{{localize "MR.Lobby.NoSeats"}}</li>{{/each}}
+      </ol>
+      {{#if available.length}}<div class="mr-chips">{{#each available}}<button type="button" class="mr-chip" data-action="addSeat" data-user-id="{{id}}"><i class="fa-solid fa-plus"></i>{{name}}</button>{{/each}}</div>{{/if}}
+      <div class="mr-inline"><input type="text" name="guestName" placeholder="{{localize 'MR.Lobby.GuestPlaceholder'}}" aria-label="{{localize 'MR.Lobby.GuestPlaceholder'}}"><button type="button" data-action="addGuest">{{localize "MR.Lobby.AddGuest"}}</button></div>
+      {{#if tooMany}}<p class="mr-warning">{{localize "MR.Lobby.TooMany"}}</p>{{/if}}
+      {{#if advisory}}<p class="mr-note">{{localize "MR.Lobby.Advisory"}}</p>{{/if}}
+      <button type="button" class="mr-primary mr-block" data-action="start" {{#unless canStart}}disabled{{/unless}}><i class="fa-solid fa-play"></i>{{localize "MR.Lobby.Start"}}</button>
+      <p class="mr-note">{{localize "MR.Lobby.StartHelp"}}</p>
+    </aside>
+  </div>
+  {{/if}}
+
+  {{#if (eq tab "quests")}}
+  <div class="mr-main">
+  {{#if editing}}
+  <section class="mr-phase mr-quest-editor">
+    <header class="mr-phase__head"><h2 class="mr-h1">{{#if editing.id}}{{localize "MR.Quest.Edit"}}{{else}}{{localize "MR.Quest.New"}}{{/if}}</h2><p class="mr-help">{{localize "MR.Quest.EditorHelp"}}</p></header>
+    <form class="mr-quest-form" data-quest-form>
+      <div class="mr-grid-3">
+        <div class="mr-field"><label>{{localize "MR.Quest.TitleField"}}</label><input type="text" name="title" value="{{editing.title}}" required></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.GenreField"}}</label><select name="genre">{{#each editing.genreOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.Theme"}}</label><select name="theme">{{#each editing.themes}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></div>
+      </div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Tagline"}}</label><input type="text" name="tagline" value="{{editing.tagline}}"></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Intro"}}</label><textarea name="intro" rows="3">{{editing.intro}}</textarea></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Goal"}}</label><input type="text" name="goal" value="{{editing.goal}}"></div>
+      <div class="mr-grid-2">
+        <div class="mr-field"><label>{{localize "MR.Quest.Questions"}}</label><textarea name="questions" rows="6">{{editing.questionsText}}</textarea></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.Difficulties"}}</label><textarea name="difficulties" rows="6">{{editing.difficultiesText}}</textarea></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.Concepts"}}</label><textarea name="concepts" rows="6">{{editing.conceptsText}}</textarea></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.Desires"}}</label><textarea name="desires" rows="6">{{editing.desiresText}}</textarea></div>
+      </div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Challenges"}}</label><textarea name="challenges" rows="8">{{editing.challengesText}}</textarea><small>{{localize "MR.Quest.ChallengesHelp"}}</small></div>
+      <footer class="mr-phase__foot">
+        <button type="button" data-action="cancelEdit">{{localize "MR.Action.Cancel"}}</button>
+        <button type="button" class="mr-primary" data-action="saveQuest" data-id="{{editing.id}}"><i class="fa-solid fa-floppy-disk"></i>{{localize "MR.Action.Save"}}</button>
+      </footer>
+    </form>
+  </section>
+  {{else}}
+  <p class="mr-help">{{localize "MR.Quest.LibraryHelp"}}</p>
+  <div class="mr-archive-grid">
+    {{#each list}}
+    <article class="mr-archive-card" data-mr-theme="{{theme}}">
+      <span class="mr-eyebrow">{{genreLabel}} · {{#if builtin}}{{localize "MR.Quest.Sample"}}{{else}}{{localize "MR.Quest.Custom"}}{{/if}}</span>
+      <h3 class="mr-h2">{{title}}</h3>
+      <p>{{tagline}}</p>
+      <div class="mr-inline">
+        {{#if canEdit}}<button type="button" data-action="editQuest" data-id="{{id}}"><i class="fa-solid fa-pen"></i>{{localize "MR.Quest.EditShort"}}</button><button type="button" class="mr-icon" data-action="deleteQuest" data-id="{{id}}" aria-label="{{localize 'MR.Action.Delete'}}"><i class="fa-solid fa-trash"></i></button>{{/if}}
+        {{#if ../isGM}}<button type="button" data-action="duplicateQuest" data-id="{{id}}"><i class="fa-solid fa-copy"></i>{{localize "MR.Quest.Duplicate"}}</button>{{/if}}
+        <button type="button" class="mr-icon" data-action="exportQuest" data-id="{{id}}" aria-label="{{localize 'MR.Quest.Export'}}"><i class="fa-solid fa-download"></i></button>
+      </div>
+    </article>
+    {{/each}}
+  </div>
+  {{#if isGM}}
+  <div class="mr-inline">
+    <button type="button" class="mr-primary" data-action="newQuest"><i class="fa-solid fa-plus"></i>{{localize "MR.Quest.New"}}</button>
+    <label class="mr-file-button"><i class="fa-solid fa-upload"></i>{{localize "MR.Quest.Import"}}<input type="file" accept=".json" data-import="quest"></label>
+  </div>
+  {{/if}}
+  {{/if}}
+  </div>
+  {{/if}}
+
+  {{#if (eq tab "archive")}}
+  <div class="mr-main">
+    <p class="mr-help">{{localize "MR.Archive.Help"}}</p>
+    <div class="mr-archive-grid">
+      {{#each fellowships}}
+      <article class="mr-archive-card {{#if active}}is-active{{/if}}" data-mr-theme="{{theme}}">
+        <span class="mr-eyebrow">{{date}} · {{phaseLabel}}{{#if active}} · {{localize "MR.Archive.Active"}}{{/if}}</span>
+        <h3 class="mr-h2">{{name}}</h3>
+        <p>{{quest}}</p>
+        {{#if resultLabel}}<p><span class="mr-result {{#if result.success}}is-success{{else}}is-failure{{/if}}">{{resultLabel}}</span></p>{{/if}}
+        <div class="mr-inline">
+          <button type="button" data-action="openFellowship" data-id="{{id}}"><i class="fa-solid fa-book-open"></i>{{localize "MR.Archive.Open"}}</button>
+          {{#unless active}}{{#if ../isGM}}<button type="button" data-action="activate" data-id="{{id}}"><i class="fa-solid fa-star"></i>{{localize "MR.Action.Activate"}}</button>{{/if}}{{/unless}}
+        </div>
+      </article>
+      {{else}}<p class="mr-empty">{{localize "MR.Archive.Empty"}}</p>{{/each}}
+    </div>
+  </div>
+  {{/if}}
+</div>

@@ -3,7 +3,7 @@ import { spawnSync } from "node:child_process";
 import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const failures = [];
-const jsonFiles = ["package.json","system.json","lang/es.json","lang/en.json","data/quests-es.json","data/quests-en.json"];
+const jsonFiles = ["package.json","system.json","lang/es.json","lang/en.json","data/quests-es.json","data/quests-en.json","data/tables-es.json","data/tables-en.json"];
 for (const file of jsonFiles) { try { JSON.parse(await readFile(path.join(root, file), "utf8")); } catch (error) { failures.push(`${file}: ${error.message}`); } }
 const en = JSON.parse(await readFile(path.join(root,"lang/en.json"))), es = JSON.parse(await readFile(path.join(root,"lang/es.json")));
 for (const key of new Set([...Object.keys(en),...Object.keys(es)])) if (!(key in en) || !(key in es)) failures.push(`i18n mismatch: ${key}`);

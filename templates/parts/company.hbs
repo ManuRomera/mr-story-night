@@ -1,29 +1,36 @@
-<section class="mr-company">
-  <h2 class="mr-label">{{localize "MR.Company.Title"}}</h2>
-  <figure class="mr-ring">
-    <svg viewBox="0 0 200 200" role="img" aria-label="{{ring.caption}}">
-      <defs><marker id="mr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"></path></marker></defs>
-      <circle class="mr-ring__track" cx="100" cy="100" r="70"></circle>
-      {{#each ring.arrows}}<line class="mr-ring__arrow {{#if want}}has-want{{/if}}" x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}" marker-end="url(#mr-arrow)"><title>{{title}}</title></line>{{/each}}
-      {{#each ring.nodes}}<g class="mr-ring__node {{#if lost}}is-lost{{/if}}"><circle cx="{{x}}" cy="{{y}}" r="15"></circle><text x="{{x}}" y="{{y}}" dy="4">{{label}}</text></g>{{/each}}
-    </svg>
-    <figcaption>{{ring.caption}}</figcaption>
-  </figure>
-  <ul class="mr-company__list">
-    {{#each seats}}
-    <li class="mr-member {{#if isMine}}is-mine{{/if}}">
+<section class="mr-phase mr-company-tab">
+  <div class="mr-company-top">
+    <figure class="mr-ring">
+      <svg viewBox="0 0 200 200" role="img" aria-label="{{ring.caption}}">
+        <defs><marker id="mr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"></path></marker></defs>
+        <circle class="mr-ring__track" cx="100" cy="100" r="74"></circle>
+        {{#each ring.arrows}}<line class="mr-ring__arrow {{#if want}}has-want{{/if}}" x1="{{x1}}" y1="{{y1}}" x2="{{x2}}" y2="{{y2}}" marker-end="url(#mr-arrow)"><title>{{title}}</title></line>{{/each}}
+        {{#each ring.nodes}}<g class="mr-ring__node {{#if lost}}is-lost{{/if}}"><circle cx="{{x}}" cy="{{y}}" r="17"></circle><text x="{{x}}" y="{{y}}" dy="4">{{label}}</text></g>{{/each}}
+      </svg>
+      <figcaption>{{ring.caption}}</figcaption>
+    </figure>
+    <div class="mr-grow">
+      {{#if intro}}<p class="mr-lead">{{intro}}</p>{{/if}}
+      {{#if answers.length}}<dl class="mr-answers">{{#each answers}}<dt>{{q}}</dt><dd>{{a}}</dd>{{/each}}</dl>{{/if}}
+      {{#if difficulties.length}}<p class="mr-meta">{{#each difficulties}}<span><i class="fa-solid fa-triangle-exclamation"></i>{{this}}</span>{{/each}}</p>{{/if}}
+    </div>
+  </div>
+  <div class="mr-member-grid">
+    {{#each members}}
+    <article class="mr-member {{#if isMine}}is-mine{{/if}}">
       <span class="mr-member__seat">{{name}}</span>
       {{#if main}}{{#with main}}
-      <div class="mr-member__main">
-        <span class="mr-avatar">{{#if img}}<img src="{{img}}" alt="">{{else}}{{initials}}{{/if}}</span>
-        <div><strong>{{displayName}}</strong><small>{{concept}}</small></div>
-      </div>
-      {{#if desire}}<p class="mr-member__line"><i class="fa-solid fa-heart"></i>{{desire}}</p>{{/if}}
-      {{#if want}}<p class="mr-member__line"><i class="fa-solid fa-arrow-left-long"></i>{{want}} <em>({{wantTarget}})</em></p>{{/if}}
-      {{/with}}{{else}}<p class="mr-member__line mr-warning">{{localize "MR.Company.NoMain"}}</p>{{/if}}
-      {{#if minor}}<p class="mr-member__minor"><span class="mr-label">{{localize "MR.Role.minor"}}</span> {{minor.displayName}}{{#if minor.concept}} · {{minor.concept}}{{/if}}</p>{{/if}}
+      <button type="button" class="mr-member__main" data-action="openSheet" data-actor-id="{{id}}">
+        <span class="mr-avatar mr-avatar--lg">{{#if img}}<img src="{{img}}" alt="">{{else}}{{initials}}{{/if}}</span>
+        <span><strong>{{displayName}}</strong><small>{{concept}}{{#if pronouns}} · {{pronouns}}{{/if}}</small></span>
+      </button>
+      {{#if desire}}<p class="mr-line"><i class="fa-solid fa-heart"></i>{{desire}}</p>{{/if}}
+      {{#if want}}<p class="mr-line"><i class="fa-solid fa-arrow-left-long"></i>{{want}}</p>{{/if}}
+      {{#if detail}}<p class="mr-line"><i class="fa-solid fa-feather"></i>{{detail}}</p>{{/if}}
+      {{/with}}{{else}}<p class="mr-warning">{{localize "MR.Company.NoMain"}}</p>{{/if}}
+      {{#if minor}}<p class="mr-member__minor"><span class="mr-label">{{localize "MR.Role.minor"}}</span> <button type="button" class="mr-link" data-action="openSheet" data-actor-id="{{minor.id}}">{{minor.displayName}}</button>{{#if minor.concept}} · {{minor.concept}}{{/if}}</p>{{/if}}
       {{#each lost}}<p class="mr-member__lost"><s>{{displayName}}</s> · {{fateLabel}}</p>{{/each}}
-    </li>
+    </article>
     {{/each}}
-  </ul>
+  </div>
 </section>

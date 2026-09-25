@@ -1,0 +1,14 @@
+<h2 class="mr-label">{{localize "MR.Company.Title"}}</h2>
+<ul class="mr-members">
+  {{#each members}}
+  <li class="mr-mini {{#if isMine}}is-mine{{/if}}">
+    {{#if main}}{{#with main}}
+    <button type="button" class="mr-mini__main" data-action="openSheet" data-actor-id="{{id}}" data-tooltip="{{localize 'MR.Character.OpenSheet'}}">
+      <span class="mr-avatar">{{#if img}}<img src="{{img}}" alt="">{{else}}{{initials}}{{/if}}</span>
+      <span class="mr-mini__text"><strong>{{displayName}}</strong><small>{{concept}}</small></span>
+    </button>
+    {{/with}}{{else}}<p class="mr-mini__none">{{localize "MR.Company.NoMain"}}</p>{{/if}}
+    <span class="mr-mini__seat">{{name}}{{#if minor}} · <button type="button" class="mr-link" data-action="openSheet" data-actor-id="{{minor.id}}">{{minor.displayName}}</button>{{/if}}{{#each lost}} · <s>{{displayName}}</s>{{/each}}</span>
+  </li>
+  {{/each}}
+</ul>
