@@ -1,0 +1,4 @@
+<section class="mr-phase">
+  <header class="mr-phase__head"><h2 class="mr-h1">{{localize "MR.Tab.chronicle"}}</h2><p class="mr-help">{{localize "MR.Chronicle.Help"}}</p></header>
+  <ol class="mr-log">{{#each entries}}<li><i class="{{icon}}"></i><div><p>{{text}}</p>{{#if detail}}<small>{{detail}}</small>{{/if}}</div></li>{{else}}<li class="mr-empty">{{localize "MR.Chronicle.Empty"}}</li>{{/each}}</ol>
+</section>

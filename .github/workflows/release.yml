@@ -14,5 +14,5 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           files: |
-            outputs/mr-story-night-*.zip
+            outputs/mr-story-night.zip
             outputs/system.json

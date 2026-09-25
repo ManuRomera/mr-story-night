@@ -1,12 +1,11 @@
-<form class="{{cssClass}} mr-character" autocomplete="off">
-  <header><img src="{{actor.img}}" data-edit="img" alt=""><div><input name="name" value="{{actor.name}}" aria-label="{{localize 'Name'}}"><input name="system.pronouns" value="{{system.pronouns}}" placeholder="{{localize 'MR.Character.Pronouns'}}"><textarea name="system.concept" placeholder="{{localize 'MR.Character.Concept'}}">{{system.concept}}</textarea></div><div class="mr-token"><strong>{{system.tokens}}</strong><span>{{localize "MR.Character.Tokens"}}</span><button type="button" data-action="spend-token">{{localize "MR.Character.Spend"}}</button></div></header>
-  <main class="mr-character-grid">
-    <label><span>{{localize "MR.Character.Strength"}}</span><textarea name="system.strength">{{system.strength}}</textarea></label>
-    <label><span>{{localize "MR.Character.Flaw"}}</span><textarea name="system.flaw">{{system.flaw}}</textarea></label>
-    <label><span>{{localize "MR.Character.Desire"}}</span><textarea name="system.desire">{{system.desire}}</textarea></label>
-    <label><span>{{localize "MR.Character.Fear"}}</span><textarea name="system.fear">{{system.fear}}</textarea></label>
-    <label><span>{{localize "MR.Character.Secret"}}</span><textarea name="system.secret">{{system.secret}}</textarea></label>
-    <label><span>{{localize "MR.Character.Relationship"}}</span><textarea name="system.relationship">{{system.relationship}}</textarea></label>
-    <label class="mr-wide"><span>{{localize "MR.Character.Detail"}}</span><textarea name="system.memorableDetail">{{system.memorableDetail}}</textarea></label>
-  </main>
-</form>
+<div class="mr-sheet">
+  <header class="mr-sheet__head">
+    <button type="button" class="mr-portrait" data-action="mrEditImage" aria-label="{{localize 'MR.Character.Portrait'}}"><img src="{{actor.img}}" alt=""></button>
+    <div class="mr-grow">
+      <input type="text" name="name" value="{{actor.name}}" aria-label="{{localize 'MR.Character.Name'}}" {{#unless editable}}disabled{{/unless}}>
+      <input type="text" name="system.concept" value="{{system.concept}}" placeholder="{{localize 'MR.Character.Concept'}}" {{#unless editable}}disabled{{/unless}}>
+    </div>
+  </header>
+  <div class="mr-field"><label for="mr-notes-{{actor.id}}">{{localize "MR.Character.Notes"}}</label><textarea id="mr-notes-{{actor.id}}" name="system.notes" rows="10" {{#unless editable}}disabled{{/unless}}>{{system.notes}}</textarea></div>
+  <p class="mr-help">{{localize "MR.Character.SheetHelp"}}</p>
+</div>

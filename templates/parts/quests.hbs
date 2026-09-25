@@ -1,0 +1,47 @@
+{{#if editing}}
+<section class="mr-phase mr-quest-editor">
+  <header class="mr-phase__head"><h2 class="mr-h1">{{#if editing.id}}{{localize "MR.Quest.Edit"}}{{else}}{{localize "MR.Quest.New"}}{{/if}}</h2><p class="mr-help">{{localize "MR.Quest.EditorHelp"}}</p></header>
+  <form class="mr-quest-form" data-quest-form>
+    <div class="mr-grid-2">
+      <div class="mr-field"><label>{{localize "MR.Quest.TitleField"}}</label><input type="text" name="title" value="{{editing.title}}" required></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Theme"}}</label><select name="theme">{{#each editing.themes}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></div>
+      <div class="mr-field mr-span-2"><label>{{localize "MR.Quest.Tagline"}}</label><input type="text" name="tagline" value="{{editing.tagline}}"></div>
+      <div class="mr-field mr-span-2"><label>{{localize "MR.Quest.Intro"}}</label><textarea name="intro" rows="3">{{editing.intro}}</textarea></div>
+      <div class="mr-field mr-span-2"><label>{{localize "MR.Quest.Goal"}}</label><input type="text" name="goal" value="{{editing.goal}}"></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Questions"}}</label><textarea name="questions" rows="6">{{editing.questionsText}}</textarea></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Difficulties"}}</label><textarea name="difficulties" rows="6">{{editing.difficultiesText}}</textarea></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Concepts"}}</label><textarea name="concepts" rows="6">{{editing.conceptsText}}</textarea></div>
+      <div class="mr-field"><label>{{localize "MR.Quest.Desires"}}</label><textarea name="desires" rows="6">{{editing.desiresText}}</textarea></div>
+      <div class="mr-field mr-span-2"><label>{{localize "MR.Quest.Challenges"}}</label><textarea name="challenges" rows="8">{{editing.challengesText}}</textarea><small>{{localize "MR.Quest.ChallengesHelp"}}</small></div>
+    </div>
+    <footer class="mr-phase__foot">
+      <button type="button" data-action="local" data-key="editQuest" data-value="">{{localize "MR.Action.Cancel"}}</button>
+      <button type="button" class="mr-primary" data-action="saveQuest" data-id="{{editing.id}}"><i class="fa-solid fa-floppy-disk"></i>{{localize "MR.Action.Save"}}</button>
+    </footer>
+  </form>
+</section>
+{{else}}
+<section class="mr-phase">
+  <header class="mr-phase__head"><h2 class="mr-h1">{{localize "MR.Tab.quests"}}</h2><p class="mr-help">{{localize "MR.Quest.LibraryHelp"}}</p></header>
+  <div class="mr-archive-grid">
+    {{#each list}}
+    <article class="mr-archive-card" data-mr-theme="{{theme}}">
+      <span class="mr-eyebrow">{{#if builtin}}{{localize "MR.Quest.Sample"}}{{else}}{{localize "MR.Quest.Custom"}}{{/if}}</span>
+      <h3 class="mr-h2">{{title}}</h3>
+      <p>{{tagline}}</p>
+      <div class="mr-inline">
+        {{#if canEdit}}<button type="button" data-action="editQuest" data-id="{{id}}"><i class="fa-solid fa-pen"></i>{{localize "MR.Quest.EditShort"}}</button><button type="button" class="mr-icon" data-action="deleteQuest" data-id="{{id}}" aria-label="{{localize 'MR.Action.Delete'}}"><i class="fa-solid fa-trash"></i></button>{{/if}}
+        {{#if ../canEdit}}<button type="button" data-action="duplicateQuest" data-id="{{id}}"><i class="fa-solid fa-copy"></i>{{localize "MR.Quest.Duplicate"}}</button>{{/if}}
+        <button type="button" class="mr-icon" data-action="exportQuest" data-id="{{id}}" aria-label="{{localize 'MR.Quest.Export'}}"><i class="fa-solid fa-download"></i></button>
+      </div>
+    </article>
+    {{/each}}
+  </div>
+  {{#if canEdit}}
+  <div class="mr-inline mr-import">
+    <button type="button" class="mr-primary" data-action="newQuest"><i class="fa-solid fa-plus"></i>{{localize "MR.Quest.New"}}</button>
+    <label class="mr-file-button"><i class="fa-solid fa-upload"></i>{{localize "MR.Quest.Import"}}<input type="file" accept=".json" data-import="quest"></label>
+  </div>
+  {{/if}}
+</section>
+{{/if}}

@@ -1,0 +1,51 @@
+<section class="mr-phase">
+  <header class="mr-phase__head">
+    <span class="mr-eyebrow">{{localize "MR.Step.characters"}}</span>
+    <h2 class="mr-h1">{{localize "MR.Characters.Title"}}</h2>
+    <p class="mr-lead">{{localize "MR.Characters.Help"}}</p>
+  </header>
+  <datalist id="mr-concepts">{{#each concepts}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <datalist id="mr-desires">{{#each desires}}<option value="{{this}}"></option>{{/each}}</datalist>
+  <div class="mr-char-cards">
+    {{#each cards}}
+    <article class="mr-char-card {{#if isMine}}is-mine{{/if}} {{#if ready}}is-ready{{/if}}">
+      <header>
+        <span class="mr-eyebrow">{{seat.name}}{{#if isMine}} · {{localize "MR.Characters.You"}}{{/if}}</span>
+        {{#if ready}}<span class="mr-badge mr-badge--ok"><i class="fa-solid fa-check"></i>{{localize "MR.Characters.Ready"}}</span>{{/if}}
+      </header>
+      {{#with main}}
+      <div class="mr-char-card__main">
+        <button type="button" class="mr-portrait" data-action="pickImage" data-char-id="{{id}}" {{#unless canEdit}}disabled{{/unless}} aria-label="{{localize 'MR.Character.Portrait'}}">{{#if img}}<img src="{{img}}" alt="">{{else}}<span>{{initials}}</span>{{/if}}</button>
+        <div class="mr-grid-2 mr-grow">
+          <div class="mr-field"><label>{{localize "MR.Character.Name"}}</label><input type="text" data-field="characters.{{id}}.name" value="{{name}}" {{#unless canEdit}}disabled{{/unless}}></div>
+          <div class="mr-field"><label>{{localize "MR.Character.Pronouns"}}</label><input type="text" data-field="characters.{{id}}.pronouns" value="{{pronouns}}" {{#unless canEdit}}disabled{{/unless}}></div>
+          <div class="mr-field mr-span-2"><label>{{localize "MR.Character.Concept"}}</label><input type="text" list="mr-concepts" data-field="characters.{{id}}.concept" value="{{concept}}" {{#unless canEdit}}disabled{{/unless}}></div>
+        </div>
+      </div>
+      <div class="mr-field"><label>{{localize "MR.Character.Desire"}}</label><input type="text" list="mr-desires" data-field="characters.{{id}}.desire" value="{{desire}}" {{#unless canEdit}}disabled{{/unless}}><small>{{localize "MR.Character.DesireHelp"}}</small></div>
+      <div class="mr-field mr-want"><label><i class="fa-solid fa-arrow-left-long"></i> {{localize "MR.Character.Want" name=wantTarget}}</label><textarea rows="2" data-field="characters.{{id}}.want" {{#unless canEdit}}disabled{{/unless}}>{{want}}</textarea><small>{{localize "MR.Character.WantHelp"}}</small></div>
+      {{/with}}
+      {{#with minor}}
+      <div class="mr-minor">
+        <span class="mr-label">{{localize "MR.Role.minor"}}</span>
+        <div class="mr-grid-2">
+          <div class="mr-field"><label>{{localize "MR.Character.Name"}}</label><input type="text" data-field="characters.{{id}}.name" value="{{name}}" {{#unless canEdit}}disabled{{/unless}}></div>
+          <div class="mr-field"><label>{{localize "MR.Character.Concept"}}</label><input type="text" list="mr-concepts" data-field="characters.{{id}}.concept" value="{{concept}}" {{#unless canEdit}}disabled{{/unless}}></div>
+        </div>
+      </div>
+      {{/with}}
+      {{#if canEdit}}
+      <footer>
+        {{#if ready}}<button type="button" data-action="op" data-op="setReady" data-args='{"seatId":"{{seat.id}}","ready":false}'>{{localize "MR.Characters.NotReady"}}</button>
+        {{else}}<button type="button" class="mr-primary" data-action="op" data-op="setReady" data-args='{"seatId":"{{seat.id}}","ready":true}' {{#unless complete}}disabled{{/unless}}><i class="fa-solid fa-check"></i>{{localize "MR.Characters.MarkReady"}}</button>{{/if}}
+      </footer>
+      {{/if}}
+    </article>
+    {{/each}}
+  </div>
+  <footer class="mr-phase__foot">
+    <span class="mr-progress-text">{{localize "MR.Characters.ReadyCount" n=readyCount total=total}}</span>
+    {{#if canForce}}<button type="button" data-action="op" data-op="charactersDone" data-args='{"force":true}'>{{localize "MR.Action.Force"}}</button>{{/if}}
+    <button type="button" class="mr-primary" data-action="op" data-op="charactersDone" {{#unless allReady}}disabled{{/unless}}>{{localize "MR.Characters.Continue"}}<i class="fa-solid fa-arrow-right"></i></button>
+  </footer>
+</section>

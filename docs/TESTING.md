@@ -1,10 +1,30 @@
-# Testing checklist
+# Pruebas
 
-Automated checks validate JSON, JavaScript syntax, template block balance, i18n parity, manifest references, deterministic randomization, genre-bank shape, and combination counts.
+## Automáticas (`npm test`, `npm run validate`)
 
-Manual release acceptance in both Foundry 13 and 14 must cover: installation, world creation, GM/player permissions, reconnect, two simultaneous clients, every wizard step, character editing, scene creation, narrative actions, theme/accessibility settings, 1920×1080 and narrow layouts, browser console errors, and upgrade from the previous release. Results should be recorded per Foundry build; an unexecuted checklist is not a passed test.
+- Motor: partida completa de tres desafíos, suma de piedras, arrastre de resultados al tercer desafío, orden de escenas, electores sin repetición, permisos por asiento, pérdidas, ascensos, adopciones y reemplazo de historias.
+- Vistas: cada momento de una partida simulada, en las cinco pestañas, como anfitrión y como jugador, en ambos idiomas y sin claves de traducción ausentes.
+- Validación estática: JSON, sintaxis, equilibrio de bloques Handlebars, paridad de idiomas y referencias del manifiesto.
 
-## Recorded runs
+## Manuales en Foundry (pendientes de ejecutar en v13)
 
-- **Foundry v13.351, macOS, Chromium 132 — passed 2026-09-25:** system discovery, isolated world creation, world launch, Spanish five-step wizard, Spanish premise generation, dashboard rendering, relationship board, archive/import controls, content editor, safety controls, generative audio controls, and final credits. Server completed world loading and migrations without system runtime errors.
-- **Foundry v14 — not executed:** no v14 runtime is installed on the development machine. Static compatibility and manifest validation pass; real certification remains intentionally unclaimed.
+Una lista sin ejecutar no es una prueba superada. Registrad aquí cada ejecución con la versión exacta.
+
+1. Instalar desde el manifiesto, crear un mundo y comprobar que carga sin errores de consola.
+2. Anfitrión y dos jugadores en navegadores distintos: la mesa se abre sola para los tres.
+3. Vestíbulo: reordenar asientos, añadir un asiento sin cuenta y empezar.
+4. Preparación: dos personas editan campos a la vez sin perder lo que escriben.
+5. Compañía: un jugador no puede editar el personaje de otro (aviso traducido); "Estoy listo" y "Seguir sin esperar".
+6. Desafío: solo quien elige puede rellenar los campos; las escenas empiezan por el asiento del protagonista.
+7. Piedras: cada jugador ve solo su formulario; "Sacar dos piedras" se activa cuando todos han echado las suyas.
+8. Resultado con pérdida: ascenso del secundario; asiento sin personajes → adoptar o presentar.
+9. Tercer desafío: el texto del cuenco indica los éxitos y fracasos arrastrados.
+10. Epílogo, cerrar, créditos, imprimir o guardar en PDF, y aparición en el Archivo.
+11. Comodidad: pausa desde un jugador → pantalla para todos → el anfitrión continúa sin avisos repetidos.
+12. Misiones: crear, duplicar, exportar e importar.
+13. Recargar a mitad de desafío: el estado se conserva.
+14. Ventana estrecha (unos 700 px) y alto contraste.
+
+## Ejecuciones registradas
+
+- Ninguna todavía en Foundry. Las vistas se han revisado renderizando las plantillas y el CSS reales en Chromium, y la integración con una simulación de la API de Foundry (hooks, ajustes, socket, acciones).

@@ -1,17 +1,11 @@
-export function hashSeed(value = "story-night") {
-  let hash = 2166136261;
-  for (const char of String(value)) { hash ^= char.charCodeAt(0); hash = Math.imul(hash, 16777619); }
-  return hash >>> 0;
+export const uid = () => globalThis.foundry?.utils?.randomID?.() ?? crypto.randomUUID().replace(/-/g, "").slice(0, 16);
+export const clone = value => structuredClone(value);
+export const randomUnit = () => crypto.getRandomValues(new Uint32Array(1))[0] / 4294967296;
+export const slug = value => String(value ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase() || "historia";
+export function download(filename, data) {
+  const blob = new Blob([typeof data === "string" ? data : JSON.stringify(data, null, 2)], { type: "application/json" });
+  const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: filename });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
-
-export function seededRandom(seed) {
-  let state = hashSeed(seed) || 1;
-  return () => { state |= 0; state = state + 0x6D2B79F5 | 0; let t = Math.imul(state ^ state >>> 15, 1 | state); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
-}
-
-export const pick = (values, random = Math.random) => values[Math.floor(random() * values.length)];
-export const uid = () => globalThis.foundry?.utils?.randomID?.() ?? crypto.randomUUID();
-export const clone = value => globalThis.foundry?.utils?.deepClone?.(value) ?? structuredClone(value);
-export const debounce = (fn, wait = 180) => { let timer; return (...args) => { clearTimeout(timer); timer = setTimeout(() => fn(...args), wait); }; };
-export const escapeHTML = value => String(value ?? "").replace(/[&<>'"]/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[char]));
-export const localize = (key, data) => data ? game.i18n.format(key, data) : game.i18n.localize(key);
+export const lines = value => String(value ?? "").split("\n").map(x => x.trim()).filter(Boolean);

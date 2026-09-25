@@ -1,30 +1,28 @@
 {
   "id": "mr-story-night",
-  "title": "MR · Story Night",
-  "description": "Sistema narrativo de preparación cero para crear y jugar historias autoconclusivas en Foundry VTT v13 y v14. Código, contenido y arte creados con asistencia de IA.",
-  "version": "0.2.0",
-  "compatibility": { "minimum": "13", "verified": "13.351", "maximum": "14" },
-  "authors": [{ "name": "Manu Romera / Asistente OpenAI" }],
+  "title": "MR · Story Night — Follow",
+  "description": "Mesa sin director para jugar a Follow (Ben Robbins) en Foundry VTT: misión, compañía, tres desafíos, bolsa de piedras y epílogo. Implementación no oficial para uso privado; requiere tu propio ejemplar del juego.",
+  "version": "0.3.0",
+  "compatibility": { "minimum": "13", "verified": "13" },
+  "authors": [{ "name": "Manu Romera" }],
   "esmodules": ["scripts/main.js"],
   "styles": ["styles/mr-story-night.css"],
-  "background": "systems/mr-story-night/assets/art/story-room-cover.png",
   "languages": [
     { "lang": "es", "name": "Español", "path": "lang/es.json" },
     { "lang": "en", "name": "English", "path": "lang/en.json" }
   ],
   "documentTypes": {
-    "Actor": { "character": {} },
-    "Item": { "relationship": {}, "story": {}, "scene": {} }
+    "Actor": { "character": { "htmlFields": ["notes"] } }
   },
-  "packs": [],
-  "initiative": "1d6",
-  "grid": { "distance": 1, "units": "space" },
+  "socket": true,
+  "background": "systems/mr-story-night/assets/art/story-room-cover.webp",
+  "grid": { "distance": 1, "units": "" },
   "primaryTokenAttribute": null,
   "secondaryTokenAttribute": null,
   "url": "https://github.com/ManuRomera/mr-story-night",
   "bugs": "https://github.com/ManuRomera/mr-story-night/issues/new/choose",
   "manifest": "https://raw.githubusercontent.com/ManuRomera/mr-story-night/main/system.json",
-  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.2.0/mr-story-night.zip",
+  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.3.0/mr-story-night.zip",
   "license": "LICENSE",
   "readme": "README.md"
 }

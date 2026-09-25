@@ -1,0 +1,17 @@
+<section class="mr-phase">
+  <header class="mr-phase__head">
+    <span class="mr-eyebrow">{{localize "MR.Step.epilogue"}}</span>
+    <h2 class="mr-h1">{{#if success}}{{localize "MR.Epilogue.TitleWon"}}{{else}}{{localize "MR.Epilogue.TitleLost"}}{{/if}}</h2>
+    <p class="mr-lead">{{localize "MR.Epilogue.Help"}}</p>
+  </header>
+  {{#each replacements}}<div class="mr-callout"><strong>{{localize "MR.Replace.Title" seat=seat}}</strong><p>{{localize "MR.Epilogue.NoMain"}}</p></div>{{/each}}
+  <div class="mr-epilogue-grid">
+    {{#each cards}}
+    <article class="mr-epilogue-card {{#if isMine}}is-mine{{/if}}">
+      <header>{{#with char}}<span class="mr-avatar {{#if lost}}is-lost{{/if}}">{{#if img}}<img src="{{img}}" alt="">{{else}}{{initials}}{{/if}}</span><div><strong>{{displayName}}</strong><small>{{concept}}{{#if lost}} · {{fateLabel}}{{/if}}</small></div>{{/with}}<span class="mr-eyebrow">{{seat}}</span></header>
+      <textarea rows="5" data-field="epilogues.{{seatId}}" placeholder="{{localize 'MR.Epilogue.Placeholder'}}" {{#unless canEdit}}disabled{{/unless}}>{{text}}</textarea>
+    </article>
+    {{/each}}
+  </div>
+  <footer class="mr-phase__foot"><button type="button" class="mr-primary mr-large" data-action="finish"><i class="fa-solid fa-book"></i>{{localize "MR.Epilogue.Finish"}}</button></footer>
+</section>

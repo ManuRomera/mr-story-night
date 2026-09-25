@@ -1,49 +1,59 @@
-import { SYSTEM_ID } from "./constants.js";
+import { PARTIALS, SYSTEM_ID } from "./constants.js";
 import { registerSettings, applyPreferences } from "./settings.js";
-import { StoryStore } from "./store.js";
-import { CharacterSheet } from "./sheets/character-sheet.js";
-import { StoryDashboard } from "./apps/dashboard.js";
-import { NewStoryWizard } from "./apps/new-story.js";
-import { api } from "./api.js";
-import { StoryTools } from "./apps/story-tools.js";
+import { Store } from "./store.js";
+import { StoryTable } from "./app.js";
+import { CharacterData, CharacterSheet } from "./sheets/character.js";
+import { loadBuiltinQuests } from "./quests.js";
+import { syncSafety } from "./overlay.js";
+import { OUTCOMES } from "./engine.js";
 
 Hooks.once("init", () => {
-  console.info("MR · Story Night | Initializing"); registerSettings();
-  Handlebars.registerHelper("concat", (...args) => args.slice(0, -1).join(""));
-  Handlebars.registerHelper("eq", (a, b) => a === b);
-  Handlebars.registerHelper("array", (...args) => args.slice(0, -1));
-  Handlebars.registerHelper("includes", (value, list) => Array.isArray(list) && list.includes(value));
-  Handlebars.registerHelper("multiply", (a, b) => Number(a) * Number(b));
-  Handlebars.registerHelper("midpoint", (a, b) => (Number(a) + Number(b)) / 2);
-  Handlebars.registerHelper("join", (value, separator) => Array.isArray(value) ? value.join(separator) : "");
-  Actors.unregisterSheet?.("core", ActorSheet, { types: ["character"] });
-  Actors.registerSheet?.(SYSTEM_ID, CharacterSheet, { types: ["character"], makeDefault: true, label: "MR.Character.Sheet" });
-  game[SYSTEM_ID] = api;
+  console.info("MR · Story Night | Inicializando");
+  registerSettings({
+    onStory: () => Store.emit(),
+    onSafety: () => { syncSafety(); StoryTable.refresh(); },
+    onLibrary: () => StoryTable.refresh()
+  });
+  CONFIG.Actor.dataModels.character = CharacterData;
+  foundry.documents.collections.Actors.registerSheet(SYSTEM_ID, CharacterSheet, { types: ["character"], makeDefault: true, label: "MR.Character.Sheet" });
+  foundry.applications.handlebars.loadTemplates(PARTIALS);
+  game.keybindings.register(SYSTEM_ID, "openTable", {
+    name: "MR.App.Open", editable: [{ key: "KeyT", modifiers: ["Shift"] }],
+    onDown: () => { StoryTable.open(); return true; }
+  });
+  game[SYSTEM_ID] = Object.freeze({
+    open: options => StoryTable.open(options),
+    get story() { return Store.story; },
+    dispatch: (op, args) => Store.dispatch(op, args),
+    outcomes: OUTCOMES,
+    hooks: { changed: "mrStoryNightChanged" }
+  });
 });
 
 Hooks.once("ready", async () => {
-  applyPreferences(); await StoryStore.init(); document.documentElement.classList.toggle("mr-safety-paused",Boolean(game.settings.get(SYSTEM_ID,"safetyState")?.paused));
-  game.socket?.on(`system.${SYSTEM_ID}`, async message => { if (message.type === "story" && !game.user.isGM) StoryStore.receive(message.story); if(message.type==="safety-request"&&game.user.isGM){const state=foundry.utils.deepClone(game.settings.get(SYSTEM_ID,"safetyState"));state.signals.push(message.signal);state.signals=state.signals.slice(-20);if(message.signal.type==="pause")state.paused=true;await game.settings.set(SYSTEM_ID,"safetyState",state);game.socket.emit(`system.${SYSTEM_ID}`,{type:"safety",state});} if(message.type==="safety"){document.documentElement.classList.toggle("mr-safety-paused",message.state.paused);ui.notifications?.warn?.(game.i18n.localize(`MR.Safety.Signal.${message.state.signals.at(-1)?.type}`));} });
-  if (game.user.isGM && !StoryStore.story) new NewStoryWizard().render(true);
+  applyPreferences();
+  Store.init();
+  await loadBuiltinQuests();
+  syncSafety({ notify: false });
+  if (game.settings.get(SYSTEM_ID, "autoOpen")) StoryTable.open();
 });
 
 Hooks.on("getSceneControlButtons", controls => {
-  const notes = Array.isArray(controls) ? controls.find(control => control.name === "notes") : controls.notes;
+  const notes = controls?.notes;
   if (!notes?.tools) return;
-  const tool = { name: "mr-story", title: "MR.Dashboard.Open", icon: "fas fa-book-open", button: true, onClick: () => new StoryDashboard().render(true) };
-  if (Array.isArray(notes.tools)) notes.tools.push(tool); else notes.tools[tool.name] = tool;
+  notes.tools.mrStoryTable = {
+    name: "mrStoryTable", title: "MR.App.Open", icon: "fa-solid fa-people-group", order: Object.keys(notes.tools).length,
+    button: true, visible: true, onChange: () => StoryTable.open()
+  };
 });
 
-Hooks.on("renderSidebarTab", (_app, html) => {
-  if (!game.user.isGM) return;
-  const root = html?.[0] ?? html;
-  if (!(root instanceof HTMLElement) || root.querySelector(".mr-sidebar-launch")) return;
-  const button = document.createElement("button"); button.className = "mr-sidebar-launch";
-  const icon = document.createElement("i"); icon.className = "fas fa-book-open"; button.append(icon, ` ${game.i18n.localize("MR.Dashboard.Open")}`);
-  button.addEventListener("click", () => new StoryDashboard().render(true)); root.prepend(button);
-});
-
-Hooks.on("hotbarDrop", (_bar, data, slot) => {
-  if (data.type !== "MRStoryAction") return;
-  Macro.create({ name: game.i18n.localize(data.label), type: "script", command: `game["${SYSTEM_ID}"].${data.action}()`, img: "icons/svg/book.svg" }).then(macro => game.user.assignHotbarMacro(macro, slot)); return false;
+/** Botón visible en la barra lateral de ajustes, aunque no haya escena activa. */
+Hooks.on("renderSettings", (_app, html) => {
+  const root = html instanceof HTMLElement ? html : html?.[0];
+  if (!root || root.querySelector(".mr-open-table")) return;
+  const button = document.createElement("button");
+  button.type = "button"; button.className = "mr-open-table";
+  button.innerHTML = `<i class="fa-solid fa-people-group"></i> ${game.i18n.localize("MR.App.Open")}`;
+  button.addEventListener("click", () => StoryTable.open());
+  (root.querySelector("section") ?? root).prepend(button);
 });

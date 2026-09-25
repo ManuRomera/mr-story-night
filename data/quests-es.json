@@ -1,0 +1,102 @@
+[
+  {
+    "id": "sample-winter-pass",
+    "title": "El paso del invierno",
+    "tagline": "Cruzar las montañas y volver antes de que la nieve cierre el camino.",
+    "theme": "fantasy",
+    "intro": "El granero del pueblo ardió a finales de otoño. El único grano que queda está al otro lado de las montañas, en el monasterio de Altacumbre. Una pequeña compañía tiene que ir a buscarlo y regresar antes de que la primera nevada selle el paso durante meses.",
+    "goal": "Traer el grano del monasterio de Altacumbre antes de que la nieve cierre el paso.",
+    "questions": [
+      "¿Qué destruyó el granero y a quién culpa el pueblo?",
+      "¿Por qué el monasterio no quiere entregar el grano sin más?",
+      "¿Qué se cuenta del paso que nadie se atreve a decir en voz alta?",
+      "¿Quién, en el pueblo, prefiere que la compañía fracase?"
+    ],
+    "difficulties": [
+      "La nieve llegará antes de lo previsto",
+      "Los monjes piden algo a cambio",
+      "Hay bandidos en el puente viejo",
+      "Alguien del pueblo sabotea la expedición",
+      "Solo una persona de la compañía conoce el camino",
+      "La carga es demasiado pesada para volver deprisa"
+    ],
+    "concepts": [
+      "Guía de montaña retirada",
+      "Hija del molinero",
+      "Soldado licenciado",
+      "Curandera del valle",
+      "Contrabandista arrepentido",
+      "Novicio fugado del monasterio",
+      "Mercader endeudado",
+      "Cazador solitario"
+    ],
+    "desires": [
+      "Salvar a mi familia del hambre",
+      "Demostrar que no soy un cobarde",
+      "Saldar una deuda con el pueblo",
+      "Recuperar el respeto que perdí",
+      "Ganarme la confianza de alguien",
+      "Averiguar qué fue de quien cruzó el paso y no volvió"
+    ],
+    "challenges": [
+      { "title": "Convencer al consejo", "text": "El pueblo tiene que prestar mulas y provisiones que no le sobran." },
+      { "title": "El puente viejo", "text": "Está vigilado, o podrido, o ambas cosas." },
+      { "title": "La tormenta", "text": "Refugiarse y perder días, o seguir a ciegas." },
+      { "title": "Negociar con el abad", "text": "El monasterio también tiene bocas que alimentar." },
+      { "title": "Una herida en la ruta", "text": "Alguien se lastima y retrasa a todos." },
+      { "title": "El regreso cargados", "text": "Más lentos, más cansados y con el tiempo en contra." },
+      { "title": "Los bandidos", "text": "Quieren el grano, o quieren a alguien de la compañía." },
+      { "title": "La última noche", "text": "A un día del pueblo, algo lo cambia todo." }
+    ]
+  },
+  {
+    "id": "sample-meridian-station",
+    "title": "Estación Meridiana",
+    "tagline": "Mantener viva una estación orbital hasta que llegue el relevo.",
+    "theme": "sci-fi",
+    "intro": "La Estación Meridiana orbita un gigante gaseoso a meses de cualquier puerto. La nave de relevo acaba de anunciar un retraso de cuarenta días, y los sistemas de la estación no están preparados para aguantar tanto. La tripulación tiene que resistir.",
+    "goal": "Mantener con vida a la tripulación de la Estación Meridiana hasta que llegue el relevo.",
+    "questions": [
+      "¿Qué investiga la estación que tanto le importa a la empresa?",
+      "¿Por qué se retrasa el relevo?",
+      "¿Qué parte de la estación nadie visita?",
+      "¿Quién a bordo tiene órdenes que el resto desconoce?"
+    ],
+    "difficulties": [
+      "El reciclador de aire falla cada pocos días",
+      "La empresa antepone los datos a la tripulación",
+      "Una tormenta del planeta corta las comunicaciones",
+      "Las raciones no cuadran",
+      "Hay alguien a bordo que no figura en la lista",
+      "El piloto automático tiene su propio plan"
+    ],
+    "concepts": [
+      "Ingeniera jefa agotada",
+      "Médico con la licencia caducada",
+      "Científica que no quiere irse",
+      "Supervisor de la empresa",
+      "Técnico de mantenimiento recién llegado",
+      "Piloto sin nave",
+      "Operadora de comunicaciones",
+      "Polizón"
+    ],
+    "desires": [
+      "Volver a casa con los míos",
+      "Salvar la investigación de mi vida",
+      "Que la empresa pague por esto",
+      "Ser, por fin, quien toma las decisiones",
+      "Proteger a una persona concreta a bordo",
+      "Que nadie descubra lo que hice"
+    ],
+    "challenges": [
+      { "title": "Racionar", "text": "Decidir quién recibe qué cuando no alcanza para todos." },
+      { "title": "Reparar el reciclador", "text": "Un trabajo lento y peligroso fuera del casco." },
+      { "title": "Recuperar el contacto", "text": "Hay que alinear la antena en plena tormenta." },
+      { "title": "El módulo sellado", "text": "Hay algo, o alguien, dentro." },
+      { "title": "Motín", "text": "Parte de la tripulación quiere abandonar la estación." },
+      { "title": "Órdenes de la empresa", "text": "Llega un mensaje que lo cambia todo." },
+      { "title": "La órbita decae", "text": "La estación empieza a caer hacia el planeta." },
+      { "title": "Llega el relevo", "text": "Pero no hay sitio para todos." }
+    ]
+  }
+]

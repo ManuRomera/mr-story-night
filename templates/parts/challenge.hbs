@@ -1,0 +1,135 @@
+<section class="mr-phase mr-challenge">
+  <header class="mr-phase__head mr-challenge__head">
+    <span class="mr-roman" aria-hidden="true">{{roman}}</span>
+    <div>
+      <span class="mr-eyebrow">{{localize "MR.Challenge.Of" n=n total=total}}{{#if isFinal}} · {{localize "MR.Challenge.Final"}}{{/if}}</span>
+      <h2 class="mr-h1">{{#if title}}{{title}}{{else}}{{localize "MR.Challenge.Untitled"}}{{/if}}</h2>
+      {{#unless is_choose}}<p class="mr-meta">{{#if lead}}<span><i class="fa-solid fa-star"></i>{{localize "MR.Challenge.LeadIs" name=lead}}</span>{{/if}}{{#if timescaleLabel}}<span><i class="fa-regular fa-clock"></i>{{timescaleLabel}}</span>{{/if}}{{#if pickerName}}<span><i class="fa-solid fa-hand-pointer"></i>{{localize "MR.Challenge.PickedBy" name=pickerName}}</span>{{/if}}</p>{{/unless}}
+    </div>
+  </header>
+
+  {{#each replacements}}
+  <div class="mr-callout">
+    <strong>{{localize "MR.Replace.Title" seat=seat}}</strong>
+    <p>{{localize "MR.Replace.Help"}}</p>
+    {{#if canEdit}}
+    <div class="mr-inline">
+      {{#if minors.length}}<select name="adopt-{{seatId}}">{{#each minors}}<option value="{{id}}">{{name}} ({{owner}})</option>{{/each}}</select><button type="button" data-action="adopt" data-seat-id="{{seatId}}">{{localize "MR.Replace.Adopt"}}</button>{{/if}}
+      <input type="text" name="newName-{{seatId}}" placeholder="{{localize 'MR.Character.Name'}}"><input type="text" name="newConcept-{{seatId}}" placeholder="{{localize 'MR.Character.Concept'}}"><button type="button" data-action="newcomer" data-seat-id="{{seatId}}">{{localize "MR.Replace.New"}}</button>
+    </div>
+    {{/if}}
+  </div>
+  {{/each}}
+
+  {{#if is_choose}}
+  <div class="mr-step-block">
+    <h3 class="mr-h3"><span class="mr-num">1</span>{{localize "MR.Challenge.WhoPicks"}}</h3>
+    <div class="mr-chips">{{#each pickers}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="op" data-op="setPicker" data-args='{"seatId":"{{id}}"}' {{#unless available}}disabled data-tooltip="{{localize 'MR.Challenge.AlreadyPicked'}}"{{/unless}}>{{name}}</button>{{/each}}</div>
+  </div>
+  {{#if hasPicker}}
+  {{#unless canEdit}}<p class="mr-waiting"><i class="fa-solid fa-hourglass-half"></i>{{localize "MR.Challenge.WaitingPicker" name=pickerName}}</p>{{/unless}}
+  <div class="mr-step-block">
+    <h3 class="mr-h3"><span class="mr-num">2</span>{{localize "MR.Challenge.Which"}}</h3>
+    {{#if suggestions.length}}
+    <div class="mr-suggestion-grid">{{#each suggestions}}<button type="button" class="mr-suggestion {{#if selected}}is-selected{{/if}}" data-action="pickChallenge" data-title="{{title}}" data-text="{{text}}" {{#unless ../canEdit}}disabled{{/unless}}><strong>{{title}}</strong>{{#if text}}<span>{{text}}</span>{{/if}}</button>{{/each}}</div>
+    {{/if}}
+    <div class="mr-grid-2">
+      <div class="mr-field"><label>{{localize "MR.Challenge.Name"}}</label><input type="text" data-field="challenge.title" value="{{title}}" {{#unless canEdit}}disabled{{/unless}}></div>
+      <div class="mr-field"><label>{{localize "MR.Challenge.Why"}}</label><textarea rows="2" data-field="challenge.why" {{#unless canEdit}}disabled{{/unless}}>{{why}}</textarea><small>{{localize "MR.Challenge.WhyHelp"}}</small></div>
+    </div>
+  </div>
+  <div class="mr-step-block">
+    <h3 class="mr-h3"><span class="mr-num">3</span>{{localize "MR.Challenge.Lead"}}</h3>
+    <div class="mr-chips">{{#each leads}}<button type="button" class="mr-chip mr-chip--person {{#if selected}}is-selected{{/if}}" data-action="set" data-field="challenge.leadCharId" data-value="{{id}}" {{#unless ../canEdit}}disabled{{/unless}}><strong>{{name}}</strong><small>{{concept}}</small></button>{{/each}}</div>
+  </div>
+  <div class="mr-step-block">
+    <h3 class="mr-h3"><span class="mr-num">4</span>{{localize "MR.Challenge.Timescale"}}</h3>
+    <div class="mr-chips">
+      {{#each timescales}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="set" data-field="challenge.timescale" data-value="{{key}}" {{#unless ../canEdit}}disabled{{/unless}}>{{label}}</button>{{/each}}
+      <input type="text" class="mr-chip-input" data-field="challenge.timescale" value="{{customTimescale}}" placeholder="{{localize 'MR.Challenge.OtherTimescale'}}" {{#unless canEdit}}disabled{{/unless}}>
+    </div>
+  </div>
+  {{/if}}
+  <footer class="mr-phase__foot">
+    <button type="button" class="mr-primary" data-action="op" data-op="startScenes" {{#unless canStart}}disabled{{/unless}}><i class="fa-solid fa-clapperboard"></i>{{localize "MR.Challenge.StartScenes"}}</button>
+  </footer>
+  {{/if}}
+
+  {{#if is_scenes}}
+  {{#if why}}<p class="mr-quote">{{why}}</p>{{/if}}
+  <ol class="mr-pips" aria-label="{{localize 'MR.Scene.Progress'}}">{{#each pips}}<li class="is-{{state}}"><span>{{n}}</span><small>{{name}}</small></li>{{/each}}</ol>
+  <article class="mr-scene-card">
+    <header><span class="mr-eyebrow">{{localize "MR.Scene.Of" n=scene.n total=scene.of}}</span><h3 class="mr-h2">{{localize "MR.Scene.Establishes" name=scene.establisher}}</h3>{{#if scene.isMine}}<span class="mr-badge">{{localize "MR.Scene.YourTurn"}}</span>{{/if}}</header>
+    <div class="mr-grid-2">
+      <div class="mr-field"><label>{{localize "MR.Scene.Who"}}</label><input type="text" data-field="scene.who" value="{{scene.who}}" {{#unless scene.canEdit}}disabled{{/unless}}></div>
+      <div class="mr-field"><label>{{localize "MR.Scene.Where"}}</label><input type="text" data-field="scene.where" value="{{scene.where}}" {{#unless scene.canEdit}}disabled{{/unless}}></div>
+      <div class="mr-field mr-span-2"><label>{{localize "MR.Scene.Situation"}}</label><textarea rows="2" data-field="scene.situation" {{#unless scene.canEdit}}disabled{{/unless}}>{{scene.situation}}</textarea></div>
+    </div>
+    <div class="mr-consequences">
+      <h4 class="mr-label"><i class="fa-solid fa-bolt"></i>{{localize "MR.Scene.Consequences"}}</h4>
+      <ul>{{#each scene.consequences}}<li><span>{{text}}</span><button type="button" class="mr-icon" data-action="op" data-op="removeConsequence" data-args='{"id":"{{id}}"}' aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button></li>{{else}}<li class="mr-empty">{{localize "MR.Scene.NoConsequences"}}</li>{{/each}}</ul>
+      <div class="mr-inline"><input type="text" name="consequence" placeholder="{{localize 'MR.Scene.ConsequencePlaceholder'}}"><button type="button" data-action="addConsequence">{{localize "MR.Scene.AddConsequence"}}</button></div>
+    </div>
+    <div class="mr-field"><label>{{localize "MR.Scene.Summary"}}</label><textarea rows="2" data-field="scene.summary" {{#unless scene.canEdit}}disabled{{/unless}}>{{scene.summary}}</textarea></div>
+  </article>
+  <details class="mr-guide"><summary><i class="fa-solid fa-circle-info"></i>{{localize "MR.Scene.GuideTitle"}}</summary><ul><li>{{localize "MR.Scene.Guide1"}}</li><li>{{localize "MR.Scene.Guide2"}}</li><li>{{localize "MR.Scene.Guide3"}}</li><li>{{localize "MR.Scene.Guide4"}}</li></ul></details>
+  <footer class="mr-phase__foot">
+    <button type="button" class="mr-primary" data-action="op" data-op="endScene">{{#if isLastScene}}<i class="fa-solid fa-circle-half-stroke"></i>{{localize "MR.Scene.EndLast"}}{{else}}{{localize "MR.Scene.End"}}<i class="fa-solid fa-arrow-right"></i>{{/if}}</button>
+  </footer>
+  {{/if}}
+
+  {{#if is_stones}}
+  <div class="mr-stones-layout">
+    <div class="mr-bowl-wrap">
+      <div class="mr-bowl" role="img" aria-label="{{localize 'MR.Stones.BowlLabel' n=stoneTotal}}">{{#each bowl}}<i class="mr-stone mr-stone--hidden" style="left:{{x}}%;top:{{y}}%;--r:{{rot}}deg"></i>{{/each}}</div>
+      <p class="mr-bowl-count">{{localize "MR.Stones.Count" n=stoneTotal}}</p>
+      {{#if carried}}<p class="mr-note">{{localize "MR.Stones.Carried" successes=carried.successes failures=carried.failures}}</p>{{/if}}
+      <ul class="mr-submitted">{{#each seats}}<li class="{{#if done}}is-done{{/if}}"><i class="fa-solid {{#if done}}fa-circle-check{{else}}fa-circle{{/if}}"></i>{{name}}</li>{{/each}}</ul>
+    </div>
+    <div class="mr-stone-forms">
+      <p class="mr-lead">{{localize "MR.Stones.Help"}}</p>
+      {{#each forms}}
+      <article class="mr-stone-form">
+        <h3 class="mr-h3">{{localize "MR.Stones.For" name=charName}}{{#unless (eq seatName charName)}} <small>({{seatName}})</small>{{/unless}}</h3>
+        <p class="mr-label">{{localize "MR.Stones.DiscontentQ"}}</p>
+        <div class="mr-choice-row">{{#each discontent}}<button type="button" class="mr-choice {{#if selected}}is-selected{{/if}}" data-action="stoneDraft" data-seat-id="{{../seatId}}" data-key="discontent" data-value="{{value}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}"><span class="mr-choice__stones">{{#each reds}}<i class="mr-stone mr-stone--red mr-stone--sm"></i>{{else}}<i class="fa-regular fa-face-smile"></i>{{/each}}</span><strong>{{label}}</strong><small>{{hint}}</small></button>{{/each}}</div>
+        <p class="mr-label">{{localize "MR.Stones.VerdictQ"}}</p>
+        <div class="mr-choice-row mr-choice-row--2">{{#each verdicts}}<button type="button" class="mr-choice {{#if selected}}is-selected{{/if}}" data-action="stoneDraft" data-seat-id="{{../seatId}}" data-key="verdict" data-value="{{value}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}"><span class="mr-choice__stones"><i class="mr-stone mr-stone--{{value}} mr-stone--sm"></i></span><strong>{{label}}</strong></button>{{/each}}</div>
+        <button type="button" class="mr-primary mr-block" data-action="submitStones" data-seat-id="{{seatId}}" {{#unless canSubmit}}disabled{{/unless}}><i class="fa-solid fa-hand-holding"></i>{{localize "MR.Stones.Submit"}}</button>
+      </article>
+      {{else}}
+      {{#unless allIn}}<p class="mr-waiting"><i class="fa-solid fa-hourglass-half"></i>{{localize "MR.Stones.Waiting"}}</p>{{/unless}}
+      {{/each}}
+      {{#if showActForAll}}<label class="mr-check"><input type="checkbox" data-action-change="actForAll" {{#if actForAll}}checked{{/if}}>{{localize "MR.Stones.ActForAll"}}</label>{{/if}}
+      <footer class="mr-phase__foot">
+        {{#if canForce}}<button type="button" data-action="op" data-op="draw" data-args='{"force":true}'>{{localize "MR.Action.Force"}}</button>{{/if}}
+        <button type="button" class="mr-primary mr-large" data-action="op" data-op="draw" {{#unless allIn}}disabled{{/unless}}><i class="fa-solid fa-hand-sparkles"></i>{{localize "MR.Stones.Draw"}}</button>
+      </footer>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if is_outcome}}
+  <div class="mr-outcome {{#if success}}is-success{{else}}is-failure{{/if}}">
+    <div class="mr-draw">{{#each draw}}<figure class="mr-draw__stone" style="--delay:{{@index}}"><i class="mr-stone mr-stone--{{color}} mr-stone--xl"></i><figcaption><small>{{order}}</small>{{label}}</figcaption></figure>{{/each}}</div>
+    <h3 class="mr-outcome__title">{{outcomeTitle}}</h3>
+    <p class="mr-lead">{{outcomeText}}</p>
+  </div>
+  {{#if needsLoss}}
+  <article class="mr-loss-form mr-panel">
+    <h3 class="mr-h2">{{localize "MR.Loss.Title"}}</h3>
+    <p class="mr-help">{{#if betrayal}}{{localize "MR.Loss.HelpBetrayal"}}{{else}}{{localize "MR.Loss.Help"}}{{/if}}</p>
+    <p class="mr-label">{{localize "MR.Loss.Who"}}</p>
+    <div class="mr-chips">{{#each candidates}}<button type="button" class="mr-chip mr-chip--person {{#if selected}}is-selected{{/if}}" data-action="local" data-key="lossChar" data-value="{{id}}"><strong>{{name}}</strong><small>{{role}} · {{seat}}</small></button>{{/each}}</div>
+    <p class="mr-label">{{localize "MR.Loss.How"}}</p>
+    <div class="mr-chips">{{#each fates}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="local" data-key="lossFate" data-value="{{key}}" data-tooltip="{{hint}}">{{label}}</button>{{/each}}</div>
+    <div class="mr-field"><label>{{localize "MR.Loss.Note"}}</label><textarea rows="2" name="lossNote" data-local="lossNote">{{lossNote}}</textarea></div>
+    <button type="button" class="mr-primary" data-action="resolveLoss"><i class="fa-solid fa-feather"></i>{{localize "MR.Loss.Confirm"}}</button>
+  </article>
+  {{/if}}
+  {{#if loss}}<div class="mr-callout mr-callout--loss"><i class="fa-solid fa-user-slash"></i><div><strong>{{loss.name}} — {{loss.fate}}</strong>{{#if loss.note}}<p>{{loss.note}}</p>{{/if}}{{#if loss.promoted}}<p class="mr-note">{{localize "MR.Loss.Promoted" name=loss.promoted}}</p>{{/if}}</div></div>{{/if}}
+  <footer class="mr-phase__foot">
+    <button type="button" class="mr-primary" data-action="op" data-op="nextChallenge" {{#unless canNext}}disabled{{/unless}}>{{nextLabel}}<i class="fa-solid fa-arrow-right"></i></button>
+  </footer>
+  {{/if}}
+</section>

@@ -1,0 +1,40 @@
+<section class="mr-credits">
+  <div class="mr-credits__head">
+    <span class="mr-eyebrow">MR · STORY NIGHT</span>
+    <h2 class="mr-credits__title">{{title}}</h2>
+    <p class="mr-lead">{{goal}}</p>
+    {{#if resultLabel}}<p class="mr-result {{#if success}}is-success{{else}}is-failure{{/if}}">{{resultLabel}}</p>{{/if}}
+  </div>
+  {{#if answers.length}}<dl class="mr-answers">{{#each answers}}<dt>{{q}}</dt><dd>{{a}}</dd>{{/each}}</dl>{{/if}}
+  <h3 class="mr-credits__h">{{localize "MR.Credits.Challenges"}}</h3>
+  <ol class="mr-timeline">
+    {{#each challenges}}
+    <li class="{{#if success}}is-success{{else}}is-failure{{/if}}">
+      <span class="mr-roman">{{roman}}</span>
+      <div>
+        <strong>{{title}}</strong>
+        <p class="mr-meta">{{#if lead}}<span>{{localize "MR.Challenge.LeadIs" name=lead}}</span>{{/if}}{{#if timescale}}<span>{{timescale}}</span>{{/if}}</p>
+        {{#each scenes}}<p class="mr-scene-line"><em>{{seat}}:</em> {{text}}</p>{{/each}}
+        <p class="mr-draw-line">{{#each draw}}<i class="mr-stone mr-stone--{{color}} mr-stone--sm" aria-label="{{label}}"></i>{{/each}}<strong>{{outcome}}</strong></p>
+        {{#if loss}}<p class="mr-loss-line"><i class="fa-solid fa-user-slash"></i>{{loss}}</p>{{/if}}
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+  <h3 class="mr-credits__h">{{localize "MR.Credits.Cast"}}</h3>
+  <div class="mr-cast">
+    {{#each cast}}
+    <article>
+      <span class="mr-eyebrow">{{seat}}</span>
+      {{#each characters}}<p class="{{#if lost}}is-lost{{/if}}"><strong>{{displayName}}</strong> <small>{{concept}}{{#if lost}} · {{fateLabel}}{{/if}}</small></p>{{/each}}
+      {{#if epilogue}}<blockquote>{{epilogue}}</blockquote>{{/if}}
+    </article>
+    {{/each}}
+  </div>
+  <p class="mr-credits__thanks">{{localize "MR.Credits.Thanks"}}</p>
+  <footer class="mr-phase__foot mr-noprint">
+    <button type="button" data-action="print"><i class="fa-solid fa-print"></i>{{localize "MR.Credits.Print"}}</button>
+    <button type="button" data-action="exportStory" data-id="{{id}}"><i class="fa-solid fa-download"></i>{{localize "MR.Credits.Export"}}</button>
+    {{#if current}}<button type="button" class="mr-primary" data-action="newStory"><i class="fa-solid fa-plus"></i>{{localize "MR.Credits.New"}}</button>{{/if}}
+  </footer>
+</section>

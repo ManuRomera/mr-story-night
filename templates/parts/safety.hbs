@@ -1,0 +1,21 @@
+<section class="mr-phase">
+  <header class="mr-phase__head"><h2 class="mr-h1">{{localize "MR.Safety.Title"}}</h2><p class="mr-lead">{{localize "MR.Safety.Help"}}</p></header>
+  <div class="mr-safety-actions">
+    <button type="button" class="mr-safety-btn mr-safety-btn--pause" data-action="signal" data-signal="pause"><i class="fa-solid fa-hand"></i><strong>{{localize "MR.Safety.Pause"}}</strong><small>{{localize "MR.Safety.PauseHint"}}</small></button>
+    <button type="button" class="mr-safety-btn" data-action="signal" data-signal="rewind"><i class="fa-solid fa-backward"></i><strong>{{localize "MR.Safety.Rewind"}}</strong><small>{{localize "MR.Safety.RewindHint"}}</small></button>
+    <button type="button" class="mr-safety-btn" data-action="signal" data-signal="fade"><i class="fa-solid fa-circle-half-stroke"></i><strong>{{localize "MR.Safety.Fade"}}</strong><small>{{localize "MR.Safety.FadeHint"}}</small></button>
+  </div>
+  <p class="mr-note"><i class="fa-solid fa-user-secret"></i> {{localize "MR.Safety.Privacy"}}</p>
+  <div class="mr-grid-2">
+    <div class="mr-panel">
+      <h3 class="mr-h3">{{localize "MR.Safety.Lines"}}</h3><p class="mr-help">{{localize "MR.Safety.LinesHelp"}}</p>
+      <ul class="mr-tags">{{#each lines}}<li>{{text}}{{#if ../isGM}}<button type="button" class="mr-icon" data-action="removeLimit" data-kind="lines" data-index="{{i}}" aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button>{{/if}}</li>{{else}}<li class="mr-empty">{{localize "MR.Safety.None"}}</li>{{/each}}</ul>
+      <div class="mr-inline"><input type="text" name="limit-lines" placeholder="{{localize 'MR.Safety.AddPlaceholder'}}"><button type="button" data-action="addLimit" data-kind="lines">{{localize "MR.Safety.Add"}}</button></div>
+    </div>
+    <div class="mr-panel">
+      <h3 class="mr-h3">{{localize "MR.Safety.Veils"}}</h3><p class="mr-help">{{localize "MR.Safety.VeilsHelp"}}</p>
+      <ul class="mr-tags">{{#each veils}}<li>{{text}}{{#if ../isGM}}<button type="button" class="mr-icon" data-action="removeLimit" data-kind="veils" data-index="{{i}}" aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button>{{/if}}</li>{{else}}<li class="mr-empty">{{localize "MR.Safety.None"}}</li>{{/each}}</ul>
+      <div class="mr-inline"><input type="text" name="limit-veils" placeholder="{{localize 'MR.Safety.AddPlaceholder'}}"><button type="button" data-action="addLimit" data-kind="veils">{{localize "MR.Safety.Add"}}</button></div>
+    </div>
+  </div>
+</section>

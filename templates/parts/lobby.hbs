@@ -1,0 +1,46 @@
+<section class="mr-lobby">
+  <div class="mr-lobby__quests">
+    <h2 class="mr-h2">{{localize "MR.Lobby.ChooseQuest"}}</h2>
+    <p class="mr-help">{{localize "MR.Lobby.ChooseQuestHelp"}}</p>
+    <div class="mr-quest-grid">
+      {{#each quests}}
+      <button type="button" class="mr-quest-card {{#if selected}}is-selected{{/if}}" data-action="selectQuest" data-id="{{id}}" data-mr-theme="{{theme}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}">
+        <span class="mr-quest-card__art" aria-hidden="true"><i class="fa-solid fa-route"></i></span>
+        <strong>{{title}}</strong>
+        <span>{{tagline}}</span>
+        <small>{{#if builtin}}{{localize "MR.Quest.Sample"}}{{else}}{{localize "MR.Quest.Custom"}}{{/if}}</small>
+      </button>
+      {{else}}<p class="mr-empty">{{localize "MR.Lobby.NoQuests"}}</p>{{/each}}
+    </div>
+    {{#if selected}}<article class="mr-quest-preview"><span class="mr-eyebrow">{{localize "MR.Quest.Goal"}}</span><p class="mr-lead">{{selected.goal}}</p><p>{{selected.intro}}</p></article>{{/if}}
+  </div>
+
+  <div class="mr-lobby__seats mr-panel">
+    <h2 class="mr-h2">{{localize "MR.Lobby.Seats"}}</h2>
+    <p class="mr-help">{{localize "MR.Lobby.SeatsHelp"}}</p>
+    <ol class="mr-seat-list">
+      {{#each seats}}
+      <li class="mr-seat-row">
+        <span class="mr-seat-row__n">{{n}}</span>
+        <span class="mr-seat-row__name"><strong>{{name}}</strong>{{#if left}}<small>{{localize "MR.Lobby.LeftIs" name=left}}</small>{{/if}}</span>
+        <button type="button" class="mr-icon" data-action="moveSeat" data-index="{{i}}" data-dir="-1" {{#if first}}disabled{{/if}} aria-label="{{localize 'MR.Lobby.Up'}}"><i class="fa-solid fa-arrow-up"></i></button>
+        <button type="button" class="mr-icon" data-action="moveSeat" data-index="{{i}}" data-dir="1" {{#if last}}disabled{{/if}} aria-label="{{localize 'MR.Lobby.Down'}}"><i class="fa-solid fa-arrow-down"></i></button>
+        <button type="button" class="mr-icon" data-action="removeSeat" data-index="{{i}}" aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button>
+      </li>
+      {{else}}<li class="mr-empty">{{localize "MR.Lobby.NoSeats"}}</li>{{/each}}
+    </ol>
+    {{#if available.length}}
+    <div class="mr-chips" aria-label="{{localize 'MR.Lobby.AddUser'}}">
+      {{#each available}}<button type="button" class="mr-chip" data-action="addSeat" data-user-id="{{id}}"><i class="fa-solid fa-plus"></i>{{name}}</button>{{/each}}
+    </div>
+    {{/if}}
+    <div class="mr-inline">
+      <input type="text" name="guestName" placeholder="{{localize 'MR.Lobby.GuestPlaceholder'}}" aria-label="{{localize 'MR.Lobby.GuestPlaceholder'}}">
+      <button type="button" data-action="addGuest">{{localize "MR.Lobby.AddGuest"}}</button>
+    </div>
+    {{#if tooMany}}<p class="mr-warning">{{localize "MR.Lobby.TooMany"}}</p>{{/if}}
+    {{#if advisory}}<p class="mr-note">{{localize "MR.Lobby.Advisory"}}</p>{{/if}}
+    <button type="button" class="mr-primary mr-block" data-action="startStory" {{#unless canStart}}disabled{{/unless}}><i class="fa-solid fa-play"></i>{{localize "MR.Lobby.Start"}}</button>
+    {{#unless selected}}<p class="mr-note">{{localize "MR.Lobby.NeedQuest"}}</p>{{/unless}}
+  </div>
+</section>

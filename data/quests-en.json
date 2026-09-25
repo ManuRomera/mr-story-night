@@ -1,0 +1,70 @@
+[
+  {
+    "id": "sample-winter-pass",
+    "title": "The Winter Pass",
+    "tagline": "Cross the mountains and return before the snow closes the road.",
+    "theme": "fantasy",
+    "intro": "The village granary burned at the end of autumn. The only grain left lies across the mountains, at the monastery of Highcrest. A small company must fetch it and return before the first snowfall seals the pass for months.",
+    "goal": "Bring the grain back from Highcrest monastery before the snow closes the pass.",
+    "questions": [
+      "What destroyed the granary, and whom does the village blame?",
+      "Why won't the monastery simply hand over the grain?",
+      "What do people say about the pass that nobody dares say aloud?",
+      "Who in the village would rather see the company fail?"
+    ],
+    "difficulties": [
+      "The snow will come earlier than expected",
+      "The monks want something in return",
+      "Bandits hold the old bridge",
+      "Someone in the village is sabotaging the expedition",
+      "Only one person in the company knows the way",
+      "The load is too heavy to return quickly"
+    ],
+    "concepts": ["Retired mountain guide", "The miller's daughter", "Discharged soldier", "Valley healer", "Repentant smuggler", "Novice who fled the monastery", "Indebted merchant", "Lone hunter"],
+    "desires": ["Save my family from hunger", "Prove I am not a coward", "Repay a debt to the village", "Win back the respect I lost", "Earn someone's trust", "Learn what happened to the one who crossed and never came back"],
+    "challenges": [
+      { "title": "Convince the council", "text": "The village must lend mules and supplies it can barely spare." },
+      { "title": "The old bridge", "text": "It is guarded, or rotten, or both." },
+      { "title": "The storm", "text": "Shelter and lose days, or press on blind." },
+      { "title": "Bargain with the abbot", "text": "The monastery has mouths to feed too." },
+      { "title": "An injury on the road", "text": "Someone gets hurt and slows everyone down." },
+      { "title": "The loaded return", "text": "Slower, wearier, and racing the weather." },
+      { "title": "The bandits", "text": "They want the grain, or they want someone in the company." },
+      { "title": "The last night", "text": "One day from home, something changes everything." }
+    ]
+  },
+  {
+    "id": "sample-meridian-station",
+    "title": "Meridian Station",
+    "tagline": "Keep an orbital station alive until relief arrives.",
+    "theme": "sci-fi",
+    "intro": "Meridian Station orbits a gas giant months away from any port. The relief ship has just announced a forty-day delay, and the station's systems were never meant to last that long. The crew has to hold on.",
+    "goal": "Keep Meridian Station's crew alive until relief arrives.",
+    "questions": [
+      "What is the station researching that the company cares so much about?",
+      "Why is the relief ship late?",
+      "Which part of the station does nobody visit?",
+      "Who aboard has orders the others don't know about?"
+    ],
+    "difficulties": [
+      "The air recycler fails every few days",
+      "The company puts the data before the crew",
+      "A storm on the planet cuts communications",
+      "The rations don't add up",
+      "Someone aboard is not on the manifest",
+      "The autopilot has plans of its own"
+    ],
+    "concepts": ["Exhausted chief engineer", "Doctor with a lapsed licence", "Scientist who won't leave", "Company supervisor", "Newly arrived maintenance tech", "Pilot without a ship", "Communications officer", "Stowaway"],
+    "desires": ["Get home to my people", "Save my life's research", "Make the company pay for this", "Finally be the one who decides", "Protect one particular person aboard", "Make sure nobody learns what I did"],
+    "challenges": [
+      { "title": "Rationing", "text": "Decide who gets what when there isn't enough." },
+      { "title": "Fix the recycler", "text": "Slow, dangerous work outside the hull." },
+      { "title": "Restore contact", "text": "The antenna must be aligned mid-storm." },
+      { "title": "The sealed module", "text": "Something, or someone, is inside." },
+      { "title": "Mutiny", "text": "Part of the crew wants to abandon the station." },
+      { "title": "Company orders", "text": "A message arrives that changes everything." },
+      { "title": "Decaying orbit", "text": "The station begins falling toward the planet." },
+      { "title": "Relief arrives", "text": "But there isn't room for everyone." }
+    ]
+  }
+]

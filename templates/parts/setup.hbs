@@ -1,0 +1,31 @@
+<section class="mr-phase">
+  <header class="mr-phase__head">
+    <span class="mr-eyebrow">{{localize "MR.Step.setup"}}</span>
+    <h2 class="mr-h1">{{localize "MR.Setup.Title"}}</h2>
+    {{#if intro}}<p class="mr-lead">{{intro}}</p>{{/if}}
+  </header>
+  <div class="mr-field mr-field--hero">
+    <label for="mr-goal">{{localize "MR.Setup.Goal"}}</label>
+    <textarea id="mr-goal" data-field="setup.goal" rows="2">{{goal}}</textarea>
+    <small>{{localize "MR.Setup.GoalHelp"}}</small>
+  </div>
+  {{#if questions.length}}
+  <h3 class="mr-h3">{{localize "MR.Setup.Questions"}}</h3>
+  <div class="mr-grid-2">
+    {{#each questions}}
+    <div class="mr-field"><label for="mr-q{{index}}">{{question}}</label><textarea id="mr-q{{index}}" data-field="setup.answers.{{index}}" rows="2">{{answer}}</textarea></div>
+    {{/each}}
+  </div>
+  {{/if}}
+  <h3 class="mr-h3">{{localize "MR.Setup.Difficulties"}}</h3>
+  <p class="mr-help">{{localize "MR.Setup.DifficultiesHelp"}}</p>
+  <div class="mr-grid-2">
+    {{#each difficulties}}<div class="mr-field"><label for="mr-d{{index}}">{{localize "MR.Setup.Difficulty" n=n}}</label><input id="mr-d{{index}}" type="text" data-field="setup.difficulties.{{index}}" value="{{value}}"></div>{{/each}}
+  </div>
+  {{#if suggestions.length}}
+  <div class="mr-chips">{{#each suggestions}}<button type="button" class="mr-chip {{#if used}}is-selected{{/if}}" data-action="pickDifficulty" data-value="{{text}}">{{text}}</button>{{/each}}</div>
+  {{/if}}
+  <footer class="mr-phase__foot">
+    <button type="button" class="mr-primary" data-action="op" data-op="setupDone" {{#unless canContinue}}disabled{{/unless}}>{{localize "MR.Setup.Continue"}}<i class="fa-solid fa-arrow-right"></i></button>
+  </footer>
+</section>

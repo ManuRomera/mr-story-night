@@ -1,9 +1,9 @@
 {
   "name": "mr-story-night",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "Zero-prep narrative roleplaying system for Foundry VTT",
+  "description": "GM-less table for playing Follow in Foundry VTT",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "validate": "node scripts/validate.mjs",
