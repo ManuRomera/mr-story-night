@@ -18,7 +18,7 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.5.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.5.1** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 
@@ -83,7 +83,7 @@ La tabla vive en `scripts/engine.js` (`OUTCOMES`) y se puede ajustar si tu edici
 En Foundry VTT: **Sistemas de juego → Instalar sistema** y pega esta URL de manifiesto:
 
 ```text
-https://raw.githubusercontent.com/ManuRomera/mr-story-night/main/system.json
+https://github.com/ManuRomera/mr-story-night/releases/latest/download/system.json
 ```
 
 También puedes descargar `mr-story-night.zip` desde la [última versión publicada](https://github.com/ManuRomera/mr-story-night/releases/latest) e instalarlo manualmente.

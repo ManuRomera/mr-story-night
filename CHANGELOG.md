@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 — 2026-09-25
+
+- El manifiesto pasa a leerse de la última release (`releases/latest/download/system.json`) en lugar de la rama `main`. Así «Buscar actualizaciones» solo ve una versión cuando su zip ya está publicado y no depende de la caché de 5 minutos de GitHub.
+
 ## 0.5.0 — 2026-09-25
 
 - **Tutorial «Cómo se juega»** en el vestíbulo y en la hoja común: cada fase con qué hacéis, para qué sirve y los pasos.
