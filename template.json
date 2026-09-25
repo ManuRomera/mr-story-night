@@ -1,0 +1,16 @@
+{
+  "Actor": {
+    "types": ["character"],
+    "character": {
+      "pronouns": "", "concept": "", "strength": "", "flaw": "", "desire": "",
+      "fear": "", "secret": "", "relationship": "", "memorableDetail": "",
+      "tokens": 2, "portrait": ""
+    }
+  },
+  "Item": {
+    "types": ["relationship", "story", "scene"],
+    "relationship": { "sourceId": "", "targetId": "", "kind": "trust", "detail": "", "private": false },
+    "story": { "genre": "neutral", "tone": [], "duration": "90", "intensity": "normal", "seed": "", "state": "setup", "data": {} },
+    "scene": { "location": "", "participants": [], "goal": "", "tension": 1, "question": "", "threat": "", "complications": [], "notes": "", "result": "", "state": "prepared" }
+  }
+}

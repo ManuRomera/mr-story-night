@@ -1,0 +1,23 @@
+name: Informar de un problema
+description: Comunica un fallo de MR · Story Night en Foundry VTT
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: input
+    id: foundry
+    attributes: { label: Versión de Foundry VTT, placeholder: "13.351 o 14.x" }
+    validations: { required: true }
+  - type: input
+    id: system
+    attributes: { label: Versión de MR · Story Night, placeholder: "0.1.0" }
+    validations: { required: true }
+  - type: textarea
+    id: steps
+    attributes: { label: Pasos para reproducirlo, description: Explica qué hiciste y qué ocurrió. }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: Resultado esperado }
+  - type: textarea
+    id: modules
+    attributes: { label: Módulos y errores de consola, description: Indica si ocurre también sin módulos y adjunta errores o capturas. }

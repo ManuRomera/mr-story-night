@@ -1,0 +1,36 @@
+<div class="mr-shell" role="main" aria-label="{{localize 'MR.Dashboard.Title'}}">
+  <header class="mr-hero">
+    <div><span class="mr-eyebrow">MR · STORY NIGHT</span><h1>{{#if story}}{{story.title}}{{else}}{{localize "MR.Dashboard.EmptyTitle"}}{{/if}}</h1><p>{{localize "MR.Tagline"}}</p></div>
+    {{#if story}}<div class="mr-status"><span>{{localize (concat "MR.Genre." story.genre)}}</span><span>{{localize (concat "MR.State." story.state)}}</span><span aria-label="{{localize 'MR.Tension'}}">{{localize "MR.Tension"}} {{story.tension}}/5</span></div>{{/if}}
+  </header>
+  {{#if story}}
+  <main class="mr-story-grid">
+    <article class="mr-card mr-card--premise"><span class="mr-label">{{localize "MR.Story.Premise"}}</span><p>{{story.premise}}</p></article>
+    <article class="mr-card"><span class="mr-label">{{localize "MR.Story.Objective"}}</span><p>{{story.objective}}</p></article>
+    <article class="mr-card"><span class="mr-label">{{localize "MR.Story.Threat"}}</span><p>{{story.threat}}</p></article>
+    <article class="mr-card mr-card--accent"><span class="mr-label">{{localize "MR.Story.Complication"}}</span><p>{{story.complication}}</p></article>
+    <section class="mr-card mr-card--wide"><div class="mr-section-head"><span class="mr-label">{{localize "MR.Character.Plural"}}</span>{{#if isGM}}<button data-action="new-character" class="mr-icon-button" title="{{localize 'MR.Character.New'}}"><i class="fas fa-plus"></i></button>{{/if}}</div>
+      <div class="mr-people">{{#each characters}}<button class="mr-person" data-actor-id="{{id}}"><img src="{{img}}" alt=""><span>{{name}}</span><small>{{system.concept}}</small></button>{{else}}<p class="mr-empty">{{localize "MR.Character.Empty"}}</p>{{/each}}</div>
+    </section>
+    <section class="mr-card mr-card--scene"><div class="mr-section-head"><span class="mr-label">{{localize "MR.Scene.Current"}}</span>{{#if ../isGM}}<button data-action="new-scene" class="mr-icon-button" title="{{localize 'MR.Scene.New'}}"><i class="fas fa-plus"></i></button>{{/if}}</div>
+      {{#each story.scenes}}{{#if (eq id ../story.currentScene)}}<h2>{{title}}</h2><p>{{question}}</p><small>{{location}} · {{localize "MR.Tension"}} {{tension}}/5</small>{{/if}}{{else}}<p class="mr-empty">{{localize "MR.Scene.Empty"}}</p>{{/each}}
+    </section>
+  </main>
+  <div class="mr-live-actions" aria-label="{{localize 'MR.Scene.Tools'}}">
+    <button data-action="complicate" class="mr-primary"><i class="fas fa-bolt"></i>{{localize "MR.Action.Complicate"}}</button>
+    <button data-action="focus"><i class="fas fa-crosshairs"></i>{{localize "MR.Action.Focus"}}</button>
+    <button data-action="tension"><i class="fas fa-arrow-trend-up"></i>{{localize "MR.Action.Tension"}}</button>
+  </div>
+  {{else}}
+  <div class="mr-empty-state"><div class="mr-mark" aria-hidden="true">✦</div><h2>{{localize "MR.Dashboard.EmptyTitle"}}</h2><p>{{localize "MR.Dashboard.EmptyBody"}}</p>{{#if isGM}}<button class="mr-primary mr-large" data-action="new-story">{{localize "MR.NewStory.Title"}}</button>{{/if}}</div>
+  {{/if}}
+  <nav class="mr-quickbar" aria-label="{{localize 'MR.Navigation'}}">
+    {{#if isGM}}<button data-action="new-story"><i class="fas fa-plus"></i><span>{{localize "MR.NewStory.Short"}}</span></button>{{/if}}
+    <button data-action="new-character"><i class="fas fa-users"></i><span>{{localize "MR.Character.Plural"}}</span></button>
+    <button data-action="new-scene"><i class="fas fa-clapperboard"></i><span>{{localize "MR.Scene.Label"}}</span></button>
+    <button data-action="inspiration"><i class="fas fa-lightbulb"></i><span>{{localize "MR.Action.Inspiration"}}</span></button>
+    <button data-action="undo"><i class="fas fa-rotate-left"></i><span>{{localize "MR.Action.Undo"}}</span></button>
+    <button data-action="end"><i class="fas fa-flag-checkered"></i><span>{{localize "MR.End.Title"}}</span></button>
+    <button data-action="settings"><i class="fas fa-sliders"></i><span>{{localize "MR.Settings.Title"}}</span></button>
+  </nav>
+</div>
