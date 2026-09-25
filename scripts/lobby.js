@@ -1,8 +1,10 @@
 import { SYSTEM_ID, TEMPLATES } from "./constants.js";
 import { Store } from "./store.js";
-import { buildLobbyView } from "./view.js";
+import { buildLobbyView, questShortfalls } from "./view.js";
 import { allQuests, customQuests, findQuest, normalizeQuest, questFromForm, saveCustomQuests } from "./quests.js";
-import { download, slug } from "./utils.js";
+import { download, lines, slug } from "./utils.js";
+
+const countLines = value => lines(value).length;
 import { TableWindow, localize as t } from "./sheets/common.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -44,6 +46,15 @@ export class Lobby extends TableWindow(HandlebarsApplicationMixin(ApplicationV2)
 
   _onFirstRender(context, options) {
     super._onFirstRender(context, options);
+    // Contador en vivo de las listas del editor de misiones.
+    this.element.addEventListener("input", event => {
+      const el = event.target;
+      const counter = el.dataset.min && this.element.querySelector(`[data-counter="${el.name}"]`);
+      if (!counter) return;
+      const n = countLines(el.value);
+      counter.textContent = t("MR.Quest.Count", { n, min: el.dataset.min, rec: el.dataset.rec });
+      counter.classList.toggle("is-low", n < Number(el.dataset.min));
+    });
     this.element.addEventListener("change", async event => {
       const el = event.target;
       if (el.name === "storyTitle") this.local.title = el.value;
@@ -95,7 +106,7 @@ export class Lobby extends TableWindow(HandlebarsApplicationMixin(ApplicationV2)
     if (result) { this.local.questId = null; this.local.title = ""; this.close(); }
   }
 
-  static #onNewQuest() { this.local.editQuest = { id: "", title: "", theme: "neutral", genre: "fantasy", questions: [], difficulties: [], concepts: [], desires: [], challenges: [] }; this.render(); }
+  static #onNewQuest() { this.local.editQuest = { id: "", title: "", theme: "neutral", genre: "fantasy", questions: [], difficulties: [], concepts: [], desires: [], wants: [], challenges: [] }; this.render(); }
   static #onEditQuest(event, target) { this.local.editQuest = structuredClone(findQuest(target.dataset.id)); this.render(); }
   static #onCancelEdit() { this.local.editQuest = null; this.render(); }
   static async #onDuplicateQuest(event, target) {
@@ -120,7 +131,8 @@ export class Lobby extends TableWindow(HandlebarsApplicationMixin(ApplicationV2)
     const form = this.element.querySelector("[data-quest-form]");
     const quest = questFromForm(form, target.dataset.id);
     if (!quest.title) return ui.notifications.warn(t("MR.Quest.NeedTitle"));
-    if (quest.challenges.length < 3) ui.notifications.warn(t("MR.Quest.FewChallenges"));
+    const low = questShortfalls(quest).map(f => t("MR.Quest.Shortfall", { field: t(`MR.Quest.Field.${f.key}.Label`), n: f.n, min: f.min }));
+    if (low.length) ui.notifications.warn(t("MR.Quest.SavedShort", { list: low.join(", ") }));
     const list = customQuests();
     const index = list.findIndex(q => q.id === quest.id);
     if (index >= 0) list[index] = quest; else list.push(quest);

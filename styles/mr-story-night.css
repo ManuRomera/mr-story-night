@@ -98,10 +98,10 @@
 .mr-line i { color: var(--mr-accent); margin-top: 3px; flex: none; }
 
 /* ================= Controles ================= */
-.mr-app button { font: 600 .93em / 1.2 var(--mr-sans); height: auto; width: auto; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 6px 12px; border-radius: var(--mr-radius-sm); border: 1px solid var(--mr-line-strong); background: var(--mr-raise); color: var(--mr-ink); cursor: pointer; transition: background .15s, border-color .15s, box-shadow .15s; box-shadow: none; text-shadow: none; margin: 0; flex: none; }
-.mr-app button:hover:not(:disabled) { border-color: var(--mr-accent); background: var(--mr-accent-soft); }
-.mr-app button:focus-visible { outline: 2px solid var(--mr-accent); outline-offset: 2px; box-shadow: none; }
-.mr-app button:disabled { opacity: .42; cursor: not-allowed; }
+.mr-app :where(.window-content) button { font: 600 .93em / 1.2 var(--mr-sans); height: auto; width: auto; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; padding: 6px 12px; border-radius: var(--mr-radius-sm); border: 1px solid var(--mr-line-strong); background: var(--mr-raise); color: var(--mr-ink); cursor: pointer; transition: background .15s, border-color .15s, box-shadow .15s; box-shadow: none; text-shadow: none; margin: 0; flex: none; }
+.mr-app :where(.window-content) button:hover:not(:disabled) { border-color: var(--mr-accent); background: var(--mr-accent-soft); }
+.mr-app :where(.window-content) button:focus-visible { outline: 2px solid var(--mr-accent); outline-offset: 2px; box-shadow: none; }
+.mr-app :where(.window-content) button:disabled { opacity: .42; cursor: not-allowed; }
 .mr-app button.mr-primary { background: var(--mr-accent); border-color: var(--mr-accent); color: var(--mr-accent-ink); }
 .mr-app button.mr-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--mr-accent) 86%, white); }
 .mr-app button.mr-large { font-size: 1.05em; padding: 10px 20px; }
@@ -448,3 +448,6 @@ button.mr-sidebar-button { margin: 0 0 8px; width: 100%; }
 .mr-reveal li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 6px 10px; border-radius: var(--mr-radius-sm); background: var(--mr-raise); }
 .mr-reveal small { color: var(--mr-muted); }
 .mr-reveal__stones { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; color: var(--mr-muted); }
+.mr-quest-field small { display: block; max-width: 90ch; }
+.mr-count { font-size: .8em; color: var(--mr-muted); white-space: nowrap; }
+.mr-count.is-low { color: var(--mr-bad); font-weight: 700; }

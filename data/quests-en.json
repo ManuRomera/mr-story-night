@@ -910,5 +910,1013 @@
     "text": "Plant before the season ends."
    }
   ]
+ },
+ {
+  "id": "corona-de-sal",
+  "title": "The Salt Crown",
+  "tagline": "A nine-year-old girl, a divided kingdom and twenty days' ride to her coronation.",
+  "theme": "fantasy",
+  "intro": "The King of the Saltlands has died with no heir but a nine-year-old granddaughter raised far from court. If she is not crowned in the cathedral of Whiteport before the new moon, the council will hand the throne to her uncle. You are the ones who must get her there alive.",
+  "goal": "Have the girl crowned in Whiteport before the new moon.",
+  "questions": [
+   "Why was the girl raised far from court?",
+   "What will the uncle do if he rules?",
+   "What does the girl know about what awaits her, and what does she think?",
+   "What sign marks the true heir?",
+   "Who paid the fellowship, and with what?"
+  ],
+  "difficulties": [
+   "The uncle has spies in every inn",
+   "The girl doesn't want to be queen",
+   "The southern roads are at war",
+   "Nobody in the fellowship has been to Whiteport",
+   "The council changes sides with the wind",
+   "A sickness is spreading along the coast"
+  ],
+  "concepts": [
+   "The girl's governess",
+   "Disgraced guard captain",
+   "Council herald",
+   "Salt smuggler",
+   "Cathedral priestess",
+   "Distant cousin with a claim",
+   "Hired sellsword",
+   "Court chronicler"
+  ],
+  "desires": [
+   "That the girl is happy, queen or not",
+   "A title and lands of my own",
+   "Avenge the dead king",
+   "Keep the kingdom out of war",
+   "Erase a past betrayal",
+   "See the uncle's power burn"
+  ],
+  "wants": [
+   "Loyalty: choose me over the crown",
+   "Forgiveness for what I did at court",
+   "Obedience: recognise my command",
+   "The truth about who killed the king",
+   "Respect, though I'm lowborn",
+   "Let me go when this is over"
+  ],
+  "challenges": [
+   {
+    "title": "Leaving the valley",
+    "text": "The uncle's men watch the only bridge."
+   },
+   {
+    "title": "An inn with too many ears",
+    "text": "Someone has recognised the girl."
+   },
+   {
+    "title": "The girl runs away",
+    "text": "She has decided she won't rule."
+   },
+   {
+    "title": "Crossing the front line",
+    "text": "Two armies, and neither is a friend."
+   },
+   {
+    "title": "Buying the council",
+    "text": "Votes have a price and there's no money."
+   },
+   {
+    "title": "The blood test",
+    "text": "The priests demand proof of who she is."
+   },
+   {
+    "title": "The uncle's ambush",
+    "text": "He knows where you'll enter."
+   },
+   {
+    "title": "The coronation",
+    "text": "The whole kingdom is watching; one mistake is enough."
+   }
+  ],
+  "genre": "fantasy"
+ },
+ {
+  "id": "biblioteca-ahogada",
+  "title": "The Drowned Library",
+  "tagline": "Save a thousand years of books from a sunken city before the Inquisition arrives.",
+  "theme": "fantasy",
+  "intro": "A century ago the sea swallowed Ilerma, and with it the greatest library in the world. Now the tide runs lower than ever and the towers break the surface. The Order of the Index has already set sail to burn whatever remains. You have seven tides to rescue what you can.",
+  "goal": "Get the books that matter out of Ilerma before the Order of the Index arrives.",
+  "questions": [
+   "Which book are you after, and why?",
+   "What made the sea swallow the city?",
+   "Who still lives among the ruins?",
+   "What does the Order fear those books contain?",
+   "Where will you hide what you save?"
+  ],
+  "difficulties": [
+   "The tides forgive no delay",
+   "Water has ruined almost everything",
+   "The Order has an informer among you",
+   "The books won't fit on the ship",
+   "Something guards the library",
+   "Nobody can read the old tongue"
+  ],
+  "concepts": [
+   "Librarian without a library",
+   "Pearl diver",
+   "Repentant novice of the Order",
+   "Ship's captain",
+   "Unscrupulous collector",
+   "Descendant of the keepers",
+   "Translator of dead languages",
+   "Cartographer of ruins"
+  ],
+  "desires": [
+   "Save one book at any cost",
+   "Sell it all to the highest bidder",
+   "Prove the Order lies",
+   "Find someone who stayed in the city",
+   "Destroy a book before anyone reads it",
+   "Be remembered as the one who saved knowledge"
+  ],
+  "wants": [
+   "Share what you've read",
+   "Give back the book you took from me",
+   "Stop believing in the Order",
+   "Admit you steered us wrong",
+   "Teach me the old tongue",
+   "Trust my map"
+  ],
+  "challenges": [
+   {
+    "title": "Finding the way in",
+    "text": "The towers shift with every tide."
+   },
+   {
+    "title": "The hall of indexes",
+    "text": "Without the catalogue, searching is hopeless."
+   },
+   {
+    "title": "The current",
+    "text": "A flooded gallery splits the group."
+   },
+   {
+    "title": "The people of the ruins",
+    "text": "They won't let anyone take anything."
+   },
+   {
+    "title": "Choosing what to save",
+    "text": "Not everything fits; something will sink forever."
+   },
+   {
+    "title": "The Order's sails",
+    "text": "They appear on the horizon too early."
+   },
+   {
+    "title": "The forbidden book",
+    "text": "Someone has opened it."
+   },
+   {
+    "title": "Setting sail",
+    "text": "With the tide rising and the ship full."
+   }
+  ],
+  "genre": "fantasy"
+ },
+ {
+  "id": "titan",
+  "title": "Last Signal from Titan",
+  "tagline": "The mining colony has been silent for forty days. You're the only rescue that will arrive in time.",
+  "theme": "sci-fi",
+  "intro": "Kraken-3, a colony on Titan's methane seas, stopped transmitting forty days ago. The mining company won't pay for a rescue and the government will arrive in a year. Your ship is old, your permit is doubtful, and down there are a hundred and twenty people.",
+  "goal": "Bring the Kraken-3 colonists home alive.",
+  "questions": [
+   "Why does this colony matter to you?",
+   "What was Kraken-3 extracting that the company wants hidden?",
+   "What did the last transmission say?",
+   "Who funds the trip and what do they expect?",
+   "What happens if you come back empty-handed?"
+  ],
+  "difficulties": [
+   "There's only fuel for one attempt",
+   "The mining company sabotages the rescue",
+   "Something in the colony doesn't want rescuing",
+   "The ship has no room for everyone",
+   "Comms fail in the atmosphere",
+   "A methane storm is coming"
+  ],
+  "concepts": [
+   "Pilot with a lapsed licence",
+   "Emergency doctor",
+   "Company engineer",
+   "A colonist's sister",
+   "Independent journalist",
+   "Life-support technician",
+   "Company lawyer",
+   "Ex-colonist who left in time"
+  ],
+  "desires": [
+   "Find one particular person alive",
+   "Expose what the company did",
+   "Collect a reward that clears my debts",
+   "Prove I can still fly",
+   "Recover samples of what was down there",
+   "Nobody dies on my watch"
+  ],
+  "wants": [
+   "Admit the company bought you",
+   "Hand me command on the surface",
+   "Tell me what the last signal really said",
+   "Forgive me for leaving Kraken-3",
+   "Let me take the samples",
+   "Don't leave me behind"
+  ],
+  "challenges": [
+   {
+    "title": "Launching without clearance",
+    "text": "Orbital control won't let you leave."
+   },
+   {
+    "title": "The landing",
+    "text": "The storm arrives early."
+   },
+   {
+    "title": "The empty colony",
+    "text": "The modules are locked from inside."
+   },
+   {
+    "title": "The survivors",
+    "text": "Not all want to leave, and some shouldn't."
+   },
+   {
+    "title": "The mine's secret",
+    "text": "What they found is still there."
+   },
+   {
+    "title": "Life support fails",
+    "text": "There isn't air for everyone on the way back."
+   },
+   {
+    "title": "The company arrives",
+    "text": "With an armed ship and another version of events."
+   },
+   {
+    "title": "Lift-off",
+    "text": "Too much weight, and nobody to spare."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "aurora",
+  "title": "The Aurora Vote",
+  "tagline": "A colony, an independence referendum and thirty days to win it.",
+  "theme": "sci-fi",
+  "intro": "For two generations Aurora has farmed a planet that Earth runs from afar. For the first time, the colony will vote on governing itself. You are the committee for yes. The administration controls the network, the water and the shipments. You have people, and little else.",
+  "goal": "Win Aurora's independence referendum.",
+  "questions": [
+   "What has Earth done to make the colony want out?",
+   "What do the colonists voting no stand to gain?",
+   "What happens to medicine shipments if yes wins?",
+   "Who is the public face of no?",
+   "What did the committee promise it would never do?"
+  ],
+  "difficulties": [
+   "The administration controls the news network",
+   "Many colonists fear being alone",
+   "The committee is divided",
+   "There's a drought and people are hungry",
+   "Someone leaks your plans",
+   "The vote may not be clean"
+  ],
+  "concepts": [
+   "Committee spokesperson",
+   "Veteran agronomist",
+   "The administrator's son",
+   "Network operator",
+   "Colony preacher",
+   "Dockworkers' organiser",
+   "Earth official with doubts",
+   "Youngster who has never seen Earth"
+  ],
+  "desires": [
+   "That my children grow up free",
+   "A post in the new government",
+   "Avenge an abuse by the administration",
+   "That the colony doesn't split in two",
+   "Prove my family wrong",
+   "That the truth about the drought comes out"
+  ],
+  "wants": [
+   "Your vote on the committee",
+   "Stop speaking for me",
+   "Resign your post in the administration",
+   "Win back people's trust in me",
+   "Admit you're afraid",
+   "Tell me who's leaking the plans"
+  ],
+  "challenges": [
+   {
+    "title": "The first rally",
+    "text": "Nobody comes, or far too many do."
+   },
+   {
+    "title": "The blackout",
+    "text": "The administration cuts the network in your district."
+   },
+   {
+    "title": "The debate",
+    "text": "The face of no speaks better than yours."
+   },
+   {
+    "title": "A scandal",
+    "text": "Something from a committee member's past comes out."
+   },
+   {
+    "title": "The water",
+    "text": "It must be shared before the other side shares it."
+   },
+   {
+    "title": "Winning the undecided",
+    "text": "The northern farmers haven't made up their minds."
+   },
+   {
+    "title": "The count",
+    "text": "Some ballot boxes don't arrive."
+   },
+   {
+    "title": "Election night",
+    "text": "Whatever happens, someone won't accept it."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "neon-2089",
+  "title": "Neon in Lavapiés, 2089",
+  "tagline": "Wipe a whole neighbourhood's debt by breaking into the server that never sleeps.",
+  "theme": "cyberpunk",
+  "intro": "In the Madrid of 2089, Lavapiés owes its rent, its water and its blood to Credisa, the lender that bought the neighbourhood on credit. The record of all that debt lives on a single server in Credisa's tower. If it disappears, the neighbourhood is free. You are going to make it disappear.",
+  "goal": "Destroy Credisa's debt records and make sure the neighbourhood knows.",
+  "questions": [
+   "What did Credisa take from each of you?",
+   "How do you pay a debt when there's no money?",
+   "Who in the neighbourhood works for Credisa?",
+   "What's on floor 40 besides the server?",
+   "What will happen to the neighbourhood the day after?"
+  ],
+  "difficulties": [
+   "The tower learns from every intrusion",
+   "The neighbourhood doesn't trust you",
+   "There are backups somewhere else",
+   "One of you has a Credisa implant",
+   "The eviction deadline is this week",
+   "Private police have shoot-to-kill orders"
+  ],
+  "concepts": [
+   "Retired local hacker",
+   "Courier with mechanical legs",
+   "Credisa accountant",
+   "Unlicensed doctor",
+   "Mural artist",
+   "Kid who sees the code",
+   "Ex private cop",
+   "Owner of the last bar"
+  ],
+  "desires": [
+   "Save my home",
+   "Bring down one particular executive",
+   "Be the neighbourhood's hero",
+   "Keep a copy of the data",
+   "Pay a debt of honour",
+   "Leave the neighbourhood for good"
+  ],
+  "wants": [
+   "Remove my implant, no questions",
+   "Stop selling me to the highest bidder",
+   "Recognise me as the best on the team",
+   "Pay what you owe me",
+   "Listen before you act",
+   "Don't ask me to shoot again"
+  ],
+  "challenges": [
+   {
+    "title": "Recruiting the neighbourhood",
+    "text": "Without people inside, the tower is impregnable."
+   },
+   {
+    "title": "Getting credentials",
+    "text": "Someone on the inside has to give in."
+   },
+   {
+    "title": "The dry run",
+    "text": "Something goes wrong and Credisa learns there's a plan."
+   },
+   {
+    "title": "Getting into the tower",
+    "text": "Every floor is a different border."
+   },
+   {
+    "title": "The server wakes",
+    "text": "It fights back and knows your names."
+   },
+   {
+    "title": "The backups",
+    "text": "There's another copy somewhere unexpected."
+   },
+   {
+    "title": "The way out",
+    "text": "Private police have surrounded the building."
+   },
+   {
+    "title": "Telling the neighbourhood",
+    "text": "If nobody knows, Credisa will rewrite it."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "san-lazaro",
+  "title": "The Water of San Lázaro",
+  "tagline": "The only well for a hundred miles and a cattleman who wants it for himself.",
+  "theme": "western",
+  "intro": "San Lázaro is an adobe town that exists because it has water. Colonel Treviño, who owns every head of cattle in the valley, has bought half the council and is bringing gunmen to take the well before summer. The sheriff left yesterday. Only you remain.",
+  "goal": "Keep the well of San Lázaro in the town's hands when summer ends.",
+  "questions": [
+   "Why do you stay when everyone else leaves?",
+   "What does the town owe the colonel?",
+   "Who on the council sold their vote, and for how much?",
+   "What's written on the well's deed?",
+   "What happened to the last town that refused?"
+  ],
+  "difficulties": [
+   "You're outnumbered and outgunned",
+   "Half the town wants to sell",
+   "Summer is here and the well is dropping",
+   "The law is on the colonel's side",
+   "Someone in town reports to the colonel",
+   "Nobody in the fellowship has ever killed"
+  ],
+  "concepts": [
+   "Widow who inherited the well",
+   "Retired gunslinger",
+   "Town schoolteacher",
+   "Colonel's cowboy who switches sides",
+   "Priest without a parish",
+   "Blacksmith",
+   "Passing gambler",
+   "Daughter of the bought mayor"
+  ],
+  "desires": [
+   "Protect my family",
+   "Atone for what I did in the war",
+   "Get my land back",
+   "Prove there's no need to shoot",
+   "Make the colonel pay for what he did to me",
+   "Leave with money when it's over"
+  ],
+  "wants": [
+   "Teach me to shoot",
+   "Put the gun down",
+   "Admit you worked for the colonel",
+   "Win back the town's respect for me",
+   "Don't judge me by my past",
+   "Come with me when I leave"
+  ],
+  "challenges": [
+   {
+    "title": "The council meeting",
+    "text": "If they vote to sell, the well is legally his."
+   },
+   {
+    "title": "Finding allies",
+    "text": "The neighbouring ranches are afraid."
+   },
+   {
+    "title": "The first warning",
+    "text": "The colonel's men burn a barn."
+   },
+   {
+    "title": "The deed",
+    "text": "It's in the bank safe, and the bank is the colonel's."
+   },
+   {
+    "title": "Poisoning the water",
+    "text": "Someone tries it at night."
+   },
+   {
+    "title": "Negotiation",
+    "text": "The colonel offers a deal that tempts many."
+   },
+   {
+    "title": "Readying the town",
+    "text": "Without enough guns or people who can use them."
+   },
+   {
+    "title": "High noon",
+    "text": "They all arrive at once."
+   }
+  ],
+  "genre": "western"
+ },
+ {
+  "id": "caso-arnau",
+  "title": "The Arnau Case, Valencia 1956",
+  "tagline": "A man will be executed on Monday for a crime he didn't commit. It's Thursday.",
+  "theme": "noir",
+  "intro": "Salvador Arnau, a dockworker, was convicted of killing a city councillor. Everyone knows he didn't do it and nobody will say so aloud. You have until dawn on Monday to find evidence no judge can ignore, in a city where talking costs dear.",
+  "goal": "Stop Salvador Arnau's execution before dawn on Monday.",
+  "questions": [
+   "What's your connection to Arnau?",
+   "Who really killed the councillor, and why?",
+   "What does the councillor's widow know?",
+   "Which judge might listen?",
+   "What will happen to you if you're caught snooping?"
+  ],
+  "difficulties": [
+   "The police are bought",
+   "Witnesses are afraid",
+   "The clock is ticking",
+   "Arnau doesn't want to be saved",
+   "The press is censored",
+   "Someone in the fellowship hides something about that night"
+  ],
+  "concepts": [
+   "Court-appointed lawyer",
+   "Local newspaper reporter",
+   "Arnau's sister",
+   "Doubting inspector",
+   "Arnau's fellow docker",
+   "Cabaret singer",
+   "The councillor's secretary",
+   "Harbour district priest"
+  ],
+  "desires": [
+   "Save my brother",
+   "A scoop that makes my name",
+   "Clear my conscience",
+   "Sink whoever really did it",
+   "Make the law mean something",
+   "Leave this city with something in my pockets"
+  ],
+  "wants": [
+   "Tell me where you were that night",
+   "Stop protecting me",
+   "Give me the scoop",
+   "Confess what you know",
+   "Apologise to me in front of everyone",
+   "Believe me"
+  ],
+  "challenges": [
+   {
+    "title": "Visiting Arnau",
+    "text": "In prison, everything is overheard."
+   },
+   {
+    "title": "The dock witness",
+    "text": "Saw something and is now afraid."
+   },
+   {
+    "title": "The councillor's house",
+    "text": "There are papers someone wants burned."
+   },
+   {
+    "title": "A warning",
+    "text": "You're being followed and they want you to know."
+   },
+   {
+    "title": "The cabaret",
+    "text": "The deal was struck there that night."
+   },
+   {
+    "title": "The evidence",
+    "text": "It exists, but getting it compromises someone."
+   },
+   {
+    "title": "The judge",
+    "text": "You must reach him without going through the usual people."
+   },
+   {
+    "title": "Monday before dawn",
+    "text": "All or nothing at the prison gate."
+   }
+  ],
+  "genre": "noir"
+ },
+ {
+  "id": "la-merced",
+  "title": "Night Shift at La Merced",
+  "tagline": "A quarantined hospital, a floor without power and patients who shouldn't get up.",
+  "theme": "horror",
+  "intro": "La Merced hospital is cut off: a storm, closed roads and not one ambulance until dawn. On the third floor the power has gone and the patients have started doing impossible things. You are the night shift. Nobody else is coming.",
+  "goal": "Get the patients on the children's ward out alive before dawn.",
+  "questions": [
+   "What came into A&E yesterday that changed everything?",
+   "What exactly happens to those who catch it?",
+   "Who in the hospital knew this could happen?",
+   "What can be heard over the intercoms?",
+   "How many children are on the ward, and why are they there?"
+  ],
+  "difficulties": [
+   "The lights fail when most needed",
+   "Anyone could be infected",
+   "The lifts don't respond",
+   "You must move patients who can't walk",
+   "Management orders you not to leave",
+   "Something mimics the voices of those who are gone"
+  ],
+  "concepts": [
+   "Night nurse",
+   "First-year resident",
+   "Porter",
+   "A patient's mother",
+   "Security guard",
+   "Exhausted surgeon",
+   "Patient who won't stay in bed",
+   "Maintenance technician"
+  ],
+  "desires": [
+   "Save one particular child",
+   "That what happened in my first year never happens again",
+   "Find out what's causing this",
+   "Prove I'm not a coward",
+   "Get out alive, whatever it takes",
+   "Make someone pay for this negligence"
+  ],
+  "wants": [
+   "Tell me if you're infected",
+   "Follow my orders",
+   "Don't leave me alone on the ward",
+   "Admit you knew what the patient brought in",
+   "Cover for me if I get it wrong",
+   "Let me into theatre"
+  ],
+  "challenges": [
+   {
+    "title": "Reaching the third floor",
+    "text": "The stairs are blocked."
+   },
+   {
+    "title": "The first infected",
+    "text": "It's someone you know."
+   },
+   {
+    "title": "Restoring power",
+    "text": "The generator is in the basement."
+   },
+   {
+    "title": "The isolation room",
+    "text": "Someone locked inside is begging for help."
+   },
+   {
+    "title": "Moving the children",
+    "text": "Not enough beds, not enough time."
+   },
+   {
+    "title": "Management's order",
+    "text": "Seal the floor with everyone inside."
+   },
+   {
+    "title": "Patient zero",
+    "text": "Still in their room, and wants to talk."
+   },
+   {
+    "title": "Dawn",
+    "text": "The exit is one corridor away."
+   }
+  ],
+  "genre": "horror"
+ },
+ {
+  "id": "valdeniebla",
+  "title": "The Children of Valdeniebla",
+  "tagline": "Three children went up the mountain on Midsummer Eve. The fog hasn't given them back.",
+  "theme": "folk",
+  "intro": "In Valdeniebla, when the fog comes down on Midsummer Eve, nobody goes up the mountain. This year three children did. The elders pray and shut the windows; they say it's already too late. You don't intend to wait for the fog to lift.",
+  "goal": "Bring the three children back before Midsummer night ends.",
+  "questions": [
+   "What did the children go up the mountain to find?",
+   "What is said to live in the fog?",
+   "What pact did the village make generations ago?",
+   "Who in the village knows more than they say?",
+   "What is offered to the mountain each Midsummer, and wasn't this year?"
+  ],
+  "difficulties": [
+   "The fog erases the paths",
+   "The village doesn't want you to go up",
+   "What's on the mountain asks for something in return",
+   "One of the children doesn't want to come back",
+   "Time runs differently in the fog",
+   "The bonfires must burn all night"
+  ],
+  "concepts": [
+   "Mother of one of the children",
+   "Old shepherd",
+   "Newly arrived teacher",
+   "Village healer",
+   "Local Civil Guard",
+   "Older brother",
+   "Sexton",
+   "Summer visitor from the city"
+  ],
+  "desires": [
+   "Get my child back",
+   "Break the pact for good",
+   "Prove it's all superstition",
+   "Find out what happened to someone lost years ago",
+   "Be accepted by the village",
+   "That nobody else has to pay"
+  ],
+  "wants": [
+   "Tell me what you know about the pact",
+   "Stop treating me like an outsider",
+   "Forgive me for that Midsummer",
+   "Come with me even though you're afraid",
+   "Respect the old ways",
+   "Let me decide"
+  ],
+  "challenges": [
+   {
+    "title": "Leaving the village",
+    "text": "The neighbours block the way."
+   },
+   {
+    "title": "Following the trail",
+    "text": "The fog confuses the tracks."
+   },
+   {
+    "title": "The crossroads",
+    "text": "Someone waits there to offer you a deal."
+   },
+   {
+    "title": "The ruined hermitage",
+    "text": "That's where the pact was made."
+   },
+   {
+    "title": "The voices",
+    "text": "They call with the children's voices."
+   },
+   {
+    "title": "The first child",
+    "text": "Appears, but not alone."
+   },
+   {
+    "title": "The bonfires die",
+    "text": "Someone in the village let them go out."
+   },
+   {
+    "title": "The price",
+    "text": "The mountain wants something in exchange for all three."
+   }
+  ],
+  "genre": "folk"
+ },
+ {
+  "id": "penas-negras",
+  "title": "The Radio at Peñas Negras",
+  "tagline": "One antenna, a winter ahead and the hope that someone else is still alive.",
+  "theme": "postapoc",
+  "intro": "Eleven years after the blackout, your community survives in an isolated valley. On top of Peñas Negras stands a radio antenna that, if repaired, would reach three hundred kilometres. Nobody knows if anyone is listening. You have until the first snow to find out.",
+  "goal": "Repair the Peñas Negras antenna and contact another community before winter.",
+  "questions": [
+   "What caused the blackout, according to your community?",
+   "Why are there people in the valley who don't want to be found?",
+   "What part is missing, and where might there be one?",
+   "What happened to the last expedition that left the valley?",
+   "What will you do if whoever answers isn't friendly?"
+  ],
+  "difficulties": [
+   "Parts are missing that nobody makes any more",
+   "The climb is dangerous",
+   "The community is divided",
+   "Others in the hills want the antenna too",
+   "Winter is coming early",
+   "Nobody really knows how a radio works"
+  ],
+  "concepts": [
+   "Elderly radio ham",
+   "Girl born after the blackout",
+   "Community leader",
+   "Scavenger",
+   "Ex-soldier",
+   "Doctor without medicine",
+   "Newly arrived stranger",
+   "Keeper of the seeds"
+  ],
+  "desires": [
+   "Know if my family is alive",
+   "That the community depends on nobody",
+   "Find somewhere better and leave",
+   "Prove the old still have their uses",
+   "That nobody finds us",
+   "Recover something of the world before"
+  ],
+  "wants": [
+   "Teach me what you know about radio",
+   "Stop ordering me around like a child",
+   "Tell me where you really come from",
+   "Don't abandon me like last time",
+   "Back my vote in the assembly",
+   "Return what you took from the store"
+  ],
+  "challenges": [
+   {
+    "title": "The assembly",
+    "text": "Not everyone wants to spend supplies on this."
+   },
+   {
+    "title": "Finding the part",
+    "text": "It's in the dead city."
+   },
+   {
+    "title": "The climb",
+    "text": "The path has collapsed."
+   },
+   {
+    "title": "The hill folk",
+    "text": "They've seen your light."
+   },
+   {
+    "title": "Repairing the antenna",
+    "text": "A night's work in the cold with no guarantees."
+   },
+   {
+    "title": "The first message",
+    "text": "Only static."
+   },
+   {
+    "title": "Someone answers",
+    "text": "And wants to know where you are."
+   },
+   {
+    "title": "Deciding what to say",
+    "text": "The answer could save you or doom you."
+   }
+  ],
+  "genre": "postapoc"
+ },
+ {
+  "id": "montecarlo",
+  "title": "Auction in Monte Carlo, 1962",
+  "tagline": "A stolen painting, a gala auction and one night to return it to its owner.",
+  "theme": "noir",
+  "intro": "A portrait the Nazis stole from a Viennese family is to be auctioned at the Monte Carlo casino, before princesses, film stars and people who'd rather nobody asked where their money came from. The rightful owner is eighty-four. You have a forged invitation and a plan.",
+  "goal": "Get the painting out of the casino and deliver it to its rightful owner.",
+  "questions": [
+   "What ties you to the painting's owner?",
+   "Who is selling it, and how did they get it?",
+   "Who else wants that painting tonight?",
+   "What's hidden behind the canvas?",
+   "What rule can nobody on the team break?"
+  ],
+  "difficulties": [
+   "Casino security is flawless",
+   "Another crew has the same target",
+   "One of you is known to the police",
+   "The likeliest buyer is dangerous",
+   "The plan depends on an exact shift change",
+   "Someone on the team has fallen for a guest"
+  ],
+  "concepts": [
+   "Art forger",
+   "Casino croupier",
+   "Ruined aristocrat",
+   "Retired gentleman thief",
+   "The owner's granddaughter",
+   "Chauffeur and getaway driver",
+   "Insurance investigator",
+   "Fading film star"
+  ],
+  "desires": [
+   "Justice for the family",
+   "One last job before I retire",
+   "Restore my reputation",
+   "Take more than the painting",
+   "Get revenge on the seller",
+   "That the world learns where that money came from"
+  ],
+  "wants": [
+   "Let me run the plan",
+   "Don't lie to me again",
+   "Give me my cut from the last job",
+   "Introduce me to society",
+   "Forget that guest",
+   "Cover for me if it all goes wrong"
+  ],
+  "challenges": [
+   {
+    "title": "Assembling the crew",
+    "text": "The two best people for it are missing."
+   },
+   {
+    "title": "Casing the casino",
+    "text": "Every visit exposes you a little more."
+   },
+   {
+    "title": "The forgery",
+    "text": "It has to fool an expert at arm's length."
+   },
+   {
+    "title": "Getting into the gala",
+    "text": "The forged invitation won't survive a second look."
+   },
+   {
+    "title": "The other crew",
+    "text": "They're in the way, or you can use them."
+   },
+   {
+    "title": "The switch",
+    "text": "Swap the painting with two hundred people watching."
+   },
+   {
+    "title": "The alarm",
+    "text": "It goes off too early."
+   },
+   {
+    "title": "Escape along the coast",
+    "text": "With the Monaco police behind you."
+   }
+  ],
+  "genre": "heist"
+ },
+ {
+  "id": "santa-clara",
+  "title": "Santa Clara Boarding School, 1899",
+  "tagline": "A missing pupil, a convent school and a secret buried beneath the chapel.",
+  "theme": "gothic",
+  "intro": "Three weeks ago, Inés de Olmedo vanished from Santa Clara boarding school without even taking her coat. The Mother Superior says she ran off with a man. Nobody believes it, but at Santa Clara nobody contradicts the Mother Superior. You are going to find out what happened to Inés.",
+  "goal": "Discover what happened to Inés de Olmedo and make it known outside the school.",
+  "questions": [
+   "What's your connection to Inés?",
+   "What happens at night in the old wing?",
+   "What did the first abbess really found?",
+   "Who visited Inés on Sundays?",
+   "What is punished at Santa Clara that is never named?"
+  ],
+  "difficulties": [
+   "Pupils are forbidden to talk to each other",
+   "The Mother Superior knows everything",
+   "The families would rather not know",
+   "Leaving the school without permission is impossible",
+   "Something in the chapel doesn't rest",
+   "One of you keeps the letter Inés left"
+  ],
+  "concepts": [
+   "Final-year pupil",
+   "Young nun with doubts",
+   "Music teacher",
+   "Inés's brother",
+   "School gardener",
+   "Kitchen maid",
+   "Doctor who visits monthly",
+   "Former pupil back as a teacher"
+  ],
+  "desires": [
+   "Find Inés alive",
+   "Escape Santa Clara",
+   "Bring down the Mother Superior",
+   "Win my family's forgiveness",
+   "Uncover the founder's secret",
+   "Protect the younger pupils"
+  ],
+  "wants": [
+   "Show me Inés's letter",
+   "Stop obeying her",
+   "Tell me what you saw that night",
+   "Don't give me away",
+   "Help me get out of here",
+   "Admit you loved me"
+  ],
+  "challenges": [
+   {
+    "title": "Searching Inés's room",
+    "text": "Someone emptied it before you."
+   },
+   {
+    "title": "Talking to the pupils",
+    "text": "They're afraid, and one is lying."
+   },
+   {
+    "title": "The old wing",
+    "text": "It's been locked for years."
+   },
+   {
+    "title": "The founder's diary",
+    "text": "It's in the Mother Superior's study."
+   },
+   {
+    "title": "The chapel at night",
+    "text": "Someone who isn't there can be heard praying."
+   },
+   {
+    "title": "An example is made",
+    "text": "One of you is caught."
+   },
+   {
+    "title": "The crypt",
+    "text": "That's where Inés's trail ends."
+   },
+   {
+    "title": "Telling the world",
+    "text": "Without proof, nobody will believe a pupil."
+   }
+  ],
+  "genre": "gothic"
  }
 ]

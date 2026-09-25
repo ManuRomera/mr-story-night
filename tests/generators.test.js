@@ -16,7 +16,7 @@ for (const lang of ["es", "en"]) {
   });
 
   test(`[${lang}] cada misión tiene género, contenido completo y genera de todo`, () => {
-    assert.ok(quests.length >= 12);
+    assert.ok(quests.length >= 24);
     for (const q of quests) {
       assert.ok(genreOf(q), q.id);
       for (const key of ["questions", "difficulties", "concepts", "desires", "challenges"]) assert.ok(q[key].length >= 5, `${q.id}.${key}`);
@@ -25,7 +25,7 @@ for (const lang of ["es", "en"]) {
         assert.ok(value && (typeof value === "string" || value.title), `${q.id}/${kind}`);
       }
       const c = generateCharacter(tables, q, Math.random, { target: "Ada" });
-      assert.match(c.want, /Ada/);
+      assert.ok(c.want.includes("Ada") || q.wants?.includes(c.want), `${q.id} want`);
       assert.ok(variety(tables, q) > 100000, `${q.id} variety`);
       assert.ok(generateScene(tables, q, Math.random, { names: ["A", "B"] }).where);
     }

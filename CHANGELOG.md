@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 — 2026-09-25
+
+- **12 misiones originales nuevas** (24 en total), en castellano e inglés: fantasía, ciencia ficción, cyberpunk, western, noir, terror, folk horror, postapocalipsis, golpe y gótico.
+- **Editor de misiones con ayuda**: cada campo explica qué tipo de contenido lleva y qué aporta, y las listas muestran un contador con el mínimo que exige el juego y lo recomendado. Al guardar avisa de las listas cortas.
+- Nuevo campo de misión **«Lo que quiero de ti»**: sus entradas tienen prioridad en el dado de la ficha.
+- Corregido: los botones de la cabecera de las ventanas (cerrar, menú, token) perdían el icono por un estilo demasiado general.
+
 ## 0.5.1 — 2026-09-25
 
 - El manifiesto pasa a leerse de la última release (`releases/latest/download/system.json`) en lugar de la rama `main`. Así «Buscar actualizaciones» solo ve una versión cuando su zip ya está publicado y no depende de la caché de 5 minutos de GitHub.

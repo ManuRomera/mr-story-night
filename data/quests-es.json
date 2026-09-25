@@ -910,5 +910,1013 @@
     "text": "Plantar antes de que acabe la temporada."
    }
   ]
+ },
+ {
+  "id": "corona-de-sal",
+  "title": "La corona de sal",
+  "tagline": "Una niña de nueve años, un reino dividido y veinte días de camino hasta su coronación.",
+  "theme": "fantasy",
+  "intro": "El rey de las Salinas ha muerto sin más heredera que una nieta de nueve años criada lejos de la corte. Si no es coronada en la catedral de Puertoblanco antes de la luna nueva, el consejo entregará el trono a su tío. Vosotros sois quienes deben llevarla hasta allí con vida.",
+  "goal": "Que la niña sea coronada en Puertoblanco antes de la luna nueva.",
+  "questions": [
+   "¿Por qué la niña se crió lejos de la corte?",
+   "¿Qué hará el tío si llega a reinar?",
+   "¿Qué sabe la niña de lo que le espera, y qué opina?",
+   "¿Qué señal distingue a la verdadera heredera?",
+   "¿Quién pagó a la compañía, y con qué?"
+  ],
+  "difficulties": [
+   "El tío tiene espías en cada posada",
+   "La niña no quiere ser reina",
+   "Los caminos del sur están en guerra",
+   "Nadie en la compañía ha estado en Puertoblanco",
+   "El consejo cambia de bando según sopla el viento",
+   "Una enfermedad avanza por la costa"
+  ],
+  "concepts": [
+   "Aya de la niña",
+   "Capitán de la guardia caído en desgracia",
+   "Heraldo del consejo",
+   "Contrabandista de sal",
+   "Sacerdotisa de la catedral",
+   "Primo lejano con derecho al trono",
+   "Mercenaria a sueldo",
+   "Cronista de la corte"
+  ],
+  "desires": [
+   "Que la niña sea feliz, reine o no",
+   "Un título y tierras propias",
+   "Vengar al rey muerto",
+   "Que el reino no caiga en guerra",
+   "Borrar una traición pasada",
+   "Ver arder el poder del tío"
+  ],
+  "wants": [
+   "Lealtad: que me elijas a mí antes que a la corona",
+   "Perdón por lo que hice en la corte",
+   "Obediencia: que reconozcas mi mando",
+   "La verdad sobre quién mató al rey",
+   "Respeto, aunque sea de baja cuna",
+   "Que me dejes ir cuando esto acabe"
+  ],
+  "challenges": [
+   {
+    "title": "Salir del valle",
+    "text": "Los hombres del tío vigilan el único puente."
+   },
+   {
+    "title": "Una posada con demasiados oídos",
+    "text": "Alguien ha reconocido a la niña."
+   },
+   {
+    "title": "La niña huye",
+    "text": "Ha decidido que no quiere reinar."
+   },
+   {
+    "title": "Cruzar la línea del frente",
+    "text": "Dos ejércitos y ninguno es amigo."
+   },
+   {
+    "title": "Comprar al consejo",
+    "text": "Los votos tienen precio y no hay dinero."
+   },
+   {
+    "title": "La prueba de sangre",
+    "text": "Los sacerdotes exigen demostrar quién es."
+   },
+   {
+    "title": "La emboscada del tío",
+    "text": "Sabe por dónde vais a entrar."
+   },
+   {
+    "title": "La coronación",
+    "text": "Todo el reino mira; basta un error."
+   }
+  ],
+  "genre": "fantasy"
+ },
+ {
+  "id": "biblioteca-ahogada",
+  "title": "La biblioteca ahogada",
+  "tagline": "Salvar mil años de libros de una ciudad bajo las aguas antes de que llegue la Inquisición.",
+  "theme": "fantasy",
+  "intro": "Hace un siglo el mar se tragó Ilerma, y con ella la mayor biblioteca del mundo. Ahora la marea baja más que nunca y las torres asoman. La Orden del Índice ya ha zarpado para quemar lo que quede. Tenéis siete mareas para rescatar lo que podáis.",
+  "goal": "Sacar de Ilerma los libros que importan antes de que llegue la Orden del Índice.",
+  "questions": [
+   "¿Qué libro concreto buscáis y por qué?",
+   "¿Qué provocó que el mar engullera la ciudad?",
+   "¿Quién vive todavía entre las ruinas?",
+   "¿Qué teme la Orden que contengan esos libros?",
+   "¿Dónde esconderéis lo que saquéis?"
+  ],
+  "difficulties": [
+   "Las mareas no perdonan un retraso",
+   "El agua ha estropeado casi todo",
+   "La Orden tiene un informante entre vosotros",
+   "Los libros no caben en el barco",
+   "Algo protege la biblioteca",
+   "Nadie sabe leer la lengua antigua"
+  ],
+  "concepts": [
+   "Bibliotecaria sin biblioteca",
+   "Buzo de perlas",
+   "Novicio de la Orden arrepentido",
+   "Capitana del barco",
+   "Coleccionista sin escrúpulos",
+   "Descendiente de los guardianes",
+   "Traductor de lenguas muertas",
+   "Cartógrafa de ruinas"
+  ],
+  "desires": [
+   "Salvar un libro concreto a cualquier precio",
+   "Venderlo todo al mejor postor",
+   "Demostrar que la Orden miente",
+   "Encontrar a quien se quedó en la ciudad",
+   "Destruir un libro antes de que otro lo lea",
+   "Ser recordado como quien salvó el saber"
+  ],
+  "wants": [
+   "Que compartas lo que has leído",
+   "Que me devuelvas el libro que me quitaste",
+   "Que dejes de creer en la Orden",
+   "Que admitas que te equivocaste de rumbo",
+   "Que me enseñes a leer la lengua antigua",
+   "Que confíes en mi mapa"
+  ],
+  "challenges": [
+   {
+    "title": "Encontrar la entrada",
+    "text": "Las torres cambian con cada marea."
+   },
+   {
+    "title": "La sala de los índices",
+    "text": "Sin el catálogo, buscar es imposible."
+   },
+   {
+    "title": "La corriente",
+    "text": "Una galería inundada separa el grupo."
+   },
+   {
+    "title": "Los habitantes de las ruinas",
+    "text": "No quieren que nadie se lleve nada."
+   },
+   {
+    "title": "Elegir qué salvar",
+    "text": "No cabe todo; algo se hundirá para siempre."
+   },
+   {
+    "title": "Las velas de la Orden",
+    "text": "Aparecen en el horizonte antes de tiempo."
+   },
+   {
+    "title": "El libro prohibido",
+    "text": "Alguien lo ha abierto."
+   },
+   {
+    "title": "Zarpar",
+    "text": "Con la marea subiendo y el barco lleno."
+   }
+  ],
+  "genre": "fantasy"
+ },
+ {
+  "id": "titan",
+  "title": "Última señal desde Titán",
+  "tagline": "La colonia minera lleva cuarenta días en silencio. Sois el único rescate que llegará a tiempo.",
+  "theme": "sci-fi",
+  "intro": "La colonia Kraken-3, en los mares de metano de Titán, dejó de emitir hace cuarenta días. La compañía minera no piensa pagar un rescate y el gobierno llegará dentro de un año. Vuestra nave es vieja, vuestro permiso es dudoso y ahí abajo hay ciento veinte personas.",
+  "goal": "Traer con vida a los colonos de Kraken-3.",
+  "questions": [
+   "¿Por qué os importa esta colonia en concreto?",
+   "¿Qué extraía Kraken-3 que la compañía quiere ocultar?",
+   "¿Qué decía la última transmisión?",
+   "¿Quién financia el viaje y qué espera a cambio?",
+   "¿Qué pasa si volvéis con las manos vacías?"
+  ],
+  "difficulties": [
+   "El combustible solo alcanza para un intento",
+   "La compañía minera sabotea el rescate",
+   "Algo en la colonia no quiere ser rescatado",
+   "La nave no tiene sitio para todos",
+   "Las comunicaciones fallan en la atmósfera",
+   "Una tormenta de metano se acerca"
+  ],
+  "concepts": [
+   "Piloto con licencia retirada",
+   "Médica de emergencias",
+   "Ingeniero de la compañía",
+   "Hermana de un colono",
+   "Periodista independiente",
+   "Técnica de soporte vital",
+   "Abogado de la compañía",
+   "Excolono que se fue a tiempo"
+  ],
+  "desires": [
+   "Encontrar a alguien concreto con vida",
+   "Sacar a la luz lo que hizo la compañía",
+   "Cobrar una recompensa que me saque de deudas",
+   "Demostrar que sigo sabiendo volar",
+   "Recuperar muestras de lo que había ahí abajo",
+   "Que nadie muera bajo mi responsabilidad"
+  ],
+  "wants": [
+   "Que reconozcas que la compañía te compró",
+   "Que me cedas el mando en la superficie",
+   "Que me cuentes qué dijo de verdad la última señal",
+   "Que me perdones por marcharme de Kraken-3",
+   "Que me dejes llevar las muestras",
+   "Que no me dejes atrás"
+  ],
+  "challenges": [
+   {
+    "title": "Despegar sin permiso",
+    "text": "El control orbital no os deja salir."
+   },
+   {
+    "title": "El aterrizaje",
+    "text": "La tormenta llega antes de lo previsto."
+   },
+   {
+    "title": "La colonia vacía",
+    "text": "Los módulos están cerrados desde dentro."
+   },
+   {
+    "title": "Los supervivientes",
+    "text": "No todos quieren irse, y algunos no deberían."
+   },
+   {
+    "title": "El secreto de la mina",
+    "text": "Lo que encontraron sigue ahí."
+   },
+   {
+    "title": "El soporte vital falla",
+    "text": "No hay aire para todos durante el regreso."
+   },
+   {
+    "title": "La compañía llega",
+    "text": "Con una nave armada y otra versión de los hechos."
+   },
+   {
+    "title": "El despegue",
+    "text": "Sobra peso y no sobra nadie."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "aurora",
+  "title": "El voto de Aurora",
+  "tagline": "Una colonia, un referéndum de independencia y treinta días para ganarlo.",
+  "theme": "sci-fi",
+  "intro": "Aurora lleva dos generaciones cultivando un planeta que la Tierra administra desde lejos. Por primera vez, la colonia votará si quiere gobernarse sola. Sois el comité que defiende el sí. La administración controla la red, el agua y los envíos. Vosotros tenéis gente, y poco más.",
+  "goal": "Ganar el referéndum de independencia de Aurora.",
+  "questions": [
+   "¿Qué ha hecho la Tierra para que la colonia quiera irse?",
+   "¿Qué ganan los colonos que votarán que no?",
+   "¿Qué pasará con los envíos de medicinas si gana el sí?",
+   "¿Quién es la cara pública del no?",
+   "¿Qué se prometió el comité que nunca haría?"
+  ],
+  "difficulties": [
+   "La administración controla la red de noticias",
+   "Muchos colonos temen quedarse solos",
+   "El comité está dividido",
+   "Hay una sequía y la gente tiene hambre",
+   "Alguien filtra vuestros planes",
+   "El voto puede no ser limpio"
+  ],
+  "concepts": [
+   "Portavoz del comité",
+   "Agrónoma veterana",
+   "Hijo del administrador",
+   "Operadora de la red",
+   "Predicadora de la colonia",
+   "Sindicalista del puerto",
+   "Funcionaria de la Tierra que duda",
+   "Joven que nunca ha visto la Tierra"
+  ],
+  "desires": [
+   "Que mis hijos crezcan libres",
+   "Un cargo en el nuevo gobierno",
+   "Vengar un abuso de la administración",
+   "Que la colonia no se rompa en dos",
+   "Demostrarle a mi familia que me equivocaba",
+   "Que se sepa la verdad sobre la sequía"
+  ],
+  "wants": [
+   "Tu voto en el comité",
+   "Que dejes de hablar en mi nombre",
+   "Que renuncies a tu cargo en la administración",
+   "Que me devuelvas la confianza de la gente",
+   "Que admitas que tienes miedo",
+   "Que me cuentes quién filtra los planes"
+  ],
+  "challenges": [
+   {
+    "title": "El primer mitin",
+    "text": "Nadie acude, o acude demasiada gente."
+   },
+   {
+    "title": "El apagón",
+    "text": "La administración corta la red en vuestro barrio."
+   },
+   {
+    "title": "El debate",
+    "text": "La cara del no es mejor oradora que la vuestra."
+   },
+   {
+    "title": "Un escándalo",
+    "text": "Algo del pasado de alguien del comité sale a la luz."
+   },
+   {
+    "title": "El agua",
+    "text": "Hay que repartirla antes de que la reparta el otro bando."
+   },
+   {
+    "title": "Ganarse a los indecisos",
+    "text": "Los agricultores del norte aún no han decidido."
+   },
+   {
+    "title": "El recuento",
+    "text": "Hay urnas que no llegan."
+   },
+   {
+    "title": "La noche electoral",
+    "text": "Pase lo que pase, alguien no lo aceptará."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "neon-2089",
+  "title": "Neón en Lavapiés, 2089",
+  "tagline": "Borrar la deuda de un barrio entero entrando en el servidor que nunca duerme.",
+  "theme": "cyberpunk",
+  "intro": "En el Madrid de 2089, Lavapiés debe su alquiler, su agua y su sangre a Credisa, la financiera que compró el barrio a plazos. El registro de todas esas deudas vive en un único servidor en la torre de Credisa. Si desaparece, el barrio queda libre. Vosotros vais a hacerlo desaparecer.",
+  "goal": "Destruir el registro de deudas de Credisa y que el barrio lo sepa.",
+  "questions": [
+   "¿Qué os quitó Credisa a cada uno?",
+   "¿Cómo se paga una deuda cuando no hay dinero?",
+   "¿Quién en el barrio trabaja para Credisa?",
+   "¿Qué hay en la planta 40 además del servidor?",
+   "¿Qué pasará con el barrio el día después?"
+  ],
+  "difficulties": [
+   "La torre aprende de cada intrusión",
+   "El barrio no confía en vosotros",
+   "Hay copias de seguridad en otro sitio",
+   "Uno de vosotros tiene un implante de Credisa",
+   "El plazo de desahucio vence esta semana",
+   "La policía privada tiene orden de tirar a matar"
+  ],
+  "concepts": [
+   "Hacker jubilada del barrio",
+   "Repartidor con piernas mecánicas",
+   "Contable de Credisa",
+   "Médico sin licencia",
+   "Artista de murales",
+   "Chaval que ve el código",
+   "Ex policía privada",
+   "Dueña del último bar"
+  ],
+  "desires": [
+   "Salvar mi casa",
+   "Hacer caer a un directivo concreto",
+   "Que el barrio me vea como un héroe",
+   "Quedarme con una copia de los datos",
+   "Pagar una deuda de honor",
+   "Salir del barrio para siempre"
+  ],
+  "wants": [
+   "Que me quites el implante sin preguntar",
+   "Que dejes de venderme al mejor postor",
+   "Que me reconozcas como la mejor del equipo",
+   "Que pagues lo que me debes",
+   "Que me escuches antes de actuar",
+   "Que no me pidas que vuelva a disparar"
+  ],
+  "challenges": [
+   {
+    "title": "Reclutar al barrio",
+    "text": "Sin gente dentro, la torre es inexpugnable."
+   },
+   {
+    "title": "Conseguir las credenciales",
+    "text": "Alguien de dentro tiene que ceder."
+   },
+   {
+    "title": "El ensayo",
+    "text": "Algo sale mal y Credisa se entera de que existe un plan."
+   },
+   {
+    "title": "Entrar en la torre",
+    "text": "Cada planta es una frontera distinta."
+   },
+   {
+    "title": "El servidor despierta",
+    "text": "Contraataca y sabe vuestros nombres."
+   },
+   {
+    "title": "Las copias",
+    "text": "Hay otra en un sitio que no esperabais."
+   },
+   {
+    "title": "La salida",
+    "text": "La policía privada ha rodeado el edificio."
+   },
+   {
+    "title": "Contárselo al barrio",
+    "text": "Si nadie lo sabe, Credisa lo reescribirá."
+   }
+  ],
+  "genre": "scifi"
+ },
+ {
+  "id": "san-lazaro",
+  "title": "El agua de San Lázaro",
+  "tagline": "El único pozo en cien millas y un ganadero que lo quiere para sí.",
+  "theme": "western",
+  "intro": "San Lázaro es un pueblo de adobe que existe porque tiene agua. El coronel Treviño, dueño de todo el ganado del valle, ha comprado a la mitad del concejo y trae hombres armados para quedarse con el pozo antes del verano. El sheriff se fue ayer. Solo quedáis vosotros.",
+  "goal": "Que el pozo de San Lázaro siga siendo del pueblo cuando termine el verano.",
+  "questions": [
+   "¿Por qué os quedáis cuando todos se van?",
+   "¿Qué le debe el pueblo al coronel?",
+   "¿Quién del concejo vendió su voto y por cuánto?",
+   "¿Qué hay escrito en la escritura del pozo?",
+   "¿Qué pasó con el último pueblo que se negó?"
+  ],
+  "difficulties": [
+   "Os superan en número y en armas",
+   "La mitad del pueblo quiere vender",
+   "El verano ya está aquí y el pozo baja",
+   "La ley está de parte del coronel",
+   "Alguien del pueblo informa al coronel",
+   "Nadie de la compañía ha matado nunca"
+  ],
+  "concepts": [
+   "Viuda que heredó el pozo",
+   "Pistolero retirado",
+   "Maestra del pueblo",
+   "Vaquero del coronel que cambia de bando",
+   "Cura sin parroquia",
+   "Herrero",
+   "Tahúr de paso",
+   "Hija del alcalde vendido"
+  ],
+  "desires": [
+   "Proteger a mi familia",
+   "Redimirme por lo que hice en la guerra",
+   "Que me devuelvan mis tierras",
+   "Demostrar que no hace falta disparar",
+   "Cobrarme lo que el coronel me hizo",
+   "Irme con dinero cuando acabe"
+  ],
+  "wants": [
+   "Que me enseñes a disparar",
+   "Que dejes el revólver",
+   "Que admitas que trabajaste para el coronel",
+   "Que me devuelvas el respeto del pueblo",
+   "Que no me juzgues por mi pasado",
+   "Que me acompañes cuando me vaya"
+  ],
+  "challenges": [
+   {
+    "title": "La reunión del concejo",
+    "text": "Si votan vender, el pozo es legalmente suyo."
+   },
+   {
+    "title": "Buscar aliados",
+    "text": "Los ranchos vecinos tienen miedo."
+   },
+   {
+    "title": "El primer aviso",
+    "text": "Los hombres del coronel queman un granero."
+   },
+   {
+    "title": "La escritura",
+    "text": "Está en la caja fuerte del banco, que es del coronel."
+   },
+   {
+    "title": "Envenenar el agua",
+    "text": "Alguien lo intenta de noche."
+   },
+   {
+    "title": "Negociar",
+    "text": "El coronel ofrece un trato que tienta a muchos."
+   },
+   {
+    "title": "Preparar el pueblo",
+    "text": "Sin armas suficientes ni gente que sepa usarlas."
+   },
+   {
+    "title": "El mediodía",
+    "text": "Llegan todos a la vez."
+   }
+  ],
+  "genre": "western"
+ },
+ {
+  "id": "caso-arnau",
+  "title": "El caso Arnau, Valencia 1956",
+  "tagline": "Un hombre será ejecutado el lunes por un crimen que no cometió. Es jueves.",
+  "theme": "noir",
+  "intro": "Salvador Arnau, estibador del puerto, fue condenado por matar a un concejal. Todos saben que no fue él y nadie lo dirá en voz alta. Tenéis hasta el lunes al amanecer para encontrar pruebas que un juez no pueda ignorar, en una ciudad donde hablar sale caro.",
+  "goal": "Detener la ejecución de Salvador Arnau antes del lunes al amanecer.",
+  "questions": [
+   "¿Qué relación tenéis con Arnau?",
+   "¿Quién mató de verdad al concejal y por qué?",
+   "¿Qué sabe la viuda del concejal?",
+   "¿Qué juez puede escucharos?",
+   "¿Qué os pasará si os descubren husmeando?"
+  ],
+  "difficulties": [
+   "La policía está comprada",
+   "Los testigos tienen miedo",
+   "El reloj corre",
+   "Arnau no quiere que le salven",
+   "La prensa está censurada",
+   "Un miembro de la compañía oculta algo sobre esa noche"
+  ],
+  "concepts": [
+   "Abogado de oficio",
+   "Periodista del diario local",
+   "Hermana de Arnau",
+   "Inspector que duda",
+   "Estibador compañero de Arnau",
+   "Cantante del cabaret",
+   "Secretaria del concejal",
+   "Cura del barrio del puerto"
+  ],
+  "desires": [
+   "Salvar a mi hermano",
+   "Una exclusiva que me haga famoso",
+   "Limpiar mi conciencia",
+   "Hundir a quien de verdad lo hizo",
+   "Que la ley signifique algo",
+   "Salir de esta ciudad con algo en los bolsillos"
+  ],
+  "wants": [
+   "Que me digas dónde estabas esa noche",
+   "Que dejes de protegerme",
+   "Que me cedas la exclusiva",
+   "Que confieses lo que sabes",
+   "Que me pidas perdón delante de todos",
+   "Que me creas"
+  ],
+  "challenges": [
+   {
+    "title": "Visitar a Arnau",
+    "text": "En la cárcel todo se escucha."
+   },
+   {
+    "title": "El testigo del muelle",
+    "text": "Vio algo y ahora tiene miedo."
+   },
+   {
+    "title": "La casa del concejal",
+    "text": "Hay papeles que alguien quiere quemar."
+   },
+   {
+    "title": "Un aviso",
+    "text": "Os siguen y os lo hacen saber."
+   },
+   {
+    "title": "El cabaret",
+    "text": "Allí se cerró el trato aquella noche."
+   },
+   {
+    "title": "La prueba",
+    "text": "Existe, pero conseguirla compromete a alguien."
+   },
+   {
+    "title": "El juez",
+    "text": "Hay que llegar a él sin pasar por los de siempre."
+   },
+   {
+    "title": "La madrugada del lunes",
+    "text": "Todo o nada ante la puerta de la cárcel."
+   }
+  ],
+  "genre": "noir"
+ },
+ {
+  "id": "la-merced",
+  "title": "Guardia de noche en La Merced",
+  "tagline": "Un hospital en cuarentena, una planta sin luz y pacientes que no deberían levantarse.",
+  "theme": "horror",
+  "intro": "El hospital de La Merced ha quedado aislado: tormenta, carreteras cortadas y ni una ambulancia hasta el amanecer. En la tercera planta se ha ido la luz y los pacientes han empezado a hacer cosas imposibles. Sois el turno de noche. Nadie más va a venir.",
+  "goal": "Sacar con vida a los pacientes de la planta de pediatría antes del amanecer.",
+  "questions": [
+   "¿Qué ingresó ayer por urgencias que lo cambió todo?",
+   "¿Qué le pasa exactamente a quien se contagia?",
+   "¿Quién en el hospital sabía que esto podía pasar?",
+   "¿Qué se oye por los intercomunicadores?",
+   "¿Cuántos niños hay en pediatría y por qué están ahí?"
+  ],
+  "difficulties": [
+   "La luz falla cuando más se necesita",
+   "Cualquiera puede estar contagiado",
+   "Los ascensores no responden",
+   "Hay que moverse con pacientes que no caminan",
+   "La dirección os ordena no salir",
+   "Algo imita las voces de los que se han ido"
+  ],
+  "concepts": [
+   "Enfermera de noche",
+   "Residente de primer año",
+   "Celador",
+   "Madre de un paciente",
+   "Vigilante de seguridad",
+   "Cirujana agotada",
+   "Paciente que se niega a quedarse en la cama",
+   "Técnico de mantenimiento"
+  ],
+  "desires": [
+   "Salvar a un niño concreto",
+   "Que no se repita lo que pasó en mi primer año",
+   "Descubrir qué causa esto",
+   "Demostrar que no soy un cobarde",
+   "Salir de aquí vivo, sea como sea",
+   "Que alguien pague por esta negligencia"
+  ],
+  "wants": [
+   "Que me digas si estás contagiado",
+   "Que me obedezcas",
+   "Que no me dejes sola en la planta",
+   "Que admitas que sabías lo que traía el paciente",
+   "Que me cubras si me equivoco",
+   "Que me dejes entrar en quirófano"
+  ],
+  "challenges": [
+   {
+    "title": "Llegar a la tercera planta",
+    "text": "Las escaleras están bloqueadas."
+   },
+   {
+    "title": "El primer contagiado",
+    "text": "Es alguien que conocéis."
+   },
+   {
+    "title": "Restaurar la luz",
+    "text": "El generador está en el sótano."
+   },
+   {
+    "title": "La sala de aislamiento",
+    "text": "Hay alguien encerrado que pide ayuda."
+   },
+   {
+    "title": "Mover a los niños",
+    "text": "Sin camillas suficientes ni tiempo."
+   },
+   {
+    "title": "La orden de la dirección",
+    "text": "Sellar la planta con todos dentro."
+   },
+   {
+    "title": "El paciente cero",
+    "text": "Sigue en su habitación y quiere hablar."
+   },
+   {
+    "title": "El amanecer",
+    "text": "La salida está a un pasillo de distancia."
+   }
+  ],
+  "genre": "horror"
+ },
+ {
+  "id": "valdeniebla",
+  "title": "Los niños de Valdeniebla",
+  "tagline": "Tres niños se fueron al monte la víspera de San Juan. La niebla no los ha devuelto.",
+  "theme": "folk",
+  "intro": "En Valdeniebla, cuando la niebla baja la víspera de San Juan, nadie sube al monte. Este año tres niños lo hicieron. Los mayores rezan y cierran las ventanas; dicen que ya es tarde. Vosotros no pensáis esperar a que la niebla levante.",
+  "goal": "Traer de vuelta a los tres niños antes de que termine la noche de San Juan.",
+  "questions": [
+   "¿Qué fueron a buscar los niños al monte?",
+   "¿Qué se cuenta que vive en la niebla?",
+   "¿Qué pacto hizo el pueblo hace generaciones?",
+   "¿Quién de la aldea sabe más de lo que dice?",
+   "¿Qué se ofrece al monte cada San Juan, y este año no se ofreció?"
+  ],
+  "difficulties": [
+   "La niebla borra los caminos",
+   "El pueblo no quiere que subáis",
+   "Lo que hay en el monte pide algo a cambio",
+   "Uno de los niños no quiere volver",
+   "El tiempo pasa distinto entre la niebla",
+   "Las hogueras deben seguir encendidas toda la noche"
+  ],
+  "concepts": [
+   "Madre de uno de los niños",
+   "Pastor viejo",
+   "Maestro recién llegado",
+   "Curandera de la aldea",
+   "Guardia civil del puesto",
+   "Hermano mayor",
+   "Sacristán",
+   "Forastera que veranea"
+  ],
+  "desires": [
+   "Recuperar a mi hijo",
+   "Romper el pacto para siempre",
+   "Demostrar que todo es superstición",
+   "Averiguar qué le pasó a quien se perdió hace años",
+   "Que el pueblo me acepte",
+   "Que nadie más tenga que pagar"
+  ],
+  "wants": [
+   "Que me cuentes lo que sabes del pacto",
+   "Que dejes de tratarme como a una extraña",
+   "Que me perdones por lo de aquel San Juan",
+   "Que vengas conmigo aunque tengas miedo",
+   "Que respetes las costumbres",
+   "Que me dejes decidir a mí"
+  ],
+  "challenges": [
+   {
+    "title": "Salir del pueblo",
+    "text": "Los vecinos cierran el paso."
+   },
+   {
+    "title": "Seguir el rastro",
+    "text": "La niebla confunde las huellas."
+   },
+   {
+    "title": "El cruce de caminos",
+    "text": "Alguien espera allí para ofreceros un trato."
+   },
+   {
+    "title": "La ermita en ruinas",
+    "text": "Allí se hizo el pacto."
+   },
+   {
+    "title": "Las voces",
+    "text": "Llaman con la voz de los niños."
+   },
+   {
+    "title": "El primer niño",
+    "text": "Aparece, pero no está solo."
+   },
+   {
+    "title": "Las hogueras se apagan",
+    "text": "Alguien en el pueblo las ha dejado morir."
+   },
+   {
+    "title": "El precio",
+    "text": "El monte quiere algo a cambio de los tres."
+   }
+  ],
+  "genre": "folk"
+ },
+ {
+  "id": "penas-negras",
+  "title": "La radio de Peñas Negras",
+  "tagline": "Una antena, un invierno por delante y la esperanza de que alguien más siga vivo.",
+  "theme": "postapoc",
+  "intro": "Once años después del apagón, vuestra comunidad sobrevive en un valle aislado. En lo alto de Peñas Negras queda una antena de radio que, si se repara, llegaría a trescientos kilómetros. Nadie sabe si hay alguien escuchando. Tenéis hasta las primeras nevadas para averiguarlo.",
+  "goal": "Reparar la antena de Peñas Negras y contactar con otra comunidad antes del invierno.",
+  "questions": [
+   "¿Qué causó el apagón, según vuestra comunidad?",
+   "¿Por qué hay gente en el valle que no quiere ser encontrada?",
+   "¿Qué pieza falta y dónde puede haber una?",
+   "¿Qué pasó con la última expedición que salió del valle?",
+   "¿Qué haréis si quien responde no es amigo?"
+  ],
+  "difficulties": [
+   "Faltan piezas que ya no se fabrican",
+   "La subida es peligrosa",
+   "La comunidad está dividida",
+   "Hay otros en la sierra que también quieren la antena",
+   "El invierno se adelanta",
+   "Nadie sabe bien cómo funciona una radio"
+  ],
+  "concepts": [
+   "Radioaficionado anciano",
+   "Chica nacida después del apagón",
+   "Líder de la comunidad",
+   "Chatarrero",
+   "Exmilitar",
+   "Médica sin medicinas",
+   "Forastero recién llegado",
+   "Guardián de las semillas"
+  ],
+  "desires": [
+   "Saber si mi familia sigue viva",
+   "Que la comunidad no dependa de nadie",
+   "Encontrar un lugar mejor y marcharme",
+   "Demostrar que los viejos aún sirven",
+   "Que nadie nos encuentre",
+   "Recuperar algo del mundo de antes"
+  ],
+  "wants": [
+   "Que me enseñes lo que sabes de radio",
+   "Que dejes de mandarme como a una niña",
+   "Que me digas de dónde vienes de verdad",
+   "Que no me abandones como la otra vez",
+   "Que apoyes mi voto en la asamblea",
+   "Que me devuelvas lo que cogiste del almacén"
+  ],
+  "challenges": [
+   {
+    "title": "La asamblea",
+    "text": "No todos quieren gastar provisiones en esto."
+   },
+   {
+    "title": "Buscar la pieza",
+    "text": "Está en la ciudad muerta."
+   },
+   {
+    "title": "La subida",
+    "text": "El camino se ha derrumbado."
+   },
+   {
+    "title": "Los de la sierra",
+    "text": "Han visto vuestra luz."
+   },
+   {
+    "title": "Reparar la antena",
+    "text": "Una noche de trabajo con frío y sin garantías."
+   },
+   {
+    "title": "El primer mensaje",
+    "text": "Solo se oye ruido."
+   },
+   {
+    "title": "Alguien responde",
+    "text": "Y quiere saber dónde estáis."
+   },
+   {
+    "title": "Decidir qué decir",
+    "text": "La respuesta puede salvaros o condenaros."
+   }
+  ],
+  "genre": "postapoc"
+ },
+ {
+  "id": "montecarlo",
+  "title": "Subasta en Montecarlo, 1962",
+  "tagline": "Un cuadro robado, una subasta de gala y una sola noche para devolverlo a su dueña.",
+  "theme": "noir",
+  "intro": "Un retrato que los nazis robaron a una familia de Viena va a subastarse en el casino de Montecarlo, ante princesas, estrellas de cine y gente que no quiere que se sepa de dónde viene su dinero. La dueña legítima tiene ochenta y cuatro años. Vosotros tenéis una invitación falsa y un plan.",
+  "goal": "Sacar el cuadro del casino y entregárselo a su dueña legítima.",
+  "questions": [
+   "¿Qué os une a la dueña del cuadro?",
+   "¿Quién lo vende y cómo llegó a sus manos?",
+   "¿Quién más quiere ese cuadro esa noche?",
+   "¿Qué hay escondido detrás del lienzo?",
+   "¿Cuál es la regla que nadie del equipo puede romper?"
+  ],
+  "difficulties": [
+   "La seguridad del casino es impecable",
+   "Hay otro equipo con el mismo objetivo",
+   "Uno de vosotros es conocido por la policía",
+   "El comprador más probable es peligroso",
+   "El plan depende de un cambio de turno exacto",
+   "Alguien del equipo se ha enamorado de un invitado"
+  ],
+  "concepts": [
+   "Falsificadora de arte",
+   "Crupier del casino",
+   "Aristócrata arruinado",
+   "Ladrón de guante blanco retirado",
+   "Nieta de la dueña",
+   "Chófer y conductor de huida",
+   "Agente de seguros",
+   "Estrella de cine en decadencia"
+  ],
+  "desires": [
+   "Justicia para la familia",
+   "Un último golpe antes de retirarme",
+   "Recuperar mi reputación",
+   "Llevarme algo más que el cuadro",
+   "Vengarme del vendedor",
+   "Que el mundo sepa de dónde salió ese dinero"
+  ],
+  "wants": [
+   "Que me dejes dirigir el plan",
+   "Que no me mientas otra vez",
+   "Que me devuelvas mi parte del último golpe",
+   "Que me presentes en sociedad",
+   "Que te olvides de ese invitado",
+   "Que me cubras si todo se tuerce"
+  ],
+  "challenges": [
+   {
+    "title": "Reunir al equipo",
+    "text": "Faltan las dos personas que mejor lo harían."
+   },
+   {
+    "title": "Estudiar el casino",
+    "text": "Cada visita os expone un poco más."
+   },
+   {
+    "title": "La falsificación",
+    "text": "Tiene que engañar a un experto a un metro."
+   },
+   {
+    "title": "Entrar en la gala",
+    "text": "La invitación falsa no aguanta una segunda mirada."
+   },
+   {
+    "title": "El otro equipo",
+    "text": "Os estorba o podéis usarlo."
+   },
+   {
+    "title": "El cambio",
+    "text": "Sustituir el cuadro con doscientas personas mirando."
+   },
+   {
+    "title": "La alarma",
+    "text": "Salta antes de tiempo."
+   },
+   {
+    "title": "La huida por la costa",
+    "text": "Con la policía de Mónaco detrás."
+   }
+  ],
+  "genre": "heist"
+ },
+ {
+  "id": "santa-clara",
+  "title": "El internado de Santa Clara, 1899",
+  "tagline": "Una alumna desaparecida, un internado de monjas y un secreto enterrado bajo la capilla.",
+  "theme": "gothic",
+  "intro": "Hace tres semanas, Inés de Olmedo desapareció del internado de Santa Clara sin llevarse ni el abrigo. La madre superiora dice que se fugó con un hombre. Nadie la cree, pero en Santa Clara nadie contradice a la madre superiora. Vosotros vais a averiguar qué le pasó a Inés.",
+  "goal": "Descubrir qué le pasó a Inés de Olmedo y hacer que se sepa fuera del internado.",
+  "questions": [
+   "¿Qué relación tenéis con Inés?",
+   "¿Qué pasa por las noches en el ala vieja?",
+   "¿Qué fundó realmente la primera abadesa?",
+   "¿Quién visitaba a Inés los domingos?",
+   "¿Qué se castiga en Santa Clara que nunca se nombra?"
+  ],
+  "difficulties": [
+   "Las alumnas tienen prohibido hablar entre ellas",
+   "La madre superiora lo sabe todo",
+   "Las familias prefieren no saber",
+   "Salir del internado sin permiso es imposible",
+   "Algo en la capilla no descansa",
+   "Una de vosotras guarda la carta que Inés dejó"
+  ],
+  "concepts": [
+   "Alumna de último curso",
+   "Monja joven con dudas",
+   "Profesor de música",
+   "Hermano de Inés",
+   "Jardinero del internado",
+   "Criada de la cocina",
+   "Médico que visita cada mes",
+   "Antigua alumna que volvió como profesora"
+  ],
+  "desires": [
+   "Encontrar a Inés con vida",
+   "Escapar de Santa Clara",
+   "Derribar a la madre superiora",
+   "Que mi familia me perdone",
+   "Descubrir el secreto de la fundadora",
+   "Proteger a las alumnas pequeñas"
+  ],
+  "wants": [
+   "Que me enseñes la carta de Inés",
+   "Que dejes de obedecerla a ella",
+   "Que me cuentes qué viste aquella noche",
+   "Que no me delates",
+   "Que me ayudes a salir de aquí",
+   "Que reconozcas que me quisiste"
+  ],
+  "challenges": [
+   {
+    "title": "Revisar la habitación de Inés",
+    "text": "Alguien la vació antes que vosotros."
+   },
+   {
+    "title": "Hablar con las alumnas",
+    "text": "Tienen miedo y alguna miente."
+   },
+   {
+    "title": "El ala vieja",
+    "text": "Está cerrada con llave desde hace años."
+   },
+   {
+    "title": "El diario de la fundadora",
+    "text": "Está en el despacho de la madre superiora."
+   },
+   {
+    "title": "La capilla de noche",
+    "text": "Se oye rezar a alguien que no está."
+   },
+   {
+    "title": "Un castigo ejemplar",
+    "text": "Descubren a una de vosotras."
+   },
+   {
+    "title": "La cripta",
+    "text": "Allí termina el rastro de Inés."
+   },
+   {
+    "title": "Contarlo fuera",
+    "text": "Sin pruebas, nadie creerá a una alumna."
+   }
+  ],
+  "genre": "gothic"
  }
 ]

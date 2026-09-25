@@ -25,7 +25,7 @@ export function pool(tables, quest, kind) {
   switch (kind) {
     case "concept": return uniq([...(quest?.concepts ?? []), ...fromGenre("concepts")]);
     case "desire": return uniq([...(quest?.desires ?? []), ...fromGenre("desires")]);
-    case "want": return uniq([...fromGenre("wants"), ...tables.common.wants]);
+    case "want": return uniq([...(quest?.wants ?? []), ...fromGenre("wants"), ...tables.common.wants]);
     case "detail": return uniq([...fromGenre("details"), ...tables.common.details]);
     case "pronouns": return tables.common.pronouns;
     case "challenge": return [...(quest?.challenges ?? []), ...fromGenre("challenges")];

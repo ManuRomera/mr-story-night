@@ -2,7 +2,7 @@
   "id": "mr-story-night",
   "title": "MR · Story Night — Follow",
   "description": "Juego sin director para jugar a Follow (Ben Robbins) en Foundry VTT: hoja común de la compañía, ficha propia por jugador, bolsa de piedras secreta y generadores de inspiración. Implementación no oficial para uso privado; requiere tu propio ejemplar del juego.",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "compatibility": {
     "minimum": "13",
     "verified": "13"
@@ -51,7 +51,7 @@
   "url": "https://github.com/ManuRomera/mr-story-night",
   "bugs": "https://github.com/ManuRomera/mr-story-night/issues/new/choose",
   "manifest": "https://github.com/ManuRomera/mr-story-night/releases/latest/download/system.json",
-  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.5.1/mr-story-night.zip",
+  "download": "https://github.com/ManuRomera/mr-story-night/releases/download/v0.6.0/mr-story-night.zip",
   "license": "LICENSE",
   "readme": "README.md"
 }

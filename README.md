@@ -18,7 +18,7 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.5.1** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.6.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 
@@ -46,7 +46,7 @@ Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear 
 
 ## Contenido incluido
 
-**12 misiones originales** (en castellano y en inglés), cada una con introducción, objetivo, cinco preguntas, seis dificultades, ocho conceptos, seis deseos y ocho retos:
+**24 misiones originales** (en castellano y en inglés), cada una con introducción, objetivo, cinco preguntas, seis dificultades, ocho conceptos, seis deseos y ocho retos. Las doce más recientes incluyen además seis ejemplos de «Lo que quiero de ti»:
 
 | Misión | Género |
 |---|---|
@@ -62,6 +62,20 @@ Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear 
 | La diligencia de Santa Muerte | Western |
 | El golpe del Liceo | Golpe |
 | Semillas | Postapocalipsis |
+| La corona de sal | Fantasía |
+| La biblioteca ahogada | Fantasía |
+| Última señal desde Titán | Ciencia ficción |
+| El voto de Aurora | Ciencia ficción |
+| Neón en Lavapiés, 2089 | Cyberpunk |
+| El agua de San Lázaro | Western |
+| El caso Arnau, Valencia 1956 | Noir |
+| Guardia de noche en La Merced | Terror |
+| Los niños de Valdeniebla | Folk horror |
+| La radio de Peñas Negras | Postapocalipsis |
+| Subasta en Montecarlo, 1962 | Golpe |
+| El internado de Santa Clara, 1899 | Horror gótico |
+
+**Editor de misiones** (vestíbulo → Misiones): cada campo explica qué tipo de contenido lleva y qué aporta a la partida, y las listas muestran cuántas entradas tienen, el mínimo que exige el juego y lo recomendado. Si tienes el libro de *Follow*, puedes pasar sus misiones a tu mundo con él; se guardan en el mundo, no en el sistema, y se pueden exportar e importar.
 
 **Generadores**: unas 1.300 entradas por idioma en 10 géneros, con nombres y apellidos, conceptos, deseos, deseos hacia la izquierda con el nombre del vecino, detalles, lugares, situaciones, retos, dificultades, consecuencias y arranques de epílogo. Cada misión combina sus propias listas con las de su género, y un personaje generado tiene más de cien mil combinaciones posibles.
 

@@ -83,7 +83,7 @@ function sanitizeQuest(quest) {
   return {
     id: text(quest.id), title: text(quest.title).trim(), tagline: text(quest.tagline), intro: text(quest.intro), goal: text(quest.goal),
     theme: text(quest.theme || "neutral"), genre: text(quest.genre || quest.theme || "neutral"), questions: list(quest.questions), difficulties: list(quest.difficulties),
-    concepts: list(quest.concepts), desires: list(quest.desires),
+    concepts: list(quest.concepts), desires: list(quest.desires), wants: list(quest.wants),
     challenges: list(quest.challenges).map(c => typeof c === "string" ? { title: c, text: "" } : { title: text(c.title), text: text(c.text) }).filter(c => c.title)
   };
 }

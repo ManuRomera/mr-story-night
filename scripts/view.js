@@ -362,6 +362,47 @@ export function buildCharacterView({ state, actorId, actor, actors = {}, user, t
 }
 
 /* ------------------------------------------------------------------ */
+/* Editor de misiones                                                  */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Campos del editor. `min` es lo que exige el juego (p. ej. dos dificultades porque se eligen dos,
+ * seis deseos porque no puede haber dos iguales con seis jugadores); `rec` da variedad a los dados.
+ */
+export const QUEST_FIELDS = [
+  { key: "title", input: true }, { key: "tagline", input: true }, { key: "intro", rows: 4 }, { key: "goal", input: true },
+  { key: "questions", min: 2, rec: "3–5", rows: 5 }, { key: "difficulties", min: 2, rec: "6", rows: 6 },
+  { key: "concepts", min: 6, rec: "8–12", rows: 8 }, { key: "desires", min: 6, rec: "6–8", rows: 6 },
+  { key: "wants", min: 3, rec: "6", rows: 6 }, { key: "challenges", min: 3, rec: "8", rows: 8 }
+];
+
+const questLines = (quest, key) => key === "challenges"
+  ? (quest.challenges ?? []).map(c => c.text ? `${c.title} — ${c.text}` : c.title)
+  : (quest[key] ?? []);
+
+/** Listas que no llegan al mínimo: [{ key, n, min }]. */
+export function questShortfalls(quest) {
+  return QUEST_FIELDS.filter(f => f.min).map(f => ({ key: f.key, n: questLines(quest, f.key).length, min: f.min })).filter(f => f.n < f.min);
+}
+
+function questEditor(editing, t) {
+  return {
+    ...editing,
+    fields: QUEST_FIELDS.map(f => {
+      const list = Boolean(f.min);
+      const n = list ? questLines(editing, f.key).length : 0;
+      return {
+        ...f, list, label: t(`MR.Quest.Field.${f.key}.Label`), help: t(`MR.Quest.Field.${f.key}.Help`),
+        value: list ? questLines(editing, f.key).join("\n") : (editing[f.key] ?? ""),
+        count: list ? t("MR.Quest.Count", { n, min: f.min, rec: f.rec }) : "", low: list && n < f.min
+      };
+    }),
+    themes: THEMES.map(key => ({ key, label: t(`MR.Theme.${key}`), selected: (editing.theme || "neutral") === key })),
+    genreOptions: GENRES.map(key => ({ key, label: t(`MR.Genre.${key}`), selected: genreOf(editing) === key }))
+  };
+}
+
+/* ------------------------------------------------------------------ */
 /* Vestíbulo                                                           */
 /* ------------------------------------------------------------------ */
 
@@ -387,12 +428,7 @@ export function buildLobbyView({ quests, users, local = {}, t, user, fellowships
     const editing = local.editQuest ?? null;
     Object.assign(view, {
       list: quests.map(q => ({ ...q, genreLabel: t(`MR.Genre.${genreOf(q) ?? "fantasy"}`), canEdit: user.isGM && !q.builtin })),
-      editing: editing ? {
-        ...editing, questionsText: (editing.questions ?? []).join("\n"), difficultiesText: (editing.difficulties ?? []).join("\n"), conceptsText: (editing.concepts ?? []).join("\n"), desiresText: (editing.desires ?? []).join("\n"),
-        challengesText: (editing.challenges ?? []).map(c => c.text ? `${c.title} — ${c.text}` : c.title).join("\n"),
-        themes: THEMES.map(key => ({ key, label: t(`MR.Theme.${key}`), selected: (editing.theme || "neutral") === key })),
-        genreOptions: GENRES.map(key => ({ key, label: t(`MR.Genre.${key}`), selected: genreOf(editing) === key }))
-      } : null
+      editing: editing ? questEditor(editing, t) : null
     });
   }
   if (tab === "guide") view.guide = guideView(t);

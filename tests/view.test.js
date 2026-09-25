@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { buildTableView, buildCharacterView, buildLobbyView, turnFor } from "../scripts/view.js";
+import { buildTableView, buildCharacterView, buildLobbyView, turnFor, questShortfalls } from "../scripts/view.js";
 import { simulate } from "./fixtures.js";
 
 for (const lang of ["es", "en"]) {
@@ -62,4 +62,13 @@ test("las piedras solo se muestran cuando todos han elegido, y cada fase tiene s
   assert.equal(view(snaps.stones).challenge.reveal, null);
   assert.equal(view(snaps.finalStones).challenge.reveal.length, 4);
   for (const name of ["setup", "characters", "choose", "scene", "stones", "outcome", "epilogue"]) assert.ok(view(snaps[name]).phaseCard?.now, name);
+});
+
+test("el editor avisa de las listas que no llegan al mínimo, y las misiones incluidas cumplen", () => {
+  const low = questShortfalls({ title: "X", questions: ["¿?"], difficulties: ["a", "b"], concepts: [], desires: [], wants: [], challenges: [{ title: "R" }] });
+  assert.deepEqual(low.map(f => f.key), ["questions", "concepts", "desires", "wants", "challenges"]);
+  for (const lang of ["es", "en"]) {
+    const quests = JSON.parse(readFileSync(new URL(`../data/quests-${lang}.json`, import.meta.url)));
+    for (const q of quests) assert.deepEqual(questShortfalls(q).filter(f => f.key !== "wants"), [], `${lang}/${q.title}`);
+  }
 });

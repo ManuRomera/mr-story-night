@@ -30,7 +30,7 @@ export function questFromForm(form, id) {
   return {
     id: id || uid(), title: String(data.title ?? "").trim(), tagline: data.tagline ?? "", intro: data.intro ?? "", goal: data.goal ?? "",
     theme: data.theme || "neutral", genre: data.genre || "fantasy",
-    questions: lines(data.questions), difficulties: lines(data.difficulties), concepts: lines(data.concepts), desires: lines(data.desires),
+    questions: lines(data.questions), difficulties: lines(data.difficulties), concepts: lines(data.concepts), desires: lines(data.desires), wants: lines(data.wants),
     challenges: lines(data.challenges).map(line => { const [title, ...rest] = line.split(/\s+[—–-]\s+/); return { title: title.trim(), text: rest.join(" — ").trim() }; })
   };
 }
@@ -42,7 +42,7 @@ export function normalizeQuest(data) {
   return {
     id: uid(), title: String(q.title).trim(), tagline: String(q.tagline ?? ""), intro: String(q.intro ?? ""), goal: String(q.goal ?? ""),
     theme: String(q.theme ?? "neutral"), genre: String(q.genre ?? "fantasy"),
-    questions: list(q.questions), difficulties: list(q.difficulties), concepts: list(q.concepts), desires: list(q.desires),
+    questions: list(q.questions), difficulties: list(q.difficulties), concepts: list(q.concepts), desires: list(q.desires), wants: list(q.wants),
     challenges: list(q.challenges).map(c => typeof c === "string" ? { title: c, text: "" } : { title: String(c.title ?? "").trim(), text: String(c.text ?? "") }).filter(c => c.title)
   };
 }

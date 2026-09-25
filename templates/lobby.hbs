@@ -58,21 +58,17 @@
   <section class="mr-phase mr-quest-editor">
     <header class="mr-phase__head"><h2 class="mr-h1">{{#if editing.id}}{{localize "MR.Quest.Edit"}}{{else}}{{localize "MR.Quest.New"}}{{/if}}</h2><p class="mr-help">{{localize "MR.Quest.EditorHelp"}}</p></header>
     <form class="mr-quest-form" data-quest-form>
-      <div class="mr-grid-3">
-        <div class="mr-field"><label>{{localize "MR.Quest.TitleField"}}</label><input type="text" name="title" value="{{editing.title}}" required></div>
-        <div class="mr-field"><label>{{localize "MR.Quest.GenreField"}}</label><select name="genre">{{#each editing.genreOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></div>
-        <div class="mr-field"><label>{{localize "MR.Quest.Theme"}}</label><select name="theme">{{#each editing.themes}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></div>
+      {{#each editing.fields}}
+      <div class="mr-field mr-quest-field">
+        <div class="mr-field__label"><label for="mr-qf-{{key}}">{{label}}</label>{{#if list}}<span class="mr-count {{#if low}}is-low{{/if}}" data-counter="{{key}}">{{count}}</span>{{/if}}</div>
+        {{#if input}}<input id="mr-qf-{{key}}" type="text" name="{{key}}" value="{{value}}">{{else}}<textarea id="mr-qf-{{key}}" name="{{key}}" rows="{{rows}}" {{#if list}}data-min="{{min}}" data-rec="{{rec}}"{{/if}}>{{value}}</textarea>{{/if}}
+        <small>{{help}}</small>
       </div>
-      <div class="mr-field"><label>{{localize "MR.Quest.Tagline"}}</label><input type="text" name="tagline" value="{{editing.tagline}}"></div>
-      <div class="mr-field"><label>{{localize "MR.Quest.Intro"}}</label><textarea name="intro" rows="3">{{editing.intro}}</textarea></div>
-      <div class="mr-field"><label>{{localize "MR.Quest.Goal"}}</label><input type="text" name="goal" value="{{editing.goal}}"></div>
+      {{/each}}
       <div class="mr-grid-2">
-        <div class="mr-field"><label>{{localize "MR.Quest.Questions"}}</label><textarea name="questions" rows="6">{{editing.questionsText}}</textarea></div>
-        <div class="mr-field"><label>{{localize "MR.Quest.Difficulties"}}</label><textarea name="difficulties" rows="6">{{editing.difficultiesText}}</textarea></div>
-        <div class="mr-field"><label>{{localize "MR.Quest.Concepts"}}</label><textarea name="concepts" rows="6">{{editing.conceptsText}}</textarea></div>
-        <div class="mr-field"><label>{{localize "MR.Quest.Desires"}}</label><textarea name="desires" rows="6">{{editing.desiresText}}</textarea></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.GenreField"}}</label><select name="genre">{{#each editing.genreOptions}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><small>{{localize "MR.Quest.GenreHelp"}}</small></div>
+        <div class="mr-field"><label>{{localize "MR.Quest.Theme"}}</label><select name="theme">{{#each editing.themes}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select><small>{{localize "MR.Quest.ThemeHelp"}}</small></div>
       </div>
-      <div class="mr-field"><label>{{localize "MR.Quest.Challenges"}}</label><textarea name="challenges" rows="8">{{editing.challengesText}}</textarea><small>{{localize "MR.Quest.ChallengesHelp"}}</small></div>
       <footer class="mr-phase__foot">
         <button type="button" data-action="cancelEdit">{{localize "MR.Action.Cancel"}}</button>
         <button type="button" class="mr-primary" data-action="saveQuest" data-id="{{editing.id}}"><i class="fa-solid fa-floppy-disk"></i>{{localize "MR.Action.Save"}}</button>
