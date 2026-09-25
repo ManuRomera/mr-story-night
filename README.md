@@ -1,5 +1,19 @@
 # MR · Story Night — Follow para Foundry VTT
 
+![Una mesa de historias rodeada de mundos por explorar](assets/art/story-room-cover.webp)
+
+<p align="center">
+  <strong>Una misión. Una compañía. Tres desafíos. Una historia que recordar.</strong><br>
+  Sistema sin director para jugar a <em>Follow</em> en Foundry VTT.
+</p>
+
+<p align="center">
+  <a href="https://github.com/ManuRomera/mr-story-night/releases/latest"><img alt="Última versión" src="https://img.shields.io/github/v/release/ManuRomera/mr-story-night?display_name=tag&style=flat-square&color=8d2424"></a>
+  <img alt="Foundry VTT 13" src="https://img.shields.io/badge/Foundry_VTT-13-202b3d?style=flat-square">
+  <img alt="Idiomas: español e inglés" src="https://img.shields.io/badge/idiomas-ES_%7C_EN-c6a15b?style=flat-square">
+  <a href="LICENSE"><img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-333333?style=flat-square"></a>
+</p>
+
 > **Implementación no oficial y para uso privado** del juego **[Follow](https://www.lamemage.com/follow/)**, de **Ben Robbins** (Lame Mage Productions). No está afiliada ni aprobada por su autor. Para jugar necesitas conocer las reglas: la edición gratuita *Follow: A New Fellowship* está en [lamemage.com/follow](https://www.lamemage.com/follow/) y en [itch.io](https://lamemage.itch.io/follow-new-fellowship). Si Follow te gusta, cómpralo.
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
@@ -45,6 +59,8 @@ En Foundry VTT: **Sistemas de juego → Instalar sistema** y pega esta URL de ma
 ```text
 https://raw.githubusercontent.com/ManuRomera/mr-story-night/main/system.json
 ```
+
+También puedes descargar `mr-story-night.zip` desde la [última versión publicada](https://github.com/ManuRomera/mr-story-night/releases/latest) e instalarlo manualmente.
 
 **Importante:** Foundry necesita un usuario GM conectado para guardar datos del mundo. Aquí ese GM actúa solo como **anfitrión técnico**: es un asiento más de la mesa, no dirige la partida. Si no hay anfitrión conectado, la mesa lo avisa.
 
