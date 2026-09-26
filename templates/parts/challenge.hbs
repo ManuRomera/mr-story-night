@@ -7,6 +7,7 @@
       {{#unless is_choose}}<p class="mr-meta">{{#if lead}}<span><i class="fa-solid fa-star"></i>{{localize "MR.Challenge.LeadIs" name=lead}}</span>{{/if}}{{#if timescaleLabel}}<span><i class="fa-regular fa-clock"></i>{{timescaleLabel}}</span>{{/if}}{{#if pickerName}}<span><i class="fa-solid fa-hand-pointer"></i>{{localize "MR.Challenge.PickedBy" name=pickerName}}</span>{{/if}}</p>{{/unless}}
     </div>
   </header>
+  {{#if @root.phaseCard}}{{> "systems/mr-story-night/templates/parts/phase-card.hbs" @root.phaseCard}}{{/if}}
 
   {{#each replacements}}
   <div class="mr-callout">

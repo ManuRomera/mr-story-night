@@ -1,7 +1,7 @@
 <div class="mr-sheet mr-table" data-mr-theme="{{theme}}">
   <header class="mr-bar">
     <div class="mr-bar__title">
-      <span class="mr-eyebrow">{{header.eyebrow}}</span>
+      {{#if header.eyebrow}}<span class="mr-eyebrow">{{header.eyebrow}}</span>{{/if}}
       <h1>{{header.title}}</h1>
       {{#if header.goal}}<p>{{header.goal}}</p>{{/if}}
     </div>
@@ -9,8 +9,8 @@
     <ol class="mr-steps" aria-label="{{localize 'MR.Step.Label'}}">
       {{#each header.steps}}
       <li class="mr-step is-{{state}} {{#if isChallenge}}is-challenge{{/if}}" data-tooltip="{{long}}" {{#if (eq state "current")}}aria-current="step"{{/if}}>
-        <span class="mr-step__dot">{{#if stones}}{{#each stones}}<i class="mr-stone mr-stone--{{color}} mr-stone--xs"></i>{{/each}}{{else}}{{#if isChallenge}}{{label}}{{else}}{{#if (eq ../state "done")}}<i class="fa-solid fa-check"></i>{{/if}}{{/if}}{{/if}}</span>
-        {{#unless isChallenge}}<span class="mr-step__label">{{label}}</span>{{/unless}}
+        <span class="mr-step__dot">{{#if stones}}{{#each stones}}<i class="mr-stone mr-stone--{{color}} mr-stone--xs"></i>{{/each}}{{else}}{{#if (eq state "done")}}<i class="fa-solid fa-check"></i>{{/if}}{{/if}}</span>
+        <span class="mr-step__label">{{label}}</span>
       </li>
       {{/each}}
     </ol>
@@ -37,7 +37,6 @@
   {{else}}
   <div class="mr-layout {{#if showSide}}has-side{{/if}}">
     <main class="mr-main">
-      {{#if phaseCard}}{{> "systems/mr-story-night/templates/parts/phase-card.hbs" phaseCard}}{{/if}}
       {{#if setup}}{{> "systems/mr-story-night/templates/parts/setup.hbs" setup}}{{/if}}
       {{#if characters}}{{> "systems/mr-story-night/templates/parts/characters.hbs" characters}}{{/if}}
       {{#if challenge}}{{> "systems/mr-story-night/templates/parts/challenge.hbs" challenge}}{{/if}}

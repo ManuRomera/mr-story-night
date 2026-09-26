@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0 — 2026-09-26
+
+- **Edición simultánea en vivo**: lo que se escribe en la hoja común y en las fichas aparece al momento en el resto de pantallas, sin perder el texto ni el cursor de nadie. Un campo en uso se bloquea con el nombre de quien lo edita, y si otra persona intenta escribir ahí se le avisa.
+- **Lectura cómoda**: botón de accesibilidad junto a la X de cada ventana. Modo lectura (negro con letra clara sin deslumbrar), seis colores de letra, tamaño de 85 % a 160 %, tipografía sencilla, espaciado amplio y menos animaciones, aplicado a la vez en todas las ventanas.
+- **Rediseño**: una columna centrada, jerarquía clara (título de fase, qué hacer ahora, grupos en tarjeta), pestañas como control segmentado, franja de turno discreta, cajas de texto que crecen con el contenido y el botón principal siempre visible abajo. Sin títulos ni objetivos repetidos.
+- Corregido: el tamaño de texto de los ajustes no tenía efecto.
+
 ## 0.6.0 — 2026-09-25
 
 - **12 misiones originales nuevas** (24 en total), en castellano e inglés: fantasía, ciencia ficción, cyberpunk, western, noir, terror, folk horror, postapocalipsis, golpe y gótico.

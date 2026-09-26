@@ -1,7 +1,7 @@
 <section class="mr-phase">
   <header class="mr-phase__head">
         <h2 class="mr-h1">{{#if success}}{{localize "MR.Epilogue.TitleWon"}}{{else}}{{localize "MR.Epilogue.TitleLost"}}{{/if}}</h2>
-    <p class="mr-lead">{{localize "MR.Epilogue.Help"}}</p>
+    {{#if @root.phaseCard}}{{> "systems/mr-story-night/templates/parts/phase-card.hbs" @root.phaseCard}}{{else}}<p class="mr-help">{{localize "MR.Epilogue.Help"}}</p>{{/if}}
   </header>
   <div class="mr-epilogue-grid">
     {{#each cards}}

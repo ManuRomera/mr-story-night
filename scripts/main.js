@@ -9,6 +9,8 @@ import { loadContent, getTables, allQuests } from "./quests.js";
 import { syncSafety } from "./overlay.js";
 import { OUTCOMES } from "./engine.js";
 import { generate } from "./generators.js";
+import { Presence } from "./presence.js";
+import { tableWindows } from "./sheets/common.js";
 
 /** Abre la hoja común activa o, si no hay partida, el vestíbulo. */
 function openTable() {
@@ -52,6 +54,16 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   applyPreferences();
   Store.init();
+  Presence.init({
+    onChange: () => tableWindows().forEach(app => app.decorateLocks()),
+    // Si dos entran a la vez en el mismo campo, quien llegó después lo suelta y recibe el aviso.
+    onLost: (docId, field, user) => {
+      const el = document.activeElement;
+      if (!el || (el.dataset.field ?? el.name) !== field) return;
+      el.blur();
+      ui.notifications.info(game.i18n.format("MR.Presence.Busy", { name: user?.name ?? "?" }));
+    }
+  });
   await loadContent();
   syncSafety({ notify: false });
   for (const actor of game.actors.filter(a => a.type === "fellowship")) lastPhase.set(actor.id, actor.system.state?.phase);

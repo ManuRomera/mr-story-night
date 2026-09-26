@@ -8,7 +8,7 @@
   </div>
   {{/unless}}
   <div class="mr-stone-forms">
-    {{#unless compact}}<p class="mr-help">{{localize "MR.Stones.Help"}}</p>{{/unless}}
+    {{#if @root.guideHidden}}{{#unless compact}}<p class="mr-help">{{localize "MR.Stones.Help"}}</p>{{/unless}}{{/if}}
     {{#each forms}}
     <article class="mr-stone-form">
       <h3 class="mr-h3"><i class="fa-solid fa-user-secret"></i>{{localize "MR.Stones.For" name=charName}}</h3>

@@ -51,6 +51,9 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
 
   dispatch(op, args) { return Store.dispatch(op, args, this.document.id); }
 
+  _presenceDoc(el) { return el.dataset.field ? this.document.id : null; }
+  _commitLive(el) { return this.dispatch("setField", { path: el.dataset.field, value: el.value }); }
+
   async #onChange(event) {
     const el = event.target;
     if (el.dataset.field) return this.dispatch("setField", { path: el.dataset.field, value: el.value });

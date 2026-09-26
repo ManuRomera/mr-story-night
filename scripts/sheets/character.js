@@ -44,6 +44,15 @@ export class CharacterSheet extends TableWindow(HandlebarsApplicationMixin(found
     });
   }
 
+  _presenceDoc(el) {
+    if (el.dataset.field) return this.document.system.fellowship || null;
+    return el.name && this.isEditable ? this.document.id : null;
+  }
+  _commitLive(el) {
+    if (el.dataset.field) return Store.dispatch("setField", { path: el.dataset.field, value: el.value }, this.document.system.fellowship);
+    return this.submit();
+  }
+
   /** Un nombre vacío no se guarda (Foundry lo exige): se conserva el provisional. */
   _prepareSubmitData(event, form, formData, updateData) {
     const data = super._prepareSubmitData(event, form, formData, updateData);

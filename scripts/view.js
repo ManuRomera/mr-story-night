@@ -86,7 +86,8 @@ export function buildTableView({ state, actors = {}, user, t, tab = "play", loca
   if (tab === "company") view.company = { ring: ring(state, actors, t), members: view.members, answers: state.quest.questions.map((q, i) => ({ q, a: state.setup.answers[i] })).filter(x => x.a), difficulties: state.setup.difficulties.filter(Boolean), intro: state.quest.intro };
   if (tab === "chronicle") view.chronicle = chronicle(state, t);
   if (tab === "safety") view.safety = safetyView(safety, user);
-  view.showSide = tab === "play" && !complete && state.phase !== "setup";
+  // En la creación de la compañía las tarjetas ya muestran a todos: la lista lateral solo repetiría.
+  view.showSide = tab === "play" && !complete && !["setup", "characters"].includes(state.phase);
   return view;
 }
 
@@ -105,7 +106,9 @@ function header(state, t, title) {
       stones: challenge?.draw?.length ? challenge.draw.map(color => ({ color })) : null, isChallenge
     };
   });
-  return { eyebrow: state.quest.title, title: title || state.title || state.quest.title, goal: state.setup.goal, steps };
+  const shown = title || state.title || state.quest.title;
+  // Sin repeticiones: la misión solo encima si la partida tiene otro nombre, y el objetivo cuando ya no se está editando.
+  return { eyebrow: shown === state.quest.title ? "" : state.quest.title, title: shown, goal: state.phase === "setup" ? "" : state.setup.goal, steps };
 }
 
 /** Qué le toca hacer a este usuario ahora mismo (se muestra en ambas fichas). */

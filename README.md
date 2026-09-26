@@ -18,7 +18,7 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.6.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.7.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 
@@ -27,6 +27,10 @@ Como en otros sistemas de mesa compartida (el club de *Brindlewood Bay*, por eje
 - **La compañía** (Actor compartido): la misión, el paso en que está la partida, los retos, las escenas, el cuenco de piedras, la crónica y la comodidad en mesa. Todo el grupo la ve y la usa.
 - **Tu personaje** (Actor tuyo): nombre, concepto, pronombres, qué significa para ti el éxito, lo que necesitas del protagonista de tu izquierda, un detalle y notas. Lo editas directamente, como cualquier ficha de Foundry. Cada asiento tiene un protagonista y un secundario.
 - **El vestíbulo**: para empezar partidas, gestionar misiones y ver las compañías anteriores.
+
+**Todos escriben a la vez.** Lo que cada persona escribe en la hoja común o en una ficha aparece en vivo en las pantallas del resto, y cada cual puede estar en un campo distinto al mismo tiempo. Cuando alguien entra en un campo, a los demás les aparece bloqueado con su nombre («Escribiendo: Lucía»); si otra persona intenta escribir ahí, se le avisa de quién lo está editando.
+
+**Lectura cómoda.** El botón de accesibilidad de la cabecera de cualquier ventana (junto a la X) abre un panel con modo lectura (fondo negro y letra clara que no deslumbra), color y tamaño de la letra, tipografía sencilla, espaciado amplio y menos animaciones. Se aplica al momento a todas las ventanas del sistema y a las tarjetas del chat, y se guarda en cada dispositivo.
 
 Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear la escena 2», «Faltan piedras de: Irene»… Como no hay director, cada persona sabe en todo momento qué hacer. Los momentos clave (reto elegido, cada escena, resultado de las piedras, pérdidas) se publican también como **tarjetas en el chat**.
 

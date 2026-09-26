@@ -1,0 +1,23 @@
+<div class="mr-access">
+  <ul class="mr-list">
+    {{#each toggles}}
+    <li class="mr-list__row">
+      <div class="mr-list__text"><strong>{{label}}</strong><small>{{hint}}</small></div>
+      <button type="button" class="mr-switch {{#if on}}is-on{{/if}}" role="switch" aria-checked="{{#if on}}true{{else}}false{{/if}}" aria-label="{{label}}" data-action="toggle" data-key="{{key}}"><span></span></button>
+    </li>
+    {{#if (eq key "readingMode")}}
+    <li class="mr-list__row mr-list__row--stack">
+      <div class="mr-list__text"><strong>{{localize "MR.Access.Ink.Label"}}</strong><small>{{#if ../reading}}{{localize "MR.Access.Ink.Hint"}}{{else}}{{localize "MR.Access.Ink.Off"}}{{/if}}</small></div>
+      <div class="mr-swatches" role="radiogroup" aria-label="{{localize 'MR.Access.Ink.Label'}}">
+        {{#each ../inks}}<button type="button" class="mr-swatch {{#if selected}}is-selected{{/if}}" role="radio" aria-checked="{{#if selected}}true{{else}}false{{/if}}" style="--swatch: {{color}}" data-action="ink" data-key="{{key}}" data-tooltip="{{label}}" aria-label="{{label}}"><span>Aa</span></button>{{/each}}
+      </div>
+    </li>
+    <li class="mr-list__row mr-list__row--stack">
+      <div class="mr-list__text mr-list__text--row"><strong>{{localize "MR.Access.Size"}}</strong><output data-scale-out>{{../scale}} %</output></div>
+      <div class="mr-range"><span class="mr-range__a">A</span><input type="range" name="textScale" min="85" max="160" step="5" value="{{../scale}}" aria-label="{{localize 'MR.Access.Size'}}"><span class="mr-range__b">A</span></div>
+    </li>
+    {{/if}}
+    {{/each}}
+  </ul>
+  <footer class="mr-access__foot"><button type="button" class="mr-link" data-action="reset">{{localize "MR.Access.Reset"}}</button><span>{{localize "MR.Access.Scope"}}</span></footer>
+</div>
