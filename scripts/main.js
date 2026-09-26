@@ -10,6 +10,8 @@ import { syncSafety } from "./overlay.js";
 import { OUTCOMES } from "./engine.js";
 import { generate } from "./generators.js";
 import { Presence } from "./presence.js";
+import { Stage, stageThemeOf } from "./stage.js";
+import { Portal } from "./portal.js";
 import { tableWindows } from "./sheets/common.js";
 
 /** Abre la hoja común activa o, si no hay partida, el vestíbulo. */
@@ -29,10 +31,15 @@ function openMySheets(state) {
 
 const lastPhase = new Map();
 
+/** El fondo del escenario sigue a la partida activa (o la sala base si no hay ninguna). */
+function syncStage() { return Stage.setTheme(stageThemeOf(Store.story()?.quest)); }
+
 Hooks.once("init", () => {
   console.info("MR · Story Night | Inicializando");
   registerSettings({
-    onActive: () => { if (game.settings.get(SYSTEM_ID, "autoOpen")) Store.fellowship()?.sheet.render(true); Lobby.refresh(); },
+    onStage: async enabled => { if (enabled && game.user.isGM) { await Stage.ensure(); await syncStage(); } },
+    onPortal: () => Portal.refresh(),
+    onActive: () => { if (game.user.isGM) syncStage(); if (game.settings.get(SYSTEM_ID, "autoOpen")) Store.fellowship()?.sheet.render(true); Lobby.refresh(); },
     onSafety: () => { syncSafety(); for (const app of foundry.applications.instances.values()) if (app instanceof FellowshipSheet) app.requestRender(); },
     onLibrary: () => Lobby.refresh()
   });
@@ -43,7 +50,7 @@ Hooks.once("init", () => {
   foundry.applications.handlebars.loadTemplates(PARTIALS);
   game.keybindings.register(SYSTEM_ID, "openTable", { name: "MR.App.Open", editable: [{ key: "KeyT", modifiers: ["Shift"] }], onDown: () => { openTable(); return true; } });
   game[SYSTEM_ID] = Object.freeze({
-    open: openTable, lobby: options => Lobby.open(options),
+    open: openTable, lobby: options => Lobby.open(options), stage: Stage, portal: Portal,
     get fellowship() { return Store.fellowship(); }, get story() { return Store.story(); },
     dispatch: (op, args) => Store.dispatch(op, args),
     generate: (kind, opts) => generate(getTables(), Store.story()?.quest ?? {}, kind, Math.random, opts),
@@ -54,6 +61,17 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   applyPreferences();
   Store.init();
+  Stage.init();
+  Portal.init();
+  if (canvas?.ready) { Stage.fit(); Portal.render(); }
+  if (game.user.isGM) {
+    const created = !Stage.scene();
+    await Stage.ensure();
+    await syncStage();
+    // Una escena recién creada se está dibujando: la luz, cuando termine.
+    if (created) Hooks.once("canvasReady", () => Portal.syncLight());
+    else await Portal.syncLight();
+  }
   Presence.init({
     onChange: () => tableWindows().forEach(app => app.decorateLocks()),
     // Si dos entran a la vez en el mismo campo, quien llegó después lo suelta y recibe el aviso.

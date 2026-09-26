@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 — 2026-09-26
+
+- **Escenario**: escena propia a pantalla completa con la sala del portal, sin cuadrícula, visión ni niebla. La imagen siempre cubre la pantalla. El fondo cambia con la ambientación elegida en el vestíbulo y sigue a la misión activa.
+- **Efectos del portal**, a partir de la macro «Portal FX»: halo, partículas por ambientación y luz que late, recortados al arco. Reescritos para funcionar con PIXI 7 (Foundry v13) y PIXI 8 (v14). Se activan desde los ajustes del sistema y se regulan en «Ajustar el portal» (posición, tamaño, forma, intensidad, velocidad, densidad y desborde), con vista previa en vivo.
+- La zona del portal parte de la posición medida en las imágenes (x 43,7 %, y 18,6 %, ancho 12,6 %, alto 35 %).
+- **Ambientación «Propia»**: nuevo género para misiones personalizadas; usa la sala base y los dados toman ideas de todos los géneros.
+- Once fondos incluidos en `assets/backgrounds`.
+
 ## 0.8.0 — 2026-09-26
 
 - **Menos scroll**: cada bloque se ha revisado por separado y se usan dos columnas donde los bloques son independientes. Las columnas dependen del ancho real del área de contenido, así que en ventanas estrechas se vuelve a una sola.

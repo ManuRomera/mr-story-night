@@ -1,0 +1,28 @@
+<div class="mr-access mr-portal">
+  {{#unless onStage}}<p class="mr-callout"><i class="fa-solid fa-circle-info"></i><span>{{localize "MR.Portal.NotOnStage"}}</span></p>{{/unless}}
+  <ul class="mr-list">
+    <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-enabled"><strong>{{localize "MR.Portal.Enabled"}}</strong><small>{{localize "MR.Portal.EnabledHint"}}</small></label><input id="mr-pfx-enabled" class="mr-toggle" type="checkbox" name="enabled" {{#if enabled}}checked{{/if}}></li>
+    <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-particles"><strong>{{localize "MR.Portal.particles"}}</strong></label><input id="mr-pfx-particles" class="mr-toggle" type="checkbox" name="particles" {{#if cfg.particles}}checked{{/if}}></li>
+    <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-glow"><strong>{{localize "MR.Portal.glow"}}</strong></label><input id="mr-pfx-glow" class="mr-toggle" type="checkbox" name="glow" {{#if cfg.glow}}checked{{/if}}></li>
+    <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-light"><strong>{{localize "MR.Portal.light"}}</strong><small>{{localize "MR.Portal.lightHint"}}</small></label><input id="mr-pfx-light" class="mr-toggle" type="checkbox" name="light" {{#if cfg.light}}checked{{/if}}></li>
+    {{#each sliders}}
+    <li class="mr-list__row mr-list__row--stack">
+      <div class="mr-list__text mr-list__text--row"><strong>{{label}}</strong><output data-for="{{key}}">{{value}}</output></div>
+      <input type="range" name="{{key}}" min="0" max="100" step="1" value="{{value}}" aria-label="{{label}}">
+    </li>
+    {{/each}}
+  </ul>
+
+  <h3 class="mr-h3">{{localize "MR.Portal.Zone"}}<button type="button" class="mr-link mr-link--quiet" data-action="resetZone">{{localize "MR.Portal.ResetZone"}}</button></h3>
+  <div class="mr-group mr-portal__zone">
+    <div class="mr-field"><label for="mr-pfx-x">{{localize "MR.Portal.x"}}</label><input id="mr-pfx-x" type="number" name="x" step="0.1" min="0" max="100" value="{{cfg.x}}"></div>
+    <div class="mr-field"><label for="mr-pfx-y">{{localize "MR.Portal.y"}}</label><input id="mr-pfx-y" type="number" name="y" step="0.1" min="0" max="100" value="{{cfg.y}}"></div>
+    <div class="mr-field"><label for="mr-pfx-w">{{localize "MR.Portal.w"}}</label><input id="mr-pfx-w" type="number" name="w" step="0.1" min="1" max="100" value="{{cfg.w}}"></div>
+    <div class="mr-field"><label for="mr-pfx-h">{{localize "MR.Portal.h"}}</label><input id="mr-pfx-h" type="number" name="h" step="0.1" min="1" max="100" value="{{cfg.h}}"></div>
+    <div class="mr-field"><label for="mr-pfx-spill">{{localize "MR.Portal.spill"}}</label><input id="mr-pfx-spill" type="number" name="spill" step="1" min="0" max="300" value="{{cfg.spill}}"></div>
+    <label class="mr-check mr-portal__arch"><input type="checkbox" name="arch" {{#if cfg.arch}}checked{{/if}}>{{localize "MR.Portal.arch"}}</label>
+  </div>
+  <p class="mr-group__foot">{{localize "MR.Portal.ZoneHelp"}}</p>
+
+  <footer class="mr-phase__foot"><button type="submit" class="mr-primary"><i class="fa-solid fa-floppy-disk"></i>{{localize "MR.Action.Save"}}</button></footer>
+</div>

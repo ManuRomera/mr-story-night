@@ -18,7 +18,7 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.8.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.9.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 
@@ -47,6 +47,12 @@ Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear 
    - cada cual elige sus piedras en secreto; cuando están todas se muestran a la vez, se explican las rojas y se sacan dos;
    - si hay pérdida, el grupo decide quién sale de la historia; el secundario asciende, y quien se queda sin personajes adopta uno o presenta a alguien nuevo.
 5. **Epílogo** en cada ficha y **créditos** imprimibles. La compañía queda en el directorio como archivo.
+
+## El escenario
+
+Al cargar el mundo, el sistema crea la escena **MR · Story Night**: la sala del portal a pantalla completa, sin cuadrícula, sin visión de fichas y sin niebla de guerra. La imagen cubre siempre toda la pantalla, aunque cambie el tamaño de la ventana. El fondo cambia con la ambientación: al elegir una misión en el vestíbulo, el portal muestra ya la suya, y durante la partida se queda la de la misión activa. La ambientación **Propia**, las misiones sin género y la sala sin partida usan la imagen base.
+
+**Efectos del portal.** Halo, partículas propias de cada ambientación (chispas, lluvia, brasas, niebla, órbitas…) y una luz que late del mismo color, recortados a la forma del arco. Se activan o desactivan en **Configurar ajustes → Efectos del portal**. En **Ajustar el portal** se regulan la intensidad, la velocidad, la densidad y la posición y el tamaño exactos de la zona, con un contorno de vista previa sobre la escena. Si usas otra imagen de fondo, desactiva **Escenario automático** o los efectos.
 
 ## Contenido incluido
 

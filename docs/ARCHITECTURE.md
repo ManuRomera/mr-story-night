@@ -14,6 +14,8 @@ scripts/
   overlay.js      Pausa compartida y avisos anónimos.
   presence.js     Quién está escribiendo en qué campo (socket, sin guardar nada); desempate por quién entró antes.
   access.js       Panel de lectura cómoda; los ajustes son de cliente y se aplican con clases en <html>.
+  stage.js        Escenario: escena sin cuadrícula/visión/niebla, ajuste «a sangre» de la vista y fondo por ambientación.
+  portal.js       Efectos del portal (PIXI 7 y 8), luz de escena sincronizada y ventana de ajuste con vista previa.
 data/             quests-{es,en}.json (12 misiones) y tables-{es,en}.json (generadores por género).
 templates/        fellowship.hbs, character.hbs, lobby.hbs y parciales.
 ```

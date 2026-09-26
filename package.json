@@ -1,6 +1,6 @@
 {
   "name": "mr-story-night",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": true,
   "type": "module",
   "description": "GM-less table for playing Follow in Foundry VTT",

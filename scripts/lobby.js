@@ -1,6 +1,7 @@
 import { SYSTEM_ID, TEMPLATES } from "./constants.js";
 import { Store } from "./store.js";
 import { buildLobbyView, questShortfalls } from "./view.js";
+import { Stage, stageThemeOf } from "./stage.js";
 import { allQuests, customQuests, findQuest, normalizeQuest, questFromForm, saveCustomQuests } from "./quests.js";
 import { download, lines, slug } from "./utils.js";
 
@@ -72,11 +73,16 @@ export class Lobby extends TableWindow(HandlebarsApplicationMixin(ApplicationV2)
 
   static #onTab(event, target) { this.local.tab = target.dataset.tab; this.render(); }
   static #onGenre(event, target) { this.local.genre = target.dataset.genre || ""; this.render(); }
-  static #onSelectQuest(event, target) { this.local.questId = target.dataset.id; this.render(); }
+  /** Al elegir misión, el portal del escenario muestra ya su ambientación. */
+  static #onSelectQuest(event, target) { this.local.questId = target.dataset.id; this.render(); Stage.setTheme(stageThemeOf(findQuest(this.local.questId))); }
+
+  /** Si se cierra sin empezar, el escenario vuelve a la ambientación de la partida activa. */
+  _onClose(options) { super._onClose(options); Stage.setTheme(stageThemeOf(Store.story()?.quest)); }
   static #onRandomQuest() {
     const list = allQuests().filter(q => !this.local.genre || (q.genre ?? q.theme) === this.local.genre);
     if (list.length) this.local.questId = list[Math.floor(Math.random() * list.length)].id;
     this.render();
+    Stage.setTheme(stageThemeOf(findQuest(this.local.questId)));
   }
   static #onAddSeat(event, target) {
     const user = game.users.get(target.dataset.userId);

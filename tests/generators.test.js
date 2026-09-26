@@ -8,7 +8,7 @@ for (const lang of ["es", "en"]) {
   const quests = JSON.parse(readFileSync(new URL(`../data/quests-${lang}.json`, import.meta.url)));
 
   test(`[${lang}] cada género tiene tablas amplias`, () => {
-    assert.deepEqual(Object.keys(tables.genres).sort(), [...GENRES].sort());
+    assert.deepEqual(Object.keys(tables.genres).sort(), GENRES.filter(g => g !== "custom").sort());
     for (const [g, t] of Object.entries(tables.genres)) {
       for (const key of ["names", "concepts", "desires", "wants", "details", "places", "situations", "challenges", "whys", "consequences", "epilogues"]) assert.ok(t[key]?.length >= 3, `${g}.${key}`);
       assert.ok(t.names.length >= 20 && t.concepts.length >= 12 && t.places.length >= 12, g);
@@ -43,4 +43,11 @@ test("los generadores evitan repetir lo ya usado", () => {
   const all = pool(tables, q, "place");
   const avoid = all.slice(1);
   assert.equal(generate(tables, q, "place", Math.random, { avoid }), all[0]);
+});
+
+test("la ambientación propia no tiene tablas y genera con las de todos los géneros", () => {
+  const tables = JSON.parse(readFileSync(new URL("../data/tables-es.json", import.meta.url)));
+  const quest = { title: "Mía", genre: "custom", concepts: [], desires: [], challenges: [] };
+  assert.equal(genreOf(quest), "custom");
+  for (const kind of KINDS) assert.ok(generate(tables, quest, kind, Math.random, { target: "Ada", names: ["A", "B"] }), kind);
 });

@@ -558,3 +558,18 @@ button.mr-sidebar-button { margin: 0 0 8px; width: 100%; }
 .mr-print { background: #fff; color: #1a1612; font-family: var(--mr-sans); padding: 32px; --mr-ink: #1a1612; --mr-muted: #5b5247; --mr-faint: #7a7064; --mr-surface: #f6f2ea; --mr-raise: #f6f2ea; --mr-line: #ddd4c4; --mr-accent: #9a5d12; --mr-good: #2f6d2a; --mr-bad: #a2352a; }
 .mr-print .mr-noprint { display: none !important; }
 .mr-print .mr-stone { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+
+/* ================= Efectos del portal: ventana de ajuste ================= */
+.mr-portal-app .window-content { overflow: auto; }
+.mr-portal .mr-list input[type="range"] { width: 100%; accent-color: var(--mr-accent); }
+.mr-portal .mr-h3 .mr-link { margin-left: auto; font-size: .95em; }
+.mr-portal__zone { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 var(--mr-s2); padding-top: var(--mr-s2); padding-bottom: var(--mr-s2); }
+.mr-portal__zone > .mr-field { padding: 0; border: 0; margin: 0; }
+.mr-portal__zone > .mr-field label { font-size: .8em; color: var(--mr-muted); }
+.mr-portal__zone input[type="number"] { width: 100%; min-height: 32px; padding: 4px 6px; color: var(--mr-ink); background: var(--mr-field); border: 1px solid var(--mr-line); border-radius: var(--mr-radius-sm); }
+.mr-portal__arch { grid-column: 1 / -1; margin: var(--mr-s2) 0 0; }
+.mr-app input.mr-toggle { appearance: none; flex: none; width: 44px; height: 26px; margin: 0; border-radius: 13px; background: var(--mr-surface-2); box-shadow: inset 0 0 0 1px var(--mr-line-strong); position: relative; cursor: pointer; transition: background .18s; }
+.mr-app input.mr-toggle::after { content: ""; position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--mr-ink); transition: transform .18s; }
+.mr-app input.mr-toggle:checked { background: var(--mr-good); box-shadow: none; }
+.mr-app input.mr-toggle:checked::after { transform: translateX(18px); background: #fff; }
+.mr-portal > .mr-callout { margin-bottom: var(--mr-s3); }

@@ -3,7 +3,8 @@
  * la misión y una función de azar. Combinan listas de la misión, del género y comunes.
  */
 
-export const GENRES = ["fantasy", "scifi", "horror", "cosmic", "gothic", "folk", "noir", "western", "heist", "postapoc"];
+export const GENRES = ["fantasy", "scifi", "horror", "cosmic", "gothic", "folk", "noir", "western", "heist", "postapoc", "custom"];
+/** «Propia»: ambientación libre sin tablas; los dados toman ideas de todos los géneros. */
 const THEME_TO_GENRE = { "sci-fi": "scifi", cyberpunk: "scifi", neutral: "fantasy" };
 
 export const KINDS = ["name", "concept", "desire", "want", "detail", "pronouns", "challenge", "why", "place", "situation", "consequence", "epilogue", "who", "difficulty"];
@@ -19,7 +20,7 @@ const uniq = list => [...new Set(list.filter(Boolean))];
 /** Devuelve la lista de opciones de un tipo, en orden de prioridad: misión, género, común. */
 export function pool(tables, quest, kind) {
   const g = genreOf(quest);
-  const genre = g ? tables.genres[g] : null;
+  const genre = g ? (tables.genres[g] ?? null) : null;
   const allGenres = Object.values(tables.genres);
   const fromGenre = key => genre ? (genre[key] ?? []) : allGenres.flatMap(x => x[key] ?? []);
   switch (kind) {
@@ -51,7 +52,7 @@ export function generate(tables, quest, kind, rng = Math.random, opts = {}) {
   const fresh = list => { const rest = list.filter(x => !avoid.has(typeof x === "string" ? x : x.title)); return rest.length ? rest : list; };
   if (kind === "name") {
     const g = genreOf(quest);
-    const genre = g ? tables.genres[g] : pick(Object.values(tables.genres), rng);
+    const genre = (g && tables.genres[g]) || pick(Object.values(tables.genres), rng);
     const first = pick(fresh(genre.names ?? []), rng);
     const surnames = genre.surnames ?? [];
     return surnames.length && rng() < 0.55 ? `${first} ${pick(surnames, rng)}` : first;
@@ -88,6 +89,7 @@ export function generateScene(tables, quest, rng = Math.random, { names = [], jo
 export function variety(tables, quest) {
   const n = k => Math.max(1, pool(tables, quest, k).length);
   const g = genreOf(quest);
-  const names = g ? (tables.genres[g].names.length * (1 + (tables.genres[g].surnames?.length ?? 0))) : 1;
+  const table = g ? tables.genres[g] : null;
+  const names = table ? (table.names.length * (1 + (table.surnames?.length ?? 0))) : 1;
   return names * n("concept") * n("desire") * n("want") * n("detail");
 }
