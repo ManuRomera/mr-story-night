@@ -1,5 +1,5 @@
 import { SYSTEM_ID, TEMPLATES } from "./constants.js";
-import { Stage, STAGE_THEMES } from "./stage.js";
+import { Stage, STAGE_THEMES, stageBackground } from "./stage.js";
 
 /**
  * Efectos del portal (a partir de la macro «Portal FX» de Manu):
@@ -8,7 +8,7 @@ import { Stage, STAGE_THEMES } from "./stage.js";
  * Funciona con PIXI 7 (Foundry v13) y PIXI 8 (v14), que dibujan de forma distinta.
  */
 export const DEFAULT_PORTAL = Object.freeze({
-  x: 43.7, y: 18.6, w: 12.6, h: 35.0, arch: true,
+  x: 43.7, y: 18.6, w: 12.6, h: 35.0, arch: true, animated: true,
   particles: true, glow: true, light: true, intensity: 65, speed: 50, density: 45, spill: 35
 });
 const LIGHT_FLAG = "portalLight";
@@ -20,7 +20,7 @@ export function portalConfig(raw = {}) {
   const c = { ...DEFAULT_PORTAL, ...Object.fromEntries(Object.entries(raw ?? {}).filter(([, v]) => v !== undefined && v !== null)) };
   const bool = v => v === true || v === "true" || v === "on";
   return {
-    x: clamp(c.x, 0, 100), y: clamp(c.y, 0, 100), w: clamp(c.w, 1, 100), h: clamp(c.h, 1, 100), arch: bool(c.arch),
+    x: clamp(c.x, 0, 100), y: clamp(c.y, 0, 100), w: clamp(c.w, 1, 100), h: clamp(c.h, 1, 100), arch: bool(c.arch), animated: bool(c.animated),
     particles: bool(c.particles), glow: bool(c.glow), light: bool(c.light),
     intensity: clamp(c.intensity, 0, 100), speed: clamp(c.speed, 0, 100), density: clamp(c.density, 0, 100), spill: clamp(c.spill, 0, 300)
   };
@@ -42,6 +42,7 @@ function paint(g, shape, { fill, stroke }) {
   return g;
 }
 const circle = (x, y, r) => g => (V8() ? g.circle(x, y, r) : g.drawCircle(x, y, r));
+const ellipse = (x, y, rx, ry) => g => (V8() ? g.ellipse(x, y, rx, ry) : g.drawEllipse(x, y, rx, ry));
 const rect = (x, y, w, h) => g => (V8() ? g.rect(x, y, w, h) : g.drawRect(x, y, w, h));
 const line = (x1, y1, x2, y2) => g => { g.moveTo(x1, y1); g.lineTo(x2, y2); };
 /** Arco de medio punto (o rectángulo redondeado si arch = false), ampliado m píxeles por cada lado. */
@@ -83,6 +84,8 @@ function makeParticle(type, color, r, cfg) {
 
 const saved = () => portalConfig(game.settings.get(SYSTEM_ID, "portalConfig"));
 const enabled = () => game.settings.get(SYSTEM_ID, "portalFx");
+/** Movimiento en este cliente: lo para el anfitrión para todos o cada jugador con «Reducir animaciones». */
+const moving = cfg => cfg.animated && !game.settings.get(SYSTEM_ID, "reducedMotion") && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 export const Portal = {
   runtime: { container: null, ticker: null },
@@ -119,6 +122,7 @@ export const Portal = {
     }
     if (outline) container.addChild(paint(new PIXI.Graphics(), archShape(r, 0, cfg.arch), { stroke: { width: 3, color: 0xffffff, alpha: 0.9 } }));
 
+    if (!moving(cfg)) { Object.assign(this.runtime, { container, ticker: null }); return; }
     const particles = [];
     const max = Math.round(12 + cfg.density * 0.7);
     const every = Math.max(2, Math.round(14 - cfg.density * 0.1));
@@ -168,7 +172,9 @@ export const Portal = {
       config: {
         dim: radius, bright: radius * 0.22, angle: 360, alpha: lerp(0.1, 0.42, cfg.intensity / 100), color: `#${theme.color.toString(16).padStart(6, "0")}`,
         coloration: 1, luminosity: 0.15, saturation: 0, contrast: 0.1, shadows: 0,
-        animation: { type: "pulse", speed: Math.max(1, Math.round(1 + cfg.speed / 18)), intensity: Math.max(1, Math.round(1 + cfg.intensity / 20)), reverse: false }
+        animation: cfg.animated
+          ? { type: "pulse", speed: Math.max(1, Math.round(1 + cfg.speed / 18)), intensity: Math.max(1, Math.round(1 + cfg.intensity / 20)), reverse: false }
+          : { type: null }
       },
       flags: { [SYSTEM_ID]: { [LIGHT_FLAG]: true } }
     };
@@ -176,18 +182,126 @@ export const Portal = {
     else await scene.createEmbeddedDocuments("AmbientLight", [data]);
   },
 
-  refresh() { this.render(); this.syncLight(); },
+  refresh() { this.drawWorld(); this.render(); this.syncLight(); },
+
+  /* ---------- El mundo dentro del portal ----------
+   * El fondo del documento es siempre la sala base. La ambientación se pinta encima como una imagen
+   * completa (fuera del portal es idéntica, así que solo se nota el portal y el cartel). Al cambiar,
+   * el nuevo mundo se abre desde el centro del portal con un anillo de luz, sin redibujar el lienzo. */
+  world: { container: null, sprite: null, theme: null, ticker: null, finish: null, token: 0 },
+
+  _worldContainer() {
+    const w = this.world;
+    if (!w.container || w.container.destroyed || !w.container.parent) {
+      w.container = new PIXI.Container();
+      w.container.zIndex = 999990; w.container.eventMode = "none";
+      canvas.stage.addChild(w.container);
+      canvas.stage.sortableChildren = true;
+    }
+    return w.container;
+  },
+
+  async _sprite(theme) {
+    const load = foundry.canvas?.loadTexture ?? globalThis.loadTexture;
+    const texture = await load(stageBackground(theme));
+    const d = canvas.dimensions;
+    const sprite = new PIXI.Sprite(texture);
+    Object.assign(sprite, { x: d.sceneX, y: d.sceneY, width: d.sceneWidth, height: d.sceneHeight });
+    return sprite;
+  },
+
+  clearWorld() {
+    const w = this.world;
+    if (w.ticker) { try { canvas.app.ticker.remove(w.ticker); } catch { /* sin lienzo */ } }
+    try { w.container?.parent?.removeChild(w.container); w.container?.destroy({ children: true }); } catch { /* ya destruido */ }
+    Object.assign(w, { container: null, sprite: null, theme: null, ticker: null, finish: null });
+  },
+
+  /** Pinta la ambientación actual sin animar (al cargar la escena). */
+  async drawWorld() {
+    if (!canvas?.ready || !Stage.isStage()) return this.clearWorld();
+    const theme = Stage.theme(canvas.scene);
+    const token = ++this.world.token;
+    const sprite = await this._sprite(theme);
+    if (token !== this.world.token) return sprite.destroy();
+    this.clearWorld();
+    this._worldContainer().addChild(sprite);
+    Object.assign(this.world, { sprite, theme });
+  },
+
+  /** Transición: el mundo nuevo aparece dentro del portal. */
+  async transitionWorld(theme) {
+    const w = this.world;
+    if (!canvas?.ready || !Stage.isStage()) return;
+    if (!w.sprite || w.sprite.destroyed) return this.drawWorld();
+    if (w.theme === theme) return;
+    const token = ++w.token;
+    const next = await this._sprite(theme);
+    // Si mientras cargaba se pidió otra ambientación, esta ya no sirve.
+    if (token !== w.token) return next.destroy();
+    w.finish?.();
+    const container = this._worldContainer();
+    const cfg = saved();
+    const color = (STAGE_THEMES[theme] ?? STAGE_THEMES.base).color;
+    const r = portalRect(cfg, canvas.dimensions);
+    const oldSprite = w.sprite;
+    // Capas: imagen anterior · imagen nueva que funde (cartel) · portal anterior · portal nuevo que se abre · anillo.
+    next.alpha = 0;
+    container.addChild(next);
+    const oldPortal = new PIXI.Sprite(oldSprite.texture);
+    Object.assign(oldPortal, { x: oldSprite.x, y: oldSprite.y, width: oldSprite.width, height: oldSprite.height });
+    const clip = new PIXI.Container();
+    const clipMask = paint(new PIXI.Graphics(), archShape(r, 2, cfg.arch), { fill: { color: 0xffffff, alpha: 1 } });
+    clip.addChild(clipMask); clip.mask = clipMask;
+    const newPortal = new PIXI.Sprite(next.texture);
+    Object.assign(newPortal, { x: next.x, y: next.y, width: next.width, height: next.height });
+    const hole = new PIXI.Graphics();
+    newPortal.mask = hole;
+    const ring = new PIXI.Graphics();
+    ring.filters = [blur(10, 3)];
+    clip.addChild(oldPortal, hole, newPortal, ring);
+    container.addChild(clip);
+    Object.assign(w, { sprite: next, theme });
+
+    // Un iris con la forma del arco que se abre desde el centro hasta cubrirlo entero.
+    const cx = r.x + r.w / 2, cy = r.y + r.h * 0.56;
+    const rx = r.w * 0.75, ry = r.h * 0.66;
+    const calm = !moving(cfg);
+    const duration = calm ? 450 : 1800;
+    const ease = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    let elapsed = 0;
+    const irisAt = (g, s, style) => { g.clear(); paint(g, ellipse(cx, cy, Math.max(0.1, rx * s), Math.max(0.1, ry * s)), style); };
+    const finish = () => {
+      if (w.ticker) canvas.app.ticker.remove(w.ticker);
+      w.ticker = null; w.finish = null;
+      next.alpha = 1;
+      if (!clip.destroyed) clip.destroy({ children: true });
+      if (!oldSprite.destroyed) oldSprite.destroy();
+    };
+    w.finish = finish;
+    w.ticker = () => {
+      elapsed += canvas.app.ticker.deltaMS;
+      const t = Math.min(1, elapsed / duration);
+      next.alpha = ease(Math.min(1, t * 1.4));
+      if (calm) { oldPortal.alpha = 1 - t; irisAt(hole, 1, { fill: { color: 0xffffff, alpha: 1 } }); }
+      else {
+        const s = ease(t);
+        irisAt(hole, s, { fill: { color: 0xffffff, alpha: 1 } });
+        irisAt(ring, s, { stroke: { width: 5 + 12 * (1 - s), color, alpha: Math.min(1, 1.6 * (1 - s)) } });
+      }
+      if (t >= 1) finish();
+    };
+    canvas.app.ticker.add(w.ticker);
+  },
 
   init() {
-    Hooks.on("canvasReady", () => this.render());
-    Hooks.on("canvasTearDown", () => this.clear());
+    Hooks.on("canvasReady", async () => { await this.drawWorld(); this.render(); });
+    Hooks.on("canvasTearDown", () => { this.clear(); this.clearWorld(); });
     Hooks.on("updateScene", (scene, changes) => {
       if (!scene.getFlag(SYSTEM_ID, "stage")) return;
-      const themeChanged = foundry.utils.hasProperty(changes, `flags.${SYSTEM_ID}.theme`);
-      const redraws = scene.id === canvas.scene?.id && Boolean(changes.background);
-      // Un fondo nuevo redibuja el lienzo: la luz se toca cuando termine, no a la vez.
-      if (redraws) Hooks.once("canvasReady", () => { this.render(); if (themeChanged) this.syncLight(); });
-      else if (themeChanged) { if (scene.id === canvas.scene?.id) this.render(); this.syncLight(); }
+      if (!foundry.utils.hasProperty(changes, `flags.${SYSTEM_ID}.theme`)) return;
+      if (scene.id === canvas.scene?.id) { this.transitionWorld(Stage.theme(scene)); this.render(); }
+      this.syncLight();
     });
   }
 };

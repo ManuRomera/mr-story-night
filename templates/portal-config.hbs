@@ -2,6 +2,7 @@
   {{#unless onStage}}<p class="mr-callout"><i class="fa-solid fa-circle-info"></i><span>{{localize "MR.Portal.NotOnStage"}}</span></p>{{/unless}}
   <ul class="mr-list">
     <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-enabled"><strong>{{localize "MR.Portal.Enabled"}}</strong><small>{{localize "MR.Portal.EnabledHint"}}</small></label><input id="mr-pfx-enabled" class="mr-toggle" type="checkbox" name="enabled" {{#if enabled}}checked{{/if}}></li>
+    <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-animated"><strong>{{localize "MR.Portal.animated"}}</strong><small>{{localize "MR.Portal.animatedHint"}}</small></label><input id="mr-pfx-animated" class="mr-toggle" type="checkbox" name="animated" {{#if cfg.animated}}checked{{/if}}></li>
     <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-particles"><strong>{{localize "MR.Portal.particles"}}</strong></label><input id="mr-pfx-particles" class="mr-toggle" type="checkbox" name="particles" {{#if cfg.particles}}checked{{/if}}></li>
     <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-glow"><strong>{{localize "MR.Portal.glow"}}</strong></label><input id="mr-pfx-glow" class="mr-toggle" type="checkbox" name="glow" {{#if cfg.glow}}checked{{/if}}></li>
     <li class="mr-list__row"><label class="mr-list__text" for="mr-pfx-light"><strong>{{localize "MR.Portal.light"}}</strong><small>{{localize "MR.Portal.lightHint"}}</small></label><input id="mr-pfx-light" class="mr-toggle" type="checkbox" name="light" {{#if cfg.light}}checked{{/if}}></li>

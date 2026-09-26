@@ -522,5 +522,7 @@
  "MR.Portal.spill": "Desborde (px)",
  "MR.Portal.arch": "Forma de arco",
  "MR.Portal.ZoneHelp": "Mientras ajustas, la escena muestra el contorno en blanco. Hazlo coincidir con el hueco del portal y guarda.",
- "MR.Portal.Saved": "Efectos del portal guardados."
+ "MR.Portal.Saved": "Efectos del portal guardados.",
+ "MR.Portal.animated": "Movimiento",
+ "MR.Portal.animatedHint": "Partículas, pulso del halo y de la luz. Desactívalo para dejar el portal quieto (para todos). Cada jugador puede pararlo solo en su pantalla con «Reducir animaciones» en Lectura cómoda."
 }

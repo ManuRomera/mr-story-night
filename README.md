@@ -18,7 +18,7 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.9.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.10.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 
@@ -50,9 +50,9 @@ Una franja en ambas fichas dice **a quién le toca y qué**: «Te toca plantear 
 
 ## El escenario
 
-Al cargar el mundo, el sistema crea la escena **MR · Story Night**: la sala del portal a pantalla completa, sin cuadrícula, sin visión de fichas y sin niebla de guerra. La imagen cubre siempre toda la pantalla, aunque cambie el tamaño de la ventana. El fondo cambia con la ambientación: al elegir una misión en el vestíbulo, el portal muestra ya la suya, y durante la partida se queda la de la misión activa. La ambientación **Propia**, las misiones sin género y la sala sin partida usan la imagen base.
+Al cargar el mundo, el sistema crea la escena **MR · Story Night**: la sala del portal a pantalla completa, sin cuadrícula, sin visión de fichas y sin niebla de guerra. La imagen cubre siempre toda la pantalla, aunque cambie el tamaño de la ventana. Al cambiar de ambientación solo cambia el portal: el nuevo mundo se abre desde su centro con un anillo de luz, sin fundido a negro, y el cartel encima funde al nuevo nombre. Al elegir una misión en el vestíbulo, el portal muestra ya la suya, y durante la partida se queda la de la misión activa. La ambientación **Propia**, las misiones sin género y la sala sin partida usan la imagen base.
 
-**Efectos del portal.** Halo, partículas propias de cada ambientación (chispas, lluvia, brasas, niebla, órbitas…) y una luz que late del mismo color, recortados a la forma del arco. Se activan o desactivan en **Configurar ajustes → Efectos del portal**. En **Ajustar el portal** se regulan la intensidad, la velocidad, la densidad y la posición y el tamaño exactos de la zona, con un contorno de vista previa sobre la escena. Si usas otra imagen de fondo, desactiva **Escenario automático** o los efectos.
+**Efectos del portal.** Halo, partículas propias de cada ambientación (chispas, lluvia, brasas, niebla, órbitas…) y una luz que late del mismo color, recortados a la forma del arco. Se activan o desactivan en **Configurar ajustes → Efectos del portal**, y el interruptor **Movimiento** deja el portal quieto para todos (cada jugador también puede pararlo solo en su pantalla con *Reducir animaciones*). En **Ajustar el portal** se regulan la intensidad, la velocidad, la densidad y la posición y el tamaño exactos de la zona, con un contorno de vista previa sobre la escena. Si usas otra imagen de fondo, desactiva **Escenario automático** o los efectos.
 
 ## Contenido incluido
 

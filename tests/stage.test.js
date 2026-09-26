@@ -26,5 +26,6 @@ test("la zona del portal se calcula sobre la imagen y la configuración se sanea
   assert.ok(Math.abs(r.x - 730) < 4 && Math.abs(r.x + r.w - 941) < 4, `x ${r.x}–${r.x + r.w}`);
   assert.ok(Math.abs(r.y - 175) < 4 && Math.abs(r.y + r.h - 504) < 4, `y ${r.y}–${r.y + r.h}`);
   const c = portalConfig({ x: "150", w: 0, intensity: -5, particles: "on", glow: undefined, arch: false });
-  assert.deepEqual([c.x, c.w, c.intensity, c.particles, c.glow, c.arch], [100, 1, 0, true, DEFAULT_PORTAL.glow, false]);
+  assert.deepEqual([c.x, c.w, c.intensity, c.particles, c.glow, c.arch, c.animated], [100, 1, 0, true, DEFAULT_PORTAL.glow, false, true]);
+  assert.equal(portalConfig({ animated: false }).animated, false);
 });

@@ -522,5 +522,7 @@
  "MR.Portal.spill": "Spill (px)",
  "MR.Portal.arch": "Arch shape",
  "MR.Portal.ZoneHelp": "While you adjust, the scene shows a white outline. Line it up with the portal opening and save.",
- "MR.Portal.Saved": "Portal effects saved."
+ "MR.Portal.Saved": "Portal effects saved.",
+ "MR.Portal.animated": "Motion",
+ "MR.Portal.animatedHint": "Particles and the pulsing glow and light. Turn it off to keep the portal still (for everyone). Each player can stop it just on their screen with “Reduce motion” in Comfortable reading."
 }

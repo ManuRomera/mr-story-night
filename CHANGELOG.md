@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.0 — 2026-09-26
+
+- **Transición del portal**: al cambiar de ambientación ya no se redibuja la escena (no hay fundido a negro). El nuevo mundo se abre dentro del portal como un iris, con un anillo de luz del color de la ambientación, mientras el anterior sigue visible alrededor; el cartel funde al nuevo nombre. Cambios seguidos se encadenan sin restos.
+- El fondo del documento de escena es siempre la sala base; la ambientación se pinta encima en cada cliente. Las escenas de la 0.9.0 se corrigen solas al cargar.
+- **Movimiento del portal**: nuevo interruptor en «Ajustar el portal» que para partículas, pulso del halo y animación de la luz para todos. Con «Reducir animaciones», cada jugador lo ve quieto en su pantalla y la transición es un fundido corto.
+
 ## 0.9.0 — 2026-09-26
 
 - **Escenario**: escena propia a pantalla completa con la sala del portal, sin cuadrícula, visión ni niebla. La imagen siempre cubre la pantalla. El fondo cambia con la ambientación elegida en el vestíbulo y sigue a la misión activa.

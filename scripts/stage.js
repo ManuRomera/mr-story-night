@@ -40,7 +40,11 @@ export const Stage = {
   async ensure() {
     if (!game.user.isGM || !setting("stageAuto")) return null;
     const existing = this.scene();
-    if (existing) return existing;
+    if (existing) {
+      // Desde la 0.10 el fondo del documento es siempre la sala base: la ambientación se pinta encima.
+      if (existing.background.src !== BG("base")) await existing.update({ "background.src": BG("base") });
+      return existing;
+    }
     const scene = await Scene.create({
       name: "MR · Story Night", navigation: true, navName: "Story Night",
       width: STAGE_SIZE.width, height: STAGE_SIZE.height, padding: 0, backgroundColor: "#000000",
@@ -53,13 +57,17 @@ export const Stage = {
     return scene;
   },
 
-  /** Cambia el fondo del escenario a una ambientación (lo ven todos). */
+  /**
+   * Cambia la ambientación del escenario (lo ven todos). Solo cambia una marca de la escena:
+   * tocar el fondo del documento obligaría a redibujar el lienzo entero y se vería un fundido a negro.
+   * Cada cliente pinta la nueva ambientación encima, con la transición del portal (ver portal.js).
+   */
   async setTheme(key) {
     if (!game.user.isGM || !setting("stageAuto")) return;
     const scene = this.scene();
     const theme = STAGE_THEMES[key] ? key : "base";
     if (!scene || this.theme(scene) === theme) return;
-    await scene.update({ "background.src": BG(theme), [`flags.${SYSTEM_ID}.theme`]: theme });
+    await scene.update({ [`flags.${SYSTEM_ID}.theme`]: theme });
   },
 
   /** Que la imagen cubra la pantalla entera, sin bordes, como un fondo a sangre. */

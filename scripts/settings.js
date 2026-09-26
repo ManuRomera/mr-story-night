@@ -1,5 +1,5 @@
 import { DEFAULT_SAFETY, SYSTEM_ID } from "./constants.js";
-import { DEFAULT_PORTAL, PortalConfig } from "./portal.js";
+import { DEFAULT_PORTAL, Portal, PortalConfig } from "./portal.js";
 
 /** Colores de letra del modo lectura: claros pero sin llegar al blanco puro, que deslumbra sobre negro. */
 export const READING_INKS = { soft: "#e2dfd8", cream: "#e8dcc3", pearl: "#cfd3d8", amber: "#e6c690", mint: "#bcd9c4", sky: "#bcd0e6" };
@@ -26,7 +26,7 @@ export function registerSettings({ onActive, onSafety, onLibrary, onStage, onPor
   access("readingInk", { type: String, default: "soft" });
   access("plainFont", { type: Boolean, default: false });
   access("wideSpacing", { type: Boolean, default: false });
-  access("reducedMotion", { type: Boolean, default: false });
+  access("reducedMotion", { type: Boolean, default: false, onChange: () => { applyPreferences(); Portal.render(); } });
 }
 
 export function applyPreferences() {
