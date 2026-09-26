@@ -22,7 +22,7 @@
   {{/each}}
 
   {{#if is_choose}}
-  <div class="mr-step-block">
+  <div class="mr-step-block mr-step-block--inline">
     <h3 class="mr-h3"><span class="mr-num">1</span>{{localize "MR.Challenge.WhoPicks"}}</h3>
     <div class="mr-chips">{{#each pickers}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="op" data-op="setPicker" data-args='{"seatId":"{{id}}"}' {{#unless available}}disabled data-tooltip="{{localize 'MR.Challenge.AlreadyPicked'}}"{{/unless}}>{{name}}</button>{{/each}}</div>
   </div>
@@ -33,7 +33,7 @@
     {{#if suggestions.length}}<div class="mr-suggestion-grid">{{#each suggestions}}<button type="button" class="mr-suggestion {{#if selected}}is-selected{{/if}}" data-action="pickChallenge" data-title="{{title}}" data-text="{{text}}" {{#unless ../canEdit}}disabled{{/unless}}><strong>{{title}}</strong>{{#if text}}<span>{{text}}</span>{{/if}}</button>{{/each}}</div>{{/if}}
     <div class="mr-grid-2">
       <div class="mr-field"><label>{{localize "MR.Challenge.Name"}}</label><input type="text" data-field="challenge.title" value="{{title}}" {{#unless canEdit}}disabled{{/unless}}></div>
-      <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Challenge.Why"}}</label>{{#if canEdit}}<button type="button" class="mr-die" data-action="roll" data-kind="why" data-field="challenge.why" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><textarea rows="2" data-field="challenge.why" {{#unless canEdit}}disabled{{/unless}}>{{why}}</textarea></div>
+      <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Challenge.Why"}}</label>{{#if canEdit}}<button type="button" class="mr-die" data-action="roll" data-kind="why" data-field="challenge.why" aria-label="{{localize 'MR.Roll.Generic'}}"><i class="fa-solid fa-dice"></i></button>{{/if}}</div><textarea rows="1" data-field="challenge.why" {{#unless canEdit}}disabled{{/unless}}>{{why}}</textarea></div>
     </div>
   </div>
   <div class="mr-step-block mr-grid-2">
@@ -66,14 +66,20 @@
       <h3 class="mr-h2">{{localize "MR.Scene.Establishes" name=scene.establisher}}{{#if scene.establisherChar}} <small>· {{scene.establisherChar}}</small>{{/if}}</h3>
       {{#if scene.isMine}}<span class="mr-badge">{{localize "MR.Scene.YourTurn"}}</span>{{/if}}
     </header>
+    <div class="mr-scene-body">
+    <div>
     {{#if (or scene.where scene.who)}}<p class="mr-meta">{{#if scene.where}}<span><i class="fa-solid fa-location-dot"></i>{{scene.where}}</span>{{/if}}{{#if scene.who}}<span><i class="fa-solid fa-user-group"></i>{{scene.who}}</span>{{/if}}</p>{{/if}}
     <div class="mr-field"><div class="mr-field__label"><label>{{localize "MR.Scene.Situation"}}</label>{{#if scene.canEdit}}<button type="button" class="mr-die mr-die--label" data-action="roll" data-kind="scene"><i class="fa-solid fa-dice"></i>{{localize "MR.Roll.Scene"}}</button>{{/if}}</div><textarea rows="3" data-field="scene.situation" {{#unless scene.canEdit}}disabled{{/unless}}>{{scene.situation}}</textarea></div>
+    </div>
+    <div>
     <div class="mr-consequences">
       <h4 class="mr-label"><i class="fa-solid fa-bolt"></i>{{localize "MR.Scene.Consequences"}}</h4>
       <ul>{{#each scene.consequences}}<li><span>{{text}}</span><button type="button" class="mr-icon" data-action="op" data-op="removeConsequence" data-args='{"id":"{{id}}"}' aria-label="{{localize 'MR.Lobby.Remove'}}"><i class="fa-solid fa-xmark"></i></button></li>{{/each}}</ul>
       <div class="mr-inline"><input type="text" name="consequence" placeholder="{{localize 'MR.Scene.ConsequencePlaceholder'}}"><button type="button" data-action="addConsequence">{{localize "MR.Scene.AddConsequence"}}</button><button type="button" class="mr-die" data-action="roll" data-kind="consequence" aria-label="{{localize 'MR.Roll.Consequence'}}" data-tooltip="{{localize 'MR.Roll.Consequence'}}"><i class="fa-solid fa-dice"></i></button></div>
     </div>
     <div class="mr-field"><label>{{localize "MR.Scene.Summary"}}</label><input type="text" data-field="scene.summary" value="{{scene.summary}}" {{#unless scene.canEdit}}disabled{{/unless}}></div>
+    </div>
+    </div>
   </article>
   <footer class="mr-phase__foot">
     <button type="button" class="mr-primary" data-action="op" data-op="endScene">{{#if isLastScene}}<i class="fa-solid fa-circle-half-stroke"></i>{{localize "MR.Scene.EndLast"}}{{else}}{{localize "MR.Scene.End"}}<i class="fa-solid fa-arrow-right"></i>{{/if}}</button>
@@ -85,18 +91,23 @@
   {{#if is_outcome}}
   <div class="mr-outcome {{#if success}}is-success{{else}}is-failure{{/if}}">
     <div class="mr-draw">{{#each draw}}<figure class="mr-draw__stone" style="--delay:{{@index}}"><i class="mr-stone mr-stone--{{color}} mr-stone--xl"></i><figcaption><small>{{order}}</small>{{label}}</figcaption></figure>{{/each}}</div>
-    <h3 class="mr-outcome__title">{{outcomeTitle}}</h3>
-    <p class="mr-lead">{{outcomeText}}</p>
+    <div class="mr-outcome__text"><h3 class="mr-outcome__title">{{outcomeTitle}}</h3><p class="mr-lead">{{outcomeText}}</p></div>
   </div>
   {{#if needsLoss}}
   <article class="mr-loss-form mr-panel">
     <h3 class="mr-h2">{{localize "MR.Loss.Title"}}</h3>
     <p class="mr-help">{{#if betrayal}}{{localize "MR.Loss.HelpBetrayal"}}{{else}}{{localize "MR.Loss.Help"}}{{/if}}</p>
+    <div class="mr-grid-2">
+      <div>
     <p class="mr-q">{{localize "MR.Loss.Who"}}</p>
     <div class="mr-chips">{{#each candidates}}<button type="button" class="mr-chip mr-chip--person {{#if selected}}is-selected{{/if}}" data-action="local" data-key="lossChar" data-value="{{id}}"><strong>{{name}}</strong><small>{{role}} · {{seat}}</small></button>{{/each}}</div>
+      </div>
+      <div>
     <p class="mr-q">{{localize "MR.Loss.How"}}</p>
     <div class="mr-chips">{{#each fates}}<button type="button" class="mr-chip {{#if selected}}is-selected{{/if}}" data-action="local" data-key="lossFate" data-value="{{key}}" data-tooltip="{{hint}}">{{label}}</button>{{/each}}</div>
     <div class="mr-field"><label>{{localize "MR.Loss.Note"}}</label><textarea rows="2" name="lossNote" data-local="lossNote">{{lossNote}}</textarea></div>
+      </div>
+    </div>
     <button type="button" class="mr-primary" data-action="resolveLoss"><i class="fa-solid fa-feather"></i>{{localize "MR.Loss.Confirm"}}</button>
   </article>
   {{/if}}

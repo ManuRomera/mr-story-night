@@ -22,7 +22,7 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
       adopt: FellowshipSheet.#onAdopt, newcomer: FellowshipSheet.#onNewcomer, addConsequence: FellowshipSheet.#onAddConsequence,
       stoneDraft: FellowshipSheet.#onStoneDraft, submitStones: FellowshipSheet.#onSubmitStones, resolveLoss: FellowshipSheet.#onResolveLoss,
       finish: FellowshipSheet.#onFinish, print: FellowshipSheet.#onPrint, exportStory: FellowshipSheet.#onExport, activate: FellowshipSheet.#onActivate,
-      toggleGuide: FellowshipSheet.#onToggleGuide, signal: FellowshipSheet.#onSignal, addLimit: FellowshipSheet.#onAddLimit, removeLimit: FellowshipSheet.#onRemoveLimit, lobby: FellowshipSheet.#onLobby
+      toggleGuide: FellowshipSheet.#onToggleGuide, toggleSide: FellowshipSheet.#onToggleSide, signal: FellowshipSheet.#onSignal, addLimit: FellowshipSheet.#onAddLimit, removeLimit: FellowshipSheet.#onRemoveLimit, lobby: FellowshipSheet.#onLobby
     }
   };
   static PARTS = { sheet: { template: `${TEMPLATES}/fellowship.hbs`, scrollable: [".mr-main", ".mr-side", ".mr-layout"] } };
@@ -38,7 +38,7 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
     const state = this.state;
     const view = buildTableView({
       state, actors: Store.actorsFor(state), user: { id: game.user.id, isGM: game.user.isGM }, t, tab: this.tab,
-      local: { ...this.local, canUndo: Store.canUndo(this.document.id), hideGuide: !game.settings.get(SYSTEM_ID, "phaseGuide") }, safety: Store.safety, title: this.document.name
+      local: { ...this.local, canUndo: Store.canUndo(this.document.id), hideGuide: !game.settings.get(SYSTEM_ID, "phaseGuide"), hideSide: !game.settings.get(SYSTEM_ID, "sidePanel") }, safety: Store.safety, title: this.document.name
     });
     view.isActive = Store.activeId === this.document.id;
     return { ...context, ...view };
@@ -69,6 +69,10 @@ export class FellowshipSheet extends TableWindow(HandlebarsApplicationMixin(foun
     await this.render();
     // Desde la tarjeta de fase: saltar a su sección del tutorial.
     if (target.dataset.anchor) this.element.querySelector(`#mr-guide-${target.dataset.anchor}`)?.scrollIntoView({ block: "start" });
+  }
+  static async #onToggleSide() {
+    await game.settings.set(SYSTEM_ID, "sidePanel", !game.settings.get(SYSTEM_ID, "sidePanel"));
+    this.render();
   }
   static async #onToggleGuide() {
     await game.settings.set(SYSTEM_ID, "phaseGuide", !game.settings.get(SYSTEM_ID, "phaseGuide"));

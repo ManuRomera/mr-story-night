@@ -493,5 +493,6 @@
  "MR.Access.Reset": "Reset",
  "MR.Access.Scope": "This device only.",
  "MR.Presence.Editing": "Typing: {name}",
- "MR.Presence.Busy": "{name} is editing this field. Wait until they finish."
+ "MR.Presence.Busy": "{name} is editing this field. Wait until they finish.",
+ "MR.Company.ToggleSide": "Show or hide the fellowship list"
 }

@@ -12,10 +12,16 @@
     {{#each forms}}
     <article class="mr-stone-form">
       <h3 class="mr-h3"><i class="fa-solid fa-user-secret"></i>{{localize "MR.Stones.For" name=charName}}</h3>
+      <div class="mr-stone-form__body">
+      <div>
       <p class="mr-q">{{localize "MR.Stones.DiscontentQ"}}</p>
       <div class="mr-choice-row">{{#each discontent}}<button type="button" class="mr-choice {{#if selected}}is-selected{{/if}}" data-action="stoneDraft" data-seat-id="{{../seatId}}" data-key="discontent" data-value="{{value}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}"><span class="mr-choice__stones">{{#each reds}}<i class="mr-stone mr-stone--red mr-stone--sm"></i>{{else}}<i class="fa-regular fa-face-smile"></i>{{/each}}</span><strong>{{label}}</strong><small>{{hint}}</small></button>{{/each}}</div>
+      </div>
+      <div>
       <p class="mr-q">{{localize "MR.Stones.VerdictQ"}}</p>
       <div class="mr-choice-row mr-choice-row--2">{{#each verdicts}}<button type="button" class="mr-choice {{#if selected}}is-selected{{/if}}" data-action="stoneDraft" data-seat-id="{{../seatId}}" data-key="verdict" data-value="{{value}}" aria-pressed="{{#if selected}}true{{else}}false{{/if}}"><span class="mr-choice__stones"><i class="mr-stone mr-stone--{{value}} mr-stone--sm"></i></span><strong>{{label}}</strong></button>{{/each}}</div>
+      </div>
+      </div>
       <button type="button" class="mr-primary mr-block" data-action="submitStones" data-seat-id="{{seatId}}" {{#unless canSubmit}}disabled{{/unless}}><i class="fa-solid fa-hand-holding"></i>{{localize "MR.Stones.Submit"}}</button>
     </article>
     {{else}}

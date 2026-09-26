@@ -18,7 +18,7 @@
 >
 > Este repositorio no incluye textos del libro: todas las pantallas, ayudas y misiones de ejemplo están redactadas desde cero. Las misiones oficiales puedes introducirlas tú en tu mundo desde la pestaña **Misiones**.
 
-**Versión 0.7.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
+**Versión 0.8.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
 ## Cómo está organizado
 

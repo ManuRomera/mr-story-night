@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.8.0 — 2026-09-26
+
+- **Menos scroll**: cada bloque se ha revisado por separado y se usan dos columnas donde los bloques son independientes. Las columnas dependen del ancho real del área de contenido, así que en ventanas estrechas se vuelve a una sola.
+  - Misión: introducción, objetivo y dificultades a la izquierda; preguntas a la derecha.
+  - Reto: quién elige, en la misma línea que su título; sugerencias más compactas.
+  - Escena: planteamiento a la izquierda; consecuencias y crónica a la derecha.
+  - Piedras: el cuenco pasa a ser una franja; las dos preguntas, lado a lado.
+  - Resultado: piedras y texto en una franja; en la pérdida, personaje y forma en dos columnas.
+  - Ficha de personaje, tutorial y editor de misiones: dos columnas cuando hay sitio.
+- **Lista de la compañía plegable** desde la barra de pestañas; cada jugador decide y se recuerda.
+- Espaciado más ceñido en cabecera, turno, pestañas, grupos y campos.
+
 ## 0.7.0 — 2026-09-26
 
 - **Edición simultánea en vivo**: lo que se escribe en la hoja común y en las fichas aparece al momento en el resto de pantallas, sin perder el texto ni el cursor de nadie. Un campo en uso se bloquea con el nombre de quien lo edita, y si otra persona intenta escribir ahí se le avisa.

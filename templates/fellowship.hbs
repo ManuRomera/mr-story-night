@@ -25,6 +25,7 @@
     {{#unless isActive}}{{#if isGM}}{{#unless complete}}<button type="button" class="mr-tab" data-action="activate"><i class="fa-solid fa-star"></i><span>{{localize "MR.Action.Activate"}}</span></button>{{/unless}}{{/if}}{{/unless}}
     {{#if guideHidden}}<button type="button" class="mr-tab" data-action="toggleGuide"><i class="fa-solid fa-circle-question"></i><span>{{localize "MR.Guide.Show"}}</span></button>{{/if}}
     {{#if canUndo}}<button type="button" class="mr-tab" data-action="undo" data-tooltip="{{localize 'MR.Action.UndoHint'}}"><i class="fa-solid fa-rotate-left"></i><span>{{localize "MR.Action.Undo"}}</span></button>{{/if}}
+    {{#if sideAvailable}}<button type="button" class="mr-tab mr-tab--icon {{#if showSide}}is-active{{/if}}" data-action="toggleSide" data-tooltip="{{localize 'MR.Company.ToggleSide'}}" aria-label="{{localize 'MR.Company.ToggleSide'}}" aria-pressed="{{#if showSide}}true{{else}}false{{/if}}"><i class="fa-solid fa-table-columns"></i></button>{{/if}}
     <button type="button" class="mr-tab mr-tab--icon" data-action="lobby" data-tooltip="{{localize 'MR.Lobby.Window'}}" aria-label="{{localize 'MR.Lobby.Window'}}"><i class="fa-solid fa-door-open"></i></button>
   </nav>
 

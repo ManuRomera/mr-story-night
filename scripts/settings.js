@@ -11,6 +11,7 @@ export function registerSettings({ onActive, onSafety, onLibrary }) {
   game.settings.register(SYSTEM_ID, "chatCards", { name: "MR.Settings.ChatCards", hint: "MR.Settings.ChatCardsHint", scope: "world", config: true, type: Boolean, default: true });
   const client = (key, data) => game.settings.register(SYSTEM_ID, key, { scope: "client", config: true, onChange: applyPreferences, ...data });
   client("phaseGuide", { name: "MR.Settings.PhaseGuide", hint: "MR.Settings.PhaseGuideHint", type: Boolean, default: true });
+  client("sidePanel", { type: Boolean, default: true, config: false });
   client("autoOpen", { name: "MR.Settings.AutoOpen", hint: "MR.Settings.AutoOpenHint", type: Boolean, default: true });
   // Lectura cómoda: se cambia desde el botón de accesibilidad de cualquier ventana y vale para todas.
   const access = (key, data) => client(key, { config: false, ...data });

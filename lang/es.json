@@ -493,5 +493,6 @@
  "MR.Access.Reset": "Restablecer",
  "MR.Access.Scope": "Solo en este dispositivo.",
  "MR.Presence.Editing": "Escribiendo: {name}",
- "MR.Presence.Busy": "Este campo lo está editando {name}. Espera a que termine."
+ "MR.Presence.Busy": "Este campo lo está editando {name}. Espera a que termine.",
+ "MR.Company.ToggleSide": "Mostrar u ocultar la lista de la compañía"
 }

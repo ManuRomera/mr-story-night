@@ -3,6 +3,8 @@
     <h2 class="mr-h1">{{localize "MR.Setup.Title"}}</h2>
     {{#if @root.phaseCard}}{{> "systems/mr-story-night/templates/parts/phase-card.hbs" @root.phaseCard}}{{/if}}
   </header>
+  <div class="mr-columns">
+  <div class="mr-columns__main">
   {{#if intro}}<p class="mr-reading-text">{{intro}}</p>{{/if}}
 
   <h3 class="mr-h3">{{localize "MR.Setup.Goal"}}</h3>
@@ -11,18 +13,23 @@
   </div>
   <p class="mr-group__foot">{{localize "MR.Setup.GoalHelp"}}</p>
 
-  {{#if questions.length}}
-  <h3 class="mr-h3">{{localize "MR.Setup.Questions"}}</h3>
-  <div class="mr-group">
-    {{#each questions}}<div class="mr-field"><label for="mr-q{{index}}">{{question}}</label><textarea id="mr-q{{index}}" data-field="setup.answers.{{index}}" rows="1">{{answer}}</textarea></div>{{/each}}
-  </div>
-  {{/if}}
 
   <h3 class="mr-h3">{{localize "MR.Setup.Difficulties"}}<button type="button" class="mr-die" data-action="roll" data-kind="difficulty" data-field="setup.difficulties.{{#if difficulties.0.value}}1{{else}}0{{/if}}" data-tooltip="{{localize 'MR.Roll.Difficulty'}}" aria-label="{{localize 'MR.Roll.Difficulty'}}"><i class="fa-solid fa-dice"></i></button></h3>
   <div class="mr-group">
     {{#each difficulties}}<div class="mr-field mr-field--row"><label for="mr-d{{index}}">{{n}}</label><input id="mr-d{{index}}" type="text" data-field="setup.difficulties.{{index}}" value="{{value}}" placeholder="{{localize 'MR.Setup.Difficulty' n=n}}"></div>{{/each}}
   </div>
   {{#if suggestions.length}}<div class="mr-chips mr-group__foot">{{#each suggestions}}<button type="button" class="mr-chip {{#if used}}is-selected{{/if}}" data-action="pickDifficulty" data-value="{{text}}">{{text}}</button>{{/each}}</div>{{/if}}
+
+  </div>
+  <div class="mr-columns__side">
+  {{#if questions.length}}
+  <h3 class="mr-h3 mr-h3--first">{{localize "MR.Setup.Questions"}}</h3>
+  <div class="mr-group">
+    {{#each questions}}<div class="mr-field"><label for="mr-q{{index}}">{{question}}</label><textarea id="mr-q{{index}}" data-field="setup.answers.{{index}}" rows="1">{{answer}}</textarea></div>{{/each}}
+  </div>
+  {{/if}}
+  </div>
+  </div>
 
   <footer class="mr-phase__foot">
     <button type="button" class="mr-primary" data-action="op" data-op="setupDone" {{#unless canContinue}}disabled{{/unless}}>{{localize "MR.Setup.Continue"}}<i class="fa-solid fa-arrow-right"></i></button>

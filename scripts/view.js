@@ -87,7 +87,8 @@ export function buildTableView({ state, actors = {}, user, t, tab = "play", loca
   if (tab === "chronicle") view.chronicle = chronicle(state, t);
   if (tab === "safety") view.safety = safetyView(safety, user);
   // En la creación de la compañía las tarjetas ya muestran a todos: la lista lateral solo repetiría.
-  view.showSide = tab === "play" && !complete && !["setup", "characters"].includes(state.phase);
+  view.sideAvailable = tab === "play" && !complete && !["setup", "characters"].includes(state.phase);
+  view.showSide = view.sideAvailable && !local.hideSide;
   return view;
 }
 
