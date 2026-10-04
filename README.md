@@ -21,6 +21,13 @@
 
 **Versión 0.10.0** · Foundry VTT v13 · Español e inglés · Sin director de juego
 
+## Así se ve
+
+<p align="center">
+  <img src="docs/img/vestibulo.png" alt="Vestíbulo de MR · Story Night: elige misión por género y monta la mesa" width="62%">
+  <img src="docs/img/ambientacion.png" alt="La sala cambia de ambientación al elegir la misión" width="36%">
+</p>
+
 ## Cómo está organizado
 
 Como en otros sistemas de mesa compartida (el club de *Brindlewood Bay*, por ejemplo), hay **una hoja común y una ficha por jugador**:
