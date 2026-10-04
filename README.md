@@ -8,10 +8,11 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ManuRomera/mr-story-night/releases/latest"><img alt="Última versión" src="https://img.shields.io/github/v/release/ManuRomera/mr-story-night?display_name=tag&style=flat-square&color=8d2424"></a>
-  <img alt="Foundry VTT 13" src="https://img.shields.io/badge/Foundry_VTT-13-202b3d?style=flat-square">
-  <img alt="Idiomas: español e inglés" src="https://img.shields.io/badge/idiomas-ES_%7C_EN-c6a15b?style=flat-square">
-  <a href="LICENSE"><img alt="Licencia MIT" src="https://img.shields.io/badge/licencia-MIT-333333?style=flat-square"></a>
+  <a href="https://github.com/ManuRomera/mr-story-night/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ManuRomera/mr-story-night?include_prereleases&style=for-the-badge&color=8d2424&label=release"></a>
+  <a href="https://foundryvtt.com"><img alt="Foundry VTT V13" src="https://img.shields.io/badge/Foundry%20VTT-V13-57d8c8?style=for-the-badge"></a>
+  <a href="https://github.com/ManuRomera/mr-story-night/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/ManuRomera/mr-story-night/total?style=for-the-badge&color=ff7a1f"></a>
+  <img alt="Game system" src="https://img.shields.io/badge/type-game%20system-2b3245?style=for-the-badge">
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-2b3245?style=for-the-badge"></a>
 </p>
 
 > **Implementación no oficial y para uso privado** del juego **[Follow](https://www.lamemage.com/follow/)**, de **Ben Robbins** (Lame Mage Productions). No está afiliada ni aprobada por su autor. Para jugar necesitas conocer las reglas: la edición gratuita *Follow: A New Fellowship* está en [lamemage.com/follow](https://www.lamemage.com/follow/) y en [itch.io](https://lamemage.itch.io/follow-new-fellowship). Si Follow te gusta, cómpralo.
