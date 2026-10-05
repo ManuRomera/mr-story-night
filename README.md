@@ -141,3 +141,15 @@ La arquitectura está en [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) y la lista
 - Juego original: **Follow**, © Ben Robbins / Lame Mage Productions. Todos los derechos de sus textos pertenecen a su autor.
 - Sistema para Foundry: Manu Romera. El código se publica con licencia MIT (ver [LICENSE](LICENSE)); la licencia no cubre el juego Follow.
 - Tipografías incluidas: Cormorant Garamond e Inter, bajo SIL Open Font License (`assets/fonts`).
+
+---
+
+<p align="center">
+  <a href="https://github.com/ManuRomera">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/brand/MR_09_Monograma_Marfil_Transparente.png">
+      <img src="https://raw.githubusercontent.com/ManuRomera/ManuRomera/main/brand/MR_10_Monograma_Negro_Transparente.png" alt="MR · Manu Romera" height="56">
+    </picture>
+  </a><br>
+  <sub>Hecho por <a href="https://github.com/ManuRomera"><b>Manu Romera</b></a> · Digital RPG Design</sub>
+</p>
