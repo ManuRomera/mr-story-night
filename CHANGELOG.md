@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.1 — 2026-10-05
+
+- Añadido el botón «Créditos» en los ajustes del paquete (Manu Romera · Digital RPG Design). No cambia el juego.
+
 ## 0.10.0 — 2026-09-26
 
 - **Transición del portal**: al cambiar de ambientación ya no se redibuja la escena (no hay fundido a negro). El nuevo mundo se abre dentro del portal como un iris, con un anillo de luz del color de la ambientación, mientras el anterior sigue visible alrededor; el cartel funde al nuevo nombre. Cambios seguidos se encadenan sin restos.
